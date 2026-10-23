@@ -1,0 +1,23 @@
+name = "MichaThemeV5-App"
+client_id = "${SHOPIFY_API_KEY}"
+application_url = "${SHOPIFY_APP_URL}"
+embedded = true
+
+[access_scopes]
+scopes = "read_customers,read_orders,read_products,write_app_proxy"
+
+[app_proxy]
+url = "${SHOPIFY_APP_URL}/proxy"
+subpath = "michatheme-notifications"
+prefix = "apps"
+
+[webhooks]
+api_version = "2026-10"
+
+  [[webhooks.subscriptions]]
+  topics = ["orders/updated", "products/update"]
+  uri = "/webhooks/events"
+
+  [[webhooks.subscriptions]]
+  compliance_topics = ["customers/data_request", "customers/redact", "shop/redact"]
+  uri = "/webhooks/compliance"
