@@ -1,0 +1,77 @@
+{% comment %}
+  Warenkorb ohne JavaScript: Mengen ändern per Button "Aktualisieren", Entfernen per Link.
+  Hinweis: Der Bestellbutton mit der Pflichtbeschriftung ("zahlungspflichtig bestellen") liegt in der Shopify-Kasse, nicht im Theme.
+{% endcomment %}
+<div class="mt-container mt-cart">
+  <h1>{{ 'cart.title' | t }}</h1>
+  {%- if cart.item_count > 0 -%}
+    {%- form 'cart', cart, class: 'mt-cart__form' -%}
+      <table class="mt-cart__table">
+        <caption class="mt-visually-hidden">{{ 'cart.title' | t }}</caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ 'cart.product' | t }}</th>
+            <th scope="col">{{ 'cart.quantity' | t }}</th>
+            <th scope="col" class="mt-cart__num">{{ 'cart.total' | t }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for item in cart.items -%}
+            <tr>
+              <td>
+                <div class="mt-cart__item">
+                  {%- if item.image -%}
+                    {{ item.image | image_url: width: 160 | image_tag: class: 'mt-cart__img', loading: 'lazy', alt: '' }}
+                  {%- endif -%}
+                  <div>
+                    <a href="{{ item.url }}">{{ item.product.title | escape }}</a>
+                    {%- unless item.product.has_only_default_variant -%}<p class="mt-cart__variant">{{ item.variant.title | escape }}</p>{%- endunless -%}
+                    {%- render 'mt-price', product: item.product, variant: item.variant -%}
+                    {%- for discount in item.line_level_discount_allocations -%}
+                      <p class="mt-cart__discount">{{ discount.discount_application.title | escape }} (−{{ discount.amount | money }})</p>
+                    {%- endfor -%}
+                    <a class="mt-cart__remove" href="{{ item.url_to_remove }}">{{ 'cart.remove' | t }}<span class="mt-visually-hidden">: {{ item.product.title | escape }}</span></a>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <label class="mt-visually-hidden" for="mt-cart-qty-{{ forloop.index }}">{{ 'cart.quantity_for' | t: title: item.product.title }}</label>
+                <input type="number" id="mt-cart-qty-{{ forloop.index }}" name="updates[]" value="{{ item.quantity }}" min="0" inputmode="numeric">
+              </td>
+              <td class="mt-cart__num">{{ item.final_line_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+      <div class="mt-cart__note mt-field">
+        <label for="mt-cart-note">{{ 'cart.note' | t }}</label>
+        <textarea id="mt-cart-note" name="note" rows="3">{{ cart.note | escape }}</textarea>
+      </div>
+      <div class="mt-cart__summary">
+        {%- for discount in cart.cart_level_discount_applications -%}
+          <p>{{ discount.title | escape }}: −{{ discount.total_allocated_amount | money }}</p>
+        {%- endfor -%}
+        <p class="mt-cart__subtotal">{{ 'cart.subtotal' | t }}: <strong>{{ cart.total_price | money_with_currency }}</strong></p>
+        <p class="mt-price__note">
+          {%- if cart.taxes_included -%}{{ 'cart.taxes_included' | t }}{%- else -%}{{ 'cart.taxes_excluded' | t }}{%- endif %}
+          {{ 'cart.shipping_at_checkout' | t }}
+          {%- if shop.shipping_policy.url != blank %} <a href="{{ shop.shipping_policy.url }}">{{ 'price.shipping_link' | t }}</a>{%- endif -%}
+        </p>
+        <div class="mt-cart__actions">
+          <button type="submit" name="update" class="mt-btn mt-btn--ghost">{{ 'cart.update' | t }}</button>
+          <button type="submit" name="checkout" class="mt-btn">{{ 'cart.checkout' | t }}</button>
+        </div>
+      </div>
+    {%- endform -%}
+  {%- else -%}
+    <p>{{ 'cart.empty' | t }}</p>
+    <p><a class="mt-btn" href="{{ routes.all_products_collection_url }}">{{ 'cart.continue' | t }}</a></p>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main_cart.name",
+  "settings": []
+}
+{% endschema %}

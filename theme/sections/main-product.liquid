@@ -1,0 +1,116 @@
+{% comment %}
+  Artikelseite. Varianten werden über ein GET-Formular gewählt (?variant=ID), damit Preis, Grundpreis und Verfügbarkeit
+  immer serverseitig stimmen. Kein automatisches Neuladen beim Wechsel (WCAG 3.2.2), der Button lädt die Variante.
+  Galerie: horizontale Bildleiste mit Scroll-Einrasten, Vorschaubilder sind Sprunglinks (ohne JavaScript bedienbar).
+{% endcomment %}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign mt_form_id = 'mt-product-form-' | append: section.id -%}
+<div class="mt-container mt-product">
+  <div class="mt-product__gallery">
+    {%- if product.media.size > 0 -%}
+      <ul class="mt-gallery" role="list" tabindex="0" aria-label="{{ 'products.gallery' | t | escape }}">
+        {%- for media in product.media -%}
+          <li class="mt-gallery__item" id="mt-media-{{ section.id }}-{{ media.id }}">
+            {%- case media.media_type -%}
+              {%- when 'video' -%}
+                {{ media | video_tag: controls: true, preload: 'none' }}
+              {%- else -%}
+                {%- if media.preview_image -%}
+                  {%- assign mt_alt = media.alt | default: product.title -%}
+                  {%- if forloop.first -%}
+                    {{ media.preview_image | image_url: width: 1100 | image_tag: class: 'mt-gallery__img', widths: '400, 600, 800, 1100', sizes: '(min-width: 64rem) 50vw, 100vw', loading: 'eager', fetchpriority: 'high', alt: mt_alt }}
+                  {%- else -%}
+                    {{ media.preview_image | image_url: width: 1100 | image_tag: class: 'mt-gallery__img', widths: '400, 600, 800, 1100', sizes: '(min-width: 64rem) 50vw, 100vw', loading: 'lazy', alt: mt_alt }}
+                  {%- endif -%}
+                {%- endif -%}
+            {%- endcase -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- if product.media.size > 1 -%}
+        <ul class="mt-thumbs" role="list">
+          {%- for media in product.media -%}
+            <li>
+              <a class="mt-thumbs__link" href="#mt-media-{{ section.id }}-{{ media.id }}" aria-label="{{ 'products.media_n' | t: n: forloop.index, count: forloop.length | escape }}">
+                {%- if media.preview_image -%}{{ media.preview_image | image_url: width: 160 | image_tag: class: 'mt-thumbs__img', loading: 'lazy', alt: '' }}{%- endif -%}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    {%- else -%}
+      <div class="mt-card__placeholder mt-product__placeholder"></div>
+    {%- endif -%}
+  </div>
+
+  <div class="mt-product__info">
+    {%- if product.vendor != blank -%}<p class="mt-product__vendor">{{ product.vendor | escape }}</p>{%- endif -%}
+    <h1 class="mt-product__title">{{ product.title | escape }}</h1>
+    {%- render 'mt-price', product: product, variant: current_variant -%}
+
+    {%- unless product.has_only_default_variant -%}
+      <form class="mt-variant-picker" method="get" action="{{ product.url }}" data-mt-variant-form>
+        <div class="mt-field">
+          <label for="mt-variant-{{ section.id }}">{{ 'products.variant' | t }}</label>
+          <select id="mt-variant-{{ section.id }}" name="variant">
+            {%- for variant in product.variants -%}
+              <option value="{{ variant.id }}"{% if variant.id == current_variant.id %} selected{% endif %}>
+                {{ variant.title | escape }}{% unless variant.available %} – {{ 'products.sold_out' | t }}{% endunless %}
+              </option>
+            {%- endfor -%}
+          </select>
+        </div>
+        <button type="submit" class="mt-btn mt-btn--ghost">{{ 'products.choose_variant' | t }}</button>
+      </form>
+    {%- endunless -%}
+
+    {%- form 'product', product, id: mt_form_id, class: 'mt-buy', novalidate: 'novalidate' -%}
+      <input type="hidden" name="id" value="{{ current_variant.id }}">
+      <div class="mt-field mt-field--qty">
+        <label for="mt-qty-{{ section.id }}">{{ 'products.quantity' | t }}</label>
+        <input type="number" id="mt-qty-{{ section.id }}" name="quantity" value="1" min="1" inputmode="numeric">
+      </div>
+      {%- if current_variant.available -%}
+        <button type="submit" name="add" class="mt-btn mt-buy__button">{{ 'products.add_to_cart' | t }}</button>
+      {%- else -%}
+        <button type="submit" name="add" class="mt-btn mt-buy__button" disabled>{{ 'products.sold_out' | t }}</button>
+      {%- endif -%}
+    {%- endform -%}
+
+    <div class="mt-panels" data-mt-panels>
+      {%- if product.description != blank -%}
+        <details class="mt-panel" open>
+          <summary class="mt-panel__title">{{ 'products.description' | t }}</summary>
+          <div class="mt-panel__body mt-rte">{{ product.description }}</div>
+        </details>
+      {%- endif -%}
+      <details class="mt-panel" open>
+        <summary class="mt-panel__title">{{ 'products.shipping_returns' | t }}</summary>
+        <div class="mt-panel__body">
+          <ul>
+            {%- if shop.shipping_policy != blank -%}<li><a href="{{ shop.shipping_policy.url }}">{{ shop.shipping_policy.title | escape }}</a></li>{%- endif -%}
+            {%- if shop.refund_policy != blank -%}<li><a href="{{ shop.refund_policy.url }}">{{ shop.refund_policy.title | escape }}</a></li>{%- endif -%}
+            {%- if shop.terms_of_service != blank -%}<li><a href="{{ shop.terms_of_service.url }}">{{ shop.terms_of_service.title | escape }}</a></li>{%- endif -%}
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+{%- if current_variant.available -%}
+  <div class="mt-sticky-cart">
+    <button type="submit" form="{{ mt_form_id }}" name="add" class="mt-btn mt-sticky-cart__button">
+      {{ 'products.add_to_cart' | t }} – {{ current_variant.price | money }}
+    </button>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.main_product.name",
+  "settings": [
+    { "type": "paragraph", "content": "t:sections.main_product.settings.info.content" }
+  ]
+}
+{% endschema %}

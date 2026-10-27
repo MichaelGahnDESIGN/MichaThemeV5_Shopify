@@ -1,0 +1,52 @@
+<div class="mt-container mt-listing">
+  <header class="mt-listing__head">
+    <h1>{{ 'search.title' | t }}</h1>
+    <form class="mt-search mt-search--page" action="{{ routes.search_url }}" method="get" role="search">
+      <label for="mt-search-page-{{ section.id }}">{{ 'general.search' | t }}</label>
+      <input type="search" id="mt-search-page-{{ section.id }}" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search_placeholder' | t }}">
+      <button type="submit" class="mt-btn">{{ 'general.search' | t }}</button>
+    </form>
+  </header>
+  {%- if search.performed -%}
+    {%- paginate search.results by section.settings.results_per_page -%}
+            <p class="mt-listing__count" role="status">{{ 'search.results_count' | t: count: search.results_count, terms: search.terms }}</p>
+      <div class="mt-listing__body">
+        {%- if search.filters != empty -%}
+          <aside class="mt-listing__filters" aria-label="{{ 'collection.filter' | t | escape }}">
+            {%- render 'mt-filters', results: search, form_id: 'mt-filters-search' -%}
+          </aside>
+        {%- endif -%}
+        <div class="mt-listing__results">
+          <ul class="mt-grid" role="list">
+            {%- for item in search.results -%}
+              <li>
+                {%- if item.object_type == 'product' -%}
+                  {%- render 'mt-product-card', product: item -%}
+                {%- else -%}
+                  <article class="mt-card mt-card--text">
+                    <div class="mt-card__body">
+                      <h2 class="mt-card__title"><a href="{{ item.url }}">{{ item.title | escape }}</a></h2>
+                      <p>{{ item.content | strip_html | truncatewords: 24 }}</p>
+                    </div>
+                  </article>
+                {%- endif -%}
+              </li>
+            {%- else -%}
+              <li class="mt-empty">{{ 'search.no_results' | t }}</li>
+            {%- endfor -%}
+          </ul>
+          {%- render 'mt-pagination', paginate: paginate -%}
+        </div>
+      </div>
+    {%- endpaginate -%}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main_search.name",
+  "settings": [
+    { "type": "range", "id": "results_per_page", "min": 8, "max": 48, "step": 4, "default": 24, "label": "t:sections.main_search.settings.results_per_page.label" }
+  ]
+}
+{% endschema %}

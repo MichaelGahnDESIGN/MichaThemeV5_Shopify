@@ -1,0 +1,13 @@
+{% comment %}Eingebettete Symbole (dekorativ, aria-hidden). Parameter: name = search | cart | account | menu | close | contrast | plus | minus{% endcomment %}
+<svg class="mt-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  {%- case name -%}
+    {%- when 'search' -%}<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+    {%- when 'cart' -%}<path d="M3 4h2l2.4 11h10.2L20 7H6.2"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/>
+    {%- when 'account' -%}<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/>
+    {%- when 'menu' -%}<path d="M4 6h16M4 12h16M4 18h16"/>
+    {%- when 'close' -%}<path d="M6 6l12 12M18 6 6 18"/>
+    {%- when 'contrast' -%}<circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/>
+    {%- when 'plus' -%}<path d="M12 5v14M5 12h14"/>
+    {%- when 'minus' -%}<path d="M5 12h14"/>
+  {%- endcase -%}
+</svg>

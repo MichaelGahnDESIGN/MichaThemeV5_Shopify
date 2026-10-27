@@ -1,0 +1,40 @@
+{% comment %}Kontaktformular (Shopify sendet die Nachricht an die Shop-E-Mail). Hinweis auf die Datenschutzerklärung nach Art. 13 DSGVO; Text vor Veröffentlichung prüfen lassen.{% endcomment %}
+<div class="mt-container mt-contact">
+  {%- form 'contact', id: 'mt-contact-form', class: 'mt-form' -%}
+    {%- if form.posted_successfully? -%}
+      <p class="mt-alert mt-alert--success" role="status">{{ 'contact.success' | t }}</p>
+    {%- endif -%}
+    {%- if form.errors -%}
+      <div class="mt-alert mt-alert--danger" role="alert">{{ form.errors | default_errors }}</div>
+    {%- endif -%}
+    <div class="mt-field">
+      <label for="mt-contact-name">{{ 'contact.name' | t }}</label>
+      <input type="text" id="mt-contact-name" name="contact[name]" autocomplete="name" value="{{ form.name | escape }}">
+    </div>
+    <div class="mt-field">
+      <label for="mt-contact-email">{{ 'contact.email' | t }} <span aria-hidden="true">*</span></label>
+      <input type="email" id="mt-contact-email" name="contact[email]" autocomplete="email" required aria-required="true" value="{{ form.email | escape }}">
+    </div>
+    <div class="mt-field">
+      <label for="mt-contact-phone">{{ 'contact.phone' | t }}</label>
+      <input type="tel" id="mt-contact-phone" name="contact[phone]" autocomplete="tel" value="{{ form.phone | escape }}">
+    </div>
+    <div class="mt-field">
+      <label for="mt-contact-body">{{ 'contact.message' | t }} <span aria-hidden="true">*</span></label>
+      <textarea id="mt-contact-body" name="contact[body]" rows="6" required aria-required="true">{{ form.body | escape }}</textarea>
+    </div>
+    <p class="mt-form__hint">
+      {{ 'contact.privacy_hint' | t }}
+      {%- if shop.privacy_policy != blank %} <a href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title | escape }}</a>{%- endif -%}
+    </p>
+    <button type="submit" class="mt-btn">{{ 'contact.send' | t }}</button>
+  {%- endform -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.contact_form.name",
+  "settings": [],
+  "presets": [ { "name": "t:sections.contact_form.name" } ]
+}
+{% endschema %}

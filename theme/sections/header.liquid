@@ -1,0 +1,91 @@
+{% comment %}
+  Kopfbereich. Varianten (klassisch, zentriert, kompakt), fixierter Header und Suchdarstellung kommen aus den Theme-Einstellungen
+  (data-mt-header, data-mt-sticky, data-mt-search auf <html>). Ohne JavaScript ist das Menü auf dem Handy immer offen.
+{% endcomment %}
+{%- if settings.mt_announcement and settings.mt_announcement_text != blank -%}
+  <div class="mt-announcement" role="note">{{ settings.mt_announcement_text | escape }}</div>
+{%- endif -%}
+<header class="mt-header">
+  <div class="mt-header__inner">
+    <div class="mt-header__brand">
+      {%- if request.page_type == 'index' -%}
+        <h1 class="mt-header__shop">{%- render 'mt-logo' -%}</h1>
+      {%- else -%}
+        {%- render 'mt-logo' -%}
+      {%- endif -%}
+    </div>
+    <button type="button" class="mt-nav-toggle" aria-expanded="false" aria-controls="mt-nav-{{ section.id }}" data-mt-nav-toggle>
+      {%- render 'mt-icon', name: 'menu' -%}
+      <span>{{ 'general.menu' | t }}</span>
+    </button>
+    <nav class="mt-header__nav" id="mt-nav-{{ section.id }}" aria-label="{{ 'general.main_menu' | t }}">
+      {%- if section.settings.menu != blank -%}
+        <ul class="mt-menu">
+          {%- for link in section.settings.menu.links -%}
+            <li class="mt-menu__item{% if link.links != blank %} mt-menu__item--parent{% endif %}">
+              <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+              {%- if link.links != blank -%}
+                <ul class="mt-menu__sub">
+                  {%- for child in link.links -%}
+                    <li><a href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>{{ child.title | escape }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </nav>
+    <div class="mt-header__search">
+      <form class="mt-search mt-search--inline" action="{{ routes.search_url }}" method="get" role="search">
+        <label class="mt-visually-hidden" for="mt-search-{{ section.id }}">{{ 'general.search' | t }}</label>
+        <input type="search" id="mt-search-{{ section.id }}" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search_placeholder' | t }}" autocomplete="off">
+        <button type="submit" class="mt-icon-button">{%- render 'mt-icon', name: 'search' -%}<span class="mt-visually-hidden">{{ 'general.search' | t }}</span></button>
+      </form>
+    </div>
+    <div class="mt-header__tools">
+      <details class="mt-search-disclosure">
+        <summary class="mt-icon-button">{%- render 'mt-icon', name: 'search' -%}<span class="mt-visually-hidden">{{ 'general.search' | t }}</span></summary>
+        <form class="mt-search" action="{{ routes.search_url }}" method="get" role="search">
+          <label class="mt-visually-hidden" for="mt-search-d-{{ section.id }}">{{ 'general.search' | t }}</label>
+          <input type="search" id="mt-search-d-{{ section.id }}" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search_placeholder' | t }}" autocomplete="off">
+          <button type="submit" class="mt-btn">{{ 'general.search' | t }}</button>
+        </form>
+      </details>
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="mt-icon-button" href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}">
+          {%- render 'mt-icon', name: 'account' -%}<span class="mt-visually-hidden">{{ 'general.account' | t }}</span>
+        </a>
+      {%- endif -%}
+      {%- if settings.mt_mode_toggle -%}
+        <button type="button" class="mt-mode-toggle mt-mode-toggle--icon" data-mt-mode-toggle
+          data-label-system="{{ 'general.mode_system' | t | escape }}" data-label-light="{{ 'general.mode_light' | t | escape }}" data-label-dark="{{ 'general.mode_dark' | t | escape }}"
+          data-label-pattern="{{ 'general.mode_label' | t | escape }}" aria-label="{{ 'general.mode_toggle' | t | escape }}">
+          {%- render 'mt-icon', name: 'contrast' -%}<span class="mt-visually-hidden" data-mt-mode-label>{{ 'general.mode_system' | t }}</span>
+        </button>
+      {%- endif -%}
+      {%- if settings.mt_a11y_text_widget -%}
+        <span class="mt-size-steps" role="group" aria-label="{{ 'general.text_size' | t | escape }}">
+          <button type="button" class="mt-icon-button" data-mt-size-step="-1">{%- render 'mt-icon', name: 'minus' -%}<span class="mt-visually-hidden">{{ 'general.text_smaller' | t }}</span></button>
+          <button type="button" class="mt-icon-button" data-mt-size-step="1">{%- render 'mt-icon', name: 'plus' -%}<span class="mt-visually-hidden">{{ 'general.text_larger' | t }}</span></button>
+        </span>
+      {%- endif -%}
+      <a class="mt-icon-button mt-cart-link" href="{{ routes.cart_url }}">
+        {%- render 'mt-icon', name: 'cart' -%}
+        <span class="mt-visually-hidden">{{ 'general.cart' | t }}:</span>
+        <span class="mt-cart-count">{{ 'general.cart_count' | t: count: cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "class": "mt-section-header",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "t:sections.header.settings.menu.label", "default": "main-menu" }
+  ]
+}
+{% endschema %}

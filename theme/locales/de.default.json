@@ -1,0 +1,126 @@
+{
+    "general": {
+        "skip_to_content": "Zum Inhalt springen",
+        "menu": "Menü",
+        "main_menu": "Hauptmenü",
+        "search": "Suchen",
+        "search_placeholder": "Wonach suchen Sie?",
+        "account": "Kundenkonto",
+        "cart": "Warenkorb",
+        "cart_count": {
+            "one": "{{ count }} Artikel",
+            "other": "{{ count }} Artikel"
+        },
+        "mode_toggle": "Farbmodus wechseln",
+        "mode_system": "Wie das Gerät",
+        "mode_light": "Hell",
+        "mode_dark": "Dunkel",
+        "mode_label": "Farbmodus: %s. Zum Wechseln klicken.",
+        "text_size": "Textgröße",
+        "text_smaller": "Text kleiner",
+        "text_larger": "Text größer",
+        "pagination": "Seiten",
+        "previous": "Zurück",
+        "next": "Weiter",
+        "page_n": "Seite {{ n }}"
+    },
+    "price": {
+        "regular": "Regulärer Preis",
+        "sale": "Angebotspreis",
+        "unit_price": "Grundpreis",
+        "shipping_link": "Versandkosten",
+        "from_html": "ab {{ price }}",
+        "shipping_suffix": ", zzgl. Versand"
+    },
+    "products": {
+        "add_to_cart": "In den Warenkorb",
+        "sold_out": "Ausverkauft",
+        "sale": "Sonderpreis",
+        "variant": "Variante",
+        "choose_variant": "Variante anzeigen",
+        "quantity": "Menge",
+        "description": "Beschreibung",
+        "shipping_returns": "Versand und Rückgabe",
+        "gallery": "Produktbilder",
+        "media_n": "Bild {{ n }} von {{ count }}"
+    },
+    "collection": {
+        "filter": "Filter und Sortierung",
+        "apply": "Anwenden",
+        "reset": "Zurücksetzen",
+        "sort_by": "Sortieren nach",
+        "price_from": "Preis von",
+        "price_to": "bis",
+        "products_count": {
+            "one": "{{ count }} Produkt",
+            "other": "{{ count }} Produkte"
+        },
+        "empty": "Hier gibt es noch keine Produkte.",
+        "view_all": "Alle ansehen",
+        "all_title": "Kategorien"
+    },
+    "cart": {
+        "title": "Warenkorb",
+        "product": "Produkt",
+        "quantity": "Menge",
+        "quantity_for": "Menge für {{ title }}",
+        "total": "Summe",
+        "remove": "Entfernen",
+        "note": "Anmerkung zur Bestellung",
+        "subtotal": "Zwischensumme",
+        "taxes_included": "inkl. MwSt.",
+        "taxes_excluded": "zzgl. MwSt.",
+        "shipping_at_checkout": "Versandkosten werden an der Kasse berechnet.",
+        "update": "Warenkorb aktualisieren",
+        "checkout": "Zur Kasse",
+        "empty": "Ihr Warenkorb ist leer.",
+        "continue": "Weiter einkaufen"
+    },
+    "search": {
+        "title": "Suche",
+        "results_count": {
+            "one": "{{ count }} Ergebnis für „{{ terms }}“",
+            "other": "{{ count }} Ergebnisse für „{{ terms }}“"
+        },
+        "no_results": "Keine Treffer. Bitte versuchen Sie einen anderen Begriff."
+    },
+    "footer": {
+        "trust_label": "Unsere Versprechen",
+        "legal_label": "Rechtliches",
+        "payment_label": "Zahlungsarten",
+        "consent": "Cookie-Einstellungen",
+        "legal_hint": "Nur im Theme-Editor sichtbar: Es fehlen Rechtstexte (z. B. Datenschutz, Widerruf, Versand). Bitte unter Einstellungen > Richtlinien hinterlegen, ebenso Impressum und AGB. Technischer Hinweis, keine Rechtsberatung."
+    },
+    "contact": {
+        "name": "Name",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "message": "Nachricht",
+        "send": "Senden",
+        "success": "Danke! Ihre Nachricht wurde gesendet.",
+        "privacy_hint": "Ihre Angaben verwenden wir nur zur Bearbeitung Ihrer Anfrage. Mehr dazu in der"
+    },
+    "not_found": {
+        "title": "Seite nicht gefunden",
+        "text": "Die Seite gibt es nicht (mehr). Vielleicht hilft die Suche.",
+        "back": "Zur Startseite"
+    },
+    "blog": {
+        "empty": "Noch keine Beiträge.",
+        "back": "Zurück zum Blog"
+    },
+    "password": {
+        "label": "Passwort",
+        "submit": "Shop betreten"
+    },
+    "gift_card": {
+        "title": "Geschenkgutschein",
+        "code_label": "Gutscheincode",
+        "disabled": "Dieser Gutschein ist nicht mehr gültig.",
+        "expires_on": "Gültig bis {{ date }}",
+        "shop_link": "Zum Shop"
+    },
+    "date_formats": {
+        "date": "%d.%m.%Y"
+    }
+}

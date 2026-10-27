@@ -1,0 +1,584 @@
+{
+    "sections": {
+        "header": {
+            "name": "Header",
+            "settings": {
+                "menu": {
+                    "label": "Menu"
+                }
+            }
+        },
+        "footer": {
+            "name": "Footer",
+            "settings": {
+                "menu": {
+                    "label": "Menu"
+                }
+            }
+        },
+        "hero": {
+            "name": "Hero",
+            "settings": {
+                "info": {
+                    "content": "Texts, image and style of the hero area are in the theme settings under “Home page”."
+                }
+            }
+        },
+        "featured_collection": {
+            "name": "Featured collection",
+            "settings": {
+                "heading": {
+                    "label": "Heading"
+                },
+                "collection": {
+                    "label": "Collection"
+                },
+                "products_to_show": {
+                    "label": "Number of products"
+                },
+                "show_view_all": {
+                    "label": "Show “View all” link"
+                }
+            }
+        },
+        "main_product": {
+            "name": "Product",
+            "settings": {
+                "info": {
+                    "content": "Layout, gallery and description are in the theme settings under “Product page”."
+                }
+            }
+        },
+        "main_collection": {
+            "name": "Collection",
+            "settings": {
+                "products_per_page": {
+                    "label": "Products per page"
+                }
+            }
+        },
+        "main_search": {
+            "name": "Search results",
+            "settings": {
+                "results_per_page": {
+                    "label": "Results per page"
+                }
+            }
+        },
+        "main_cart": {
+            "name": "Cart"
+        },
+        "main_page": {
+            "name": "Page"
+        },
+        "contact_form": {
+            "name": "Contact form"
+        },
+        "main_404": {
+            "name": "Page not found"
+        },
+        "main_list_collections": {
+            "name": "All collections"
+        },
+        "main_blog": {
+            "name": "Blog"
+        },
+        "main_article": {
+            "name": "Blog post"
+        },
+        "main_password": {
+            "name": "Password page"
+        }
+    },
+    "settings_schema": {
+        "mt_colors": {
+            "name": "Colors",
+            "help": "Accent color, mode and custom colors",
+            "settings": {
+                "mt_color_mode": {
+                    "label": "Color mode",
+                    "info": "Light, dark or follow the device. Visitors can switch in the shop.",
+                    "options__1": {
+                        "label": "Like the device"
+                    },
+                    "options__2": {
+                        "label": "Light"
+                    },
+                    "options__3": {
+                        "label": "Dark"
+                    }
+                },
+                "mt_accent": {
+                    "label": "Accent color",
+                    "info": "Color for buttons, links and highlights. All variants are contrast-checked for light and dark.",
+                    "options__1": {
+                        "label": "Teal"
+                    },
+                    "options__2": {
+                        "label": "Indigo"
+                    },
+                    "options__3": {
+                        "label": "Amber"
+                    },
+                    "options__4": {
+                        "label": "Rose"
+                    },
+                    "options__5": {
+                        "label": "Graphite"
+                    }
+                },
+                "mt_accent_custom": {
+                    "label": "Custom accent color",
+                    "info": "Leave empty to use the accent color above. Note: custom colors are not contrast-checked automatically."
+                },
+                "mt_mode_toggle": {
+                    "label": "Show light/dark switch in the header"
+                }
+            }
+        },
+        "mt_typography": {
+            "name": "Typography",
+            "help": "Local fonts and sizes",
+            "settings": {
+                "mt_font_body": {
+                    "label": "Body font",
+                    "info": "All fonts are stored locally in the theme, nothing is loaded from Google.",
+                    "options__1": {
+                        "label": "Systemschrift (Arial/Helvetica)"
+                    },
+                    "options__2": {
+                        "label": "Roboto"
+                    },
+                    "options__3": {
+                        "label": "Open Sans"
+                    },
+                    "options__4": {
+                        "label": "Inter"
+                    },
+                    "options__5": {
+                        "label": "Lato"
+                    },
+                    "options__6": {
+                        "label": "Montserrat"
+                    },
+                    "options__7": {
+                        "label": "Source Sans 3"
+                    },
+                    "options__8": {
+                        "label": "Nunito"
+                    },
+                    "options__9": {
+                        "label": "Merriweather"
+                    },
+                    "options__10": {
+                        "label": "Playfair Display"
+                    }
+                },
+                "mt_font_heading": {
+                    "label": "Heading font",
+                    "options__1": {
+                        "label": "Systemschrift (Arial/Helvetica)"
+                    },
+                    "options__2": {
+                        "label": "Roboto"
+                    },
+                    "options__3": {
+                        "label": "Open Sans"
+                    },
+                    "options__4": {
+                        "label": "Inter"
+                    },
+                    "options__5": {
+                        "label": "Lato"
+                    },
+                    "options__6": {
+                        "label": "Montserrat"
+                    },
+                    "options__7": {
+                        "label": "Source Sans 3"
+                    },
+                    "options__8": {
+                        "label": "Nunito"
+                    },
+                    "options__9": {
+                        "label": "Merriweather"
+                    },
+                    "options__10": {
+                        "label": "Playfair Display"
+                    }
+                },
+                "mt_font_size": {
+                    "label": "Font size",
+                    "options__1": {
+                        "label": "Small"
+                    },
+                    "options__2": {
+                        "label": "Normal"
+                    },
+                    "options__3": {
+                        "label": "Large"
+                    }
+                }
+            }
+        },
+        "mt_shape": {
+            "name": "Shape and style",
+            "help": "Corners, spacing, shadows, buttons",
+            "settings": {
+                "mt_radius": {
+                    "label": "Corners",
+                    "info": "Rounding of cards, buttons and images.",
+                    "options__1": {
+                        "label": "Sharp"
+                    },
+                    "options__2": {
+                        "label": "Slightly rounded"
+                    },
+                    "options__3": {
+                        "label": "Strongly rounded"
+                    }
+                },
+                "mt_density": {
+                    "label": "Spacing",
+                    "options__1": {
+                        "label": "Compact"
+                    },
+                    "options__2": {
+                        "label": "Normal"
+                    },
+                    "options__3": {
+                        "label": "Airy"
+                    }
+                },
+                "mt_shadows": {
+                    "label": "Shadows",
+                    "options__1": {
+                        "label": "None"
+                    },
+                    "options__2": {
+                        "label": "Soft"
+                    },
+                    "options__3": {
+                        "label": "Strong"
+                    }
+                },
+                "mt_buttons": {
+                    "label": "Button style",
+                    "options__1": {
+                        "label": "Filled"
+                    },
+                    "options__2": {
+                        "label": "Outlined"
+                    },
+                    "options__3": {
+                        "label": "Pill"
+                    }
+                }
+            }
+        },
+        "mt_logo": {
+            "name": "Logo",
+            "help": "Logo, favicon, size",
+            "settings": {
+                "mt_logo_light": {
+                    "label": "Logo (light background)",
+                    "info": "SVG or PNG, at least twice the display size for a sharp result."
+                },
+                "mt_logo_dark": {
+                    "label": "Logo (dark background)",
+                    "info": "Optional. Without it the light logo is used."
+                },
+                "mt_logo_alt": {
+                    "label": "Logo alternative text",
+                    "info": "Read by screen readers. Usually the shop name."
+                },
+                "mt_logo_height": {
+                    "label": "Logo height in pixels"
+                },
+                "mt_favicon": {
+                    "label": "Favicon"
+                }
+            }
+        },
+        "mt_header": {
+            "name": "Header",
+            "help": "Header area and search",
+            "settings": {
+                "mt_header_layout": {
+                    "label": "Header layout",
+                    "info": "Structure of the header area.",
+                    "options__1": {
+                        "label": "Classic (logo left)"
+                    },
+                    "options__2": {
+                        "label": "Centered (logo in the middle)"
+                    },
+                    "options__3": {
+                        "label": "Compact (single row)"
+                    }
+                },
+                "mt_header_sticky": {
+                    "label": "Keep header fixed when scrolling"
+                },
+                "mt_header_search": {
+                    "label": "Search",
+                    "options__1": {
+                        "label": "Icon only"
+                    },
+                    "options__2": {
+                        "label": "Search field"
+                    },
+                    "options__3": {
+                        "label": "Large search field"
+                    }
+                },
+                "mt_announcement": {
+                    "label": "Show announcement bar"
+                },
+                "mt_announcement_text": {
+                    "label": "Announcement bar text",
+                    "info": "Only use statements you can prove (unfair competition law)."
+                }
+            }
+        },
+        "mt_footer": {
+            "name": "Footer",
+            "help": "Footer area",
+            "settings": {
+                "mt_footer_layout": {
+                    "label": "Footer layout",
+                    "options__1": {
+                        "label": "Multiple columns"
+                    },
+                    "options__2": {
+                        "label": "Centered"
+                    },
+                    "options__3": {
+                        "label": "Minimal"
+                    }
+                },
+                "mt_footer_payment": {
+                    "label": "Show payment methods in the footer"
+                },
+                "mt_footer_trust": {
+                    "label": "Show trust notes",
+                    "info": "For example returns, shipping, support. Only enter statements that are true."
+                },
+                "mt_trust_1": {
+                    "label": "Trust note 1",
+                    "info": "Only enter what actually applies in the shop."
+                },
+                "mt_trust_2": {
+                    "label": "Trust note 2"
+                },
+                "mt_trust_3": {
+                    "label": "Trust note 3"
+                }
+            }
+        },
+        "mt_hero": {
+            "name": "Home page",
+            "help": "Hero area",
+            "settings": {
+                "mt_hero_style": {
+                    "label": "Hero area",
+                    "info": "Large introduction on the home page.",
+                    "options__1": {
+                        "label": "Image with text"
+                    },
+                    "options__2": {
+                        "label": "Gradient"
+                    },
+                    "options__3": {
+                        "label": "None"
+                    }
+                },
+                "mt_hero_height": {
+                    "label": "Hero height",
+                    "options__1": {
+                        "label": "Low"
+                    },
+                    "options__2": {
+                        "label": "Medium"
+                    },
+                    "options__3": {
+                        "label": "High"
+                    }
+                },
+                "mt_hero_title": {
+                    "label": "Heading"
+                },
+                "mt_hero_text": {
+                    "label": "Text"
+                },
+                "mt_hero_cta_label": {
+                    "label": "Button label"
+                },
+                "mt_hero_cta_url": {
+                    "label": "Button target (address)",
+                    "info": "Internal address such as /collections/new or a full address."
+                },
+                "mt_hero_image": {
+                    "label": "Hero image",
+                    "info": "Use your own image, no stock photos without a license."
+                }
+            }
+        },
+        "mt_listing": {
+            "name": "Collection and listing",
+            "help": "Product lists",
+            "settings": {
+                "mt_listing_layout": {
+                    "label": "Product list",
+                    "info": "Display in collections and search.",
+                    "options__1": {
+                        "label": "Grid"
+                    },
+                    "options__2": {
+                        "label": "Large images"
+                    },
+                    "options__3": {
+                        "label": "List"
+                    }
+                },
+                "mt_listing_columns": {
+                    "label": "Columns on desktop"
+                },
+                "mt_listing_ratio": {
+                    "label": "Image ratio",
+                    "options__1": {
+                        "label": "Square (1:1)"
+                    },
+                    "options__2": {
+                        "label": "Portrait (4:5)"
+                    },
+                    "options__3": {
+                        "label": "Landscape (4:3)"
+                    }
+                },
+                "mt_listing_hover": {
+                    "label": "Hover effect",
+                    "options__1": {
+                        "label": "None"
+                    },
+                    "options__2": {
+                        "label": "Zoom"
+                    },
+                    "options__3": {
+                        "label": "Second image"
+                    }
+                },
+                "mt_listing_badges": {
+                    "label": "Show sale and new badges"
+                },
+                "mt_listing_filter": {
+                    "label": "Filter",
+                    "options__1": {
+                        "label": "Sidebar"
+                    },
+                    "options__2": {
+                        "label": "Top"
+                    }
+                }
+            }
+        },
+        "mt_detail": {
+            "name": "Product page",
+            "help": "Product detail page",
+            "settings": {
+                "mt_detail_layout": {
+                    "label": "Product page",
+                    "options__1": {
+                        "label": "Classic (gallery left)"
+                    },
+                    "options__2": {
+                        "label": "Stacked"
+                    },
+                    "options__3": {
+                        "label": "Buy box stays visible"
+                    }
+                },
+                "mt_detail_gallery": {
+                    "label": "Gallery",
+                    "options__1": {
+                        "label": "Thumbnails below"
+                    },
+                    "options__2": {
+                        "label": "Thumbnails left"
+                    },
+                    "options__3": {
+                        "label": "Dots"
+                    }
+                },
+                "mt_detail_sticky_cart": {
+                    "label": "Fixed add-to-cart button on mobile"
+                },
+                "mt_detail_tabs": {
+                    "label": "Description",
+                    "options__1": {
+                        "label": "Tabs"
+                    },
+                    "options__2": {
+                        "label": "Accordion"
+                    }
+                }
+            }
+        },
+        "mt_legal": {
+            "name": "Legal",
+            "help": "Price information and mandatory texts",
+            "settings": {
+                "mt_legal_price_note": {
+                    "label": "Note next to the price",
+                    "info": "Mandatory information (price indication rules). The link to the shipping costs always stays."
+                },
+                "mt_legal_unit_price": {
+                    "label": "Show unit price",
+                    "info": "Mandatory where price indication rules require a unit price."
+                }
+            }
+        },
+        "mt_a11y": {
+            "name": "Accessibility",
+            "help": "Focus, text size, motion",
+            "settings": {
+                "mt_a11y_focus": {
+                    "label": "Focus outline",
+                    "info": "Visible outline for keyboard use.",
+                    "options__1": {
+                        "label": "Standard"
+                    },
+                    "options__2": {
+                        "label": "Strong"
+                    }
+                },
+                "mt_a11y_text_widget": {
+                    "label": "Show text size buttons"
+                }
+            }
+        },
+        "mt_performance": {
+            "name": "Performance",
+            "help": "Loading time",
+            "settings": {
+                "mt_perf_lazy": {
+                    "label": "Load images only when scrolled into view"
+                },
+                "mt_perf_preload_fonts": {
+                    "label": "Preload main font"
+                }
+            }
+        },
+        "mt_license": {
+            "name": "License",
+            "help": "Optional license key for separately available extensions. Without a key the theme runs with all functions of this version. Management at https://theme.michael-gahn.de (account required).",
+            "settings": {
+                "mt_license_token": {
+                    "label": "License key",
+                    "info": "This theme does not check licenses. The key is not evaluated and is not output in the shop. It is only used by separately available extensions. Management at https://theme.michael-gahn.de (account required)."
+                }
+            }
+        },
+        "expert": "Expert"
+    }
+}

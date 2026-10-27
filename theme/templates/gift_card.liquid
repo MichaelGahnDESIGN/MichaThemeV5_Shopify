@@ -1,0 +1,33 @@
+{% layout none %}
+{% comment %}Geschenkgutschein (eigenständige Seite ohne Layout). Siehe https://shopify.dev/docs/storefronts/themes/architecture/templates/gift-card-liquid{% endcomment %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    {%- render 'mt-config' -%}
+    {%- render 'mt-init' -%}
+    {%- render 'mt-fonts' -%}
+    <title>{{ 'gift_card.title' | t }} – {{ shop.name | escape }}</title>
+    {{ 'mt-tokens.css' | asset_url | stylesheet_tag }}
+    {{ 'mt-base.css' | asset_url | stylesheet_tag }}
+    {{ 'mt-shopify.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
+  </head>
+  <body class="mt-template-gift-card">
+    <main id="MainContent" class="mt-container mt-page" tabindex="-1">
+      <h1>{{ 'gift_card.title' | t }}</h1>
+      <p class="mt-price">{{ gift_card.balance | money }}</p>
+      {%- if gift_card.enabled == false or gift_card.expired -%}
+        <p class="mt-alert mt-alert--danger" role="alert">{{ 'gift_card.disabled' | t }}</p>
+      {%- endif -%}
+      {%- if gift_card.expires_on -%}
+        {%- assign mt_expires = gift_card.expires_on | date: format: 'date' -%}
+        <p>{{ 'gift_card.expires_on' | t: date: mt_expires }}</p>
+      {%- endif -%}
+      <p>{{ 'gift_card.code_label' | t }}: <strong class="mt-gift-code">{{ gift_card.code | format_code }}</strong></p>
+      <p><a class="mt-btn" href="{{ shop.url }}">{{ 'gift_card.shop_link' | t }}</a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{% comment %}Logo (hell/dunkel) oder Shopname als Text. Die Größe kommt aus --mt-logo-height; width/height verhindern Layoutsprünge.{% endcomment %}
+{%- assign mt_logo_alt = settings.mt_logo_alt | default: shop.name -%}
+{%- if settings.mt_logo_light != blank -%}
+  <a class="mt-logo-link{% if settings.mt_logo_dark != blank %} mt-logo--has-dark{% endif %}" href="{{ routes.root_url }}">
+    {{ settings.mt_logo_light | image_url: width: 600 | image_tag: class: 'mt-logo mt-logo--light', alt: mt_logo_alt, loading: 'eager', widths: '300, 600' }}
+    {%- if settings.mt_logo_dark != blank -%}
+      {{ settings.mt_logo_dark | image_url: width: 600 | image_tag: class: 'mt-logo mt-logo--dark', alt: mt_logo_alt, loading: 'eager', widths: '300, 600' }}
+    {%- endif -%}
+  </a>
+{%- else -%}
+  <a class="mt-site-title" href="{{ routes.root_url }}">{{ shop.name | escape }}</a>
+{%- endif -%}

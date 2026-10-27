@@ -1,0 +1,39 @@
+{%- paginate collection.products by section.settings.products_per_page -%}
+  <div class="mt-container mt-listing">
+    <header class="mt-listing__head">
+      <h1>{{ collection.title | escape }}</h1>
+      {%- if collection.description != blank -%}<div class="mt-rte">{{ collection.description }}</div>{%- endif -%}
+      <p class="mt-listing__count" role="status">{{ 'collection.products_count' | t: count: collection.products_count }}</p>
+    </header>
+    <div class="mt-listing__body">
+      <aside class="mt-listing__filters" aria-label="{{ 'collection.filter' | t | escape }}">
+        {%- render 'mt-filters', results: collection, form_id: 'mt-filters-collection' -%}
+      </aside>
+      <div class="mt-listing__results">
+        <ul class="mt-grid" role="list">
+          {%- for product in collection.products -%}
+            <li>
+              {%- if forloop.index <= 4 -%}
+                {%- render 'mt-product-card', product: product, eager: true -%}
+              {%- else -%}
+                {%- render 'mt-product-card', product: product -%}
+              {%- endif -%}
+            </li>
+          {%- else -%}
+            <li class="mt-empty">{{ 'collection.empty' | t }}</li>
+          {%- endfor -%}
+        </ul>
+        {%- render 'mt-pagination', paginate: paginate -%}
+      </div>
+    </div>
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "t:sections.main_collection.name",
+  "settings": [
+    { "type": "range", "id": "products_per_page", "min": 8, "max": 48, "step": 4, "default": 24, "label": "t:sections.main_collection.settings.products_per_page.label" }
+  ]
+}
+{% endschema %}

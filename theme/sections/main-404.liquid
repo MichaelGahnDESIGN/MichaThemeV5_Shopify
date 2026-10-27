@@ -1,0 +1,17 @@
+<div class="mt-container mt-page mt-404">
+  <h1>{{ 'not_found.title' | t }}</h1>
+  <p>{{ 'not_found.text' | t }}</p>
+  <form class="mt-search mt-search--page" action="{{ routes.search_url }}" method="get" role="search">
+    <label for="mt-search-404">{{ 'general.search' | t }}</label>
+    <input type="search" id="mt-search-404" name="q" placeholder="{{ 'general.search_placeholder' | t }}">
+    <button type="submit" class="mt-btn">{{ 'general.search' | t }}</button>
+  </form>
+  <p><a class="mt-btn mt-btn--ghost" href="{{ routes.root_url }}">{{ 'not_found.back' | t }}</a></p>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main_404.name",
+  "settings": []
+}
+{% endschema %}
