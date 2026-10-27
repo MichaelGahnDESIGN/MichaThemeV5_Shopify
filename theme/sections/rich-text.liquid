@@ -1,0 +1,23 @@
+{% comment %}Rich Text - Überschrift + Text, links oder mittig{% endcomment %}
+<section class="mt-section mt-richtext mt-richtext--{{ section.settings.align }}"{% if section.settings.heading != blank %} aria-labelledby="mt-rt-{{ section.id }}"{% endif %}>
+  {%- if section.settings.heading != blank -%}<h2 id="mt-rt-{{ section.id }}">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+  <div class="mt-rte">{{ section.settings.text }}</div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.rich_text.name",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "t:sections.rich_text.settings.heading.label", "default": "Überschrift" },
+    { "type": "richtext", "id": "text", "label": "t:sections.rich_text.settings.text.label", "default": "<p>Ihr Text.</p>" },
+    {
+      "type": "select", "id": "align", "label": "t:sections.rich_text.settings.align.label", "default": "left",
+      "options": [
+        { "value": "left", "label": "t:sections.rich_text.settings.align.options__1.label" },
+        { "value": "center", "label": "t:sections.rich_text.settings.align.options__2.label" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "t:sections.rich_text.name" } ]
+}
+{% endschema %}

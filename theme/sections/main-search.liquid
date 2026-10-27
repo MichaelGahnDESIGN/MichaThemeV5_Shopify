@@ -19,6 +19,7 @@
         <div class="mt-listing__results">
           <ul class="mt-grid" role="list">
             {%- for item in search.results -%}
+              {%- if settings.mt_soldout_display == 'hide' and item.object_type == 'product' and item.available == false -%}{%- continue -%}{%- endif -%}
               <li>
                 {%- if item.object_type == 'product' -%}
                   {%- render 'mt-product-card', product: item -%}

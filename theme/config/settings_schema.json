@@ -2,7 +2,7 @@
     {
         "name": "theme_info",
         "theme_name": "MichaThemeV5",
-        "theme_version": "0.1.0",
+        "theme_version": "0.2.0",
         "theme_author": "Michael Gahn DESIGN",
         "theme_documentation_url": "https://theme.michael-gahn.de",
         "theme_support_url": "https://theme.michael-gahn.de"
@@ -71,6 +71,23 @@
                 "default": true
             },
             {
+                "type": "select",
+                "id": "mt_color_preset",
+                "label": "t:settings_schema.mt_colors.settings.mt_color_preset.label",
+                "info": "t:settings_schema.mt_colors.settings.mt_color_preset.info",
+                "options": [
+                    {
+                        "value": "basis",
+                        "label": "t:settings_schema.mt_colors.settings.mt_color_preset.options__1.label"
+                    },
+                    {
+                        "value": "custom",
+                        "label": "t:settings_schema.mt_colors.settings.mt_color_preset.options__2.label"
+                    }
+                ],
+                "default": "basis"
+            },
+            {
                 "type": "header",
                 "content": "t:settings_schema.expert"
             },
@@ -79,6 +96,49 @@
                 "id": "mt_accent_custom",
                 "label": "t:settings_schema.mt_colors.settings.mt_accent_custom.label",
                 "info": "t:settings_schema.mt_colors.settings.mt_accent_custom.info"
+            },
+            {
+                "type": "color",
+                "id": "mt_light_bg",
+                "label": "t:settings_schema.mt_colors.settings.mt_light_bg.label",
+                "info": "t:settings_schema.mt_colors.settings.mt_light_bg.info"
+            },
+            {
+                "type": "color",
+                "id": "mt_light_surface",
+                "label": "t:settings_schema.mt_colors.settings.mt_light_surface.label"
+            },
+            {
+                "type": "color",
+                "id": "mt_light_text",
+                "label": "t:settings_schema.mt_colors.settings.mt_light_text.label"
+            },
+            {
+                "type": "color",
+                "id": "mt_light_accent",
+                "label": "t:settings_schema.mt_colors.settings.mt_light_accent.label",
+                "info": "t:settings_schema.mt_colors.settings.mt_light_accent.info"
+            },
+            {
+                "type": "color",
+                "id": "mt_dark_bg",
+                "label": "t:settings_schema.mt_colors.settings.mt_dark_bg.label"
+            },
+            {
+                "type": "color",
+                "id": "mt_dark_surface",
+                "label": "t:settings_schema.mt_colors.settings.mt_dark_surface.label"
+            },
+            {
+                "type": "color",
+                "id": "mt_dark_text",
+                "label": "t:settings_schema.mt_colors.settings.mt_dark_text.label"
+            },
+            {
+                "type": "color",
+                "id": "mt_dark_accent",
+                "label": "t:settings_schema.mt_colors.settings.mt_dark_accent.label",
+                "info": "t:settings_schema.mt_colors.settings.mt_dark_accent.info"
             }
         ]
     },
@@ -338,6 +398,17 @@
                 "unit": "px"
             },
             {
+                "type": "range",
+                "id": "mt_logo_height_mobile",
+                "label": "t:settings_schema.mt_logo.settings.mt_logo_height_mobile.label",
+                "info": "t:settings_schema.mt_logo.settings.mt_logo_height_mobile.info",
+                "min": 20,
+                "max": 80,
+                "step": 2,
+                "default": 32,
+                "unit": "px"
+            },
+            {
                 "type": "header",
                 "content": "t:settings_schema.expert"
             },
@@ -345,6 +416,12 @@
                 "type": "image_picker",
                 "id": "mt_favicon",
                 "label": "t:settings_schema.mt_logo.settings.mt_favicon.label"
+            },
+            {
+                "type": "image_picker",
+                "id": "mt_touch_icon",
+                "label": "t:settings_schema.mt_logo.settings.mt_touch_icon.label",
+                "info": "t:settings_schema.mt_logo.settings.mt_touch_icon.info"
             }
         ]
     },
@@ -471,6 +548,31 @@
                 "type": "text",
                 "id": "mt_trust_3",
                 "label": "t:settings_schema.mt_footer.settings.mt_trust_3.label"
+            },
+            {
+                "type": "checkbox",
+                "id": "mt_footer_newsletter",
+                "label": "t:settings_schema.mt_footer.settings.mt_footer_newsletter.label",
+                "info": "t:settings_schema.mt_footer.settings.mt_footer_newsletter.info"
+            },
+            {
+                "type": "text",
+                "id": "mt_newsletter_heading",
+                "label": "t:settings_schema.mt_footer.settings.mt_newsletter_heading.label",
+                "default": "Newsletter"
+            },
+            {
+                "type": "text",
+                "id": "mt_newsletter_text",
+                "label": "t:settings_schema.mt_footer.settings.mt_newsletter_text.label",
+                "info": "t:settings_schema.mt_footer.settings.mt_newsletter_text.info",
+                "default": "Neuigkeiten per E-Mail. Abmeldung jederzeit möglich."
+            },
+            {
+                "type": "text",
+                "id": "mt_footer_shipping_methods",
+                "label": "t:settings_schema.mt_footer.settings.mt_footer_shipping_methods.label",
+                "info": "t:settings_schema.mt_footer.settings.mt_footer_shipping_methods.info"
             }
         ]
     },
@@ -618,6 +720,43 @@
                 "default": "sidebar"
             },
             {
+                "type": "select",
+                "id": "mt_card_style",
+                "label": "t:settings_schema.mt_listing.settings.mt_card_style.label",
+                "options": [
+                    {
+                        "value": "flat",
+                        "label": "t:settings_schema.mt_listing.settings.mt_card_style.options__1.label"
+                    },
+                    {
+                        "value": "border",
+                        "label": "t:settings_schema.mt_listing.settings.mt_card_style.options__2.label"
+                    },
+                    {
+                        "value": "shadow",
+                        "label": "t:settings_schema.mt_listing.settings.mt_card_style.options__3.label"
+                    }
+                ],
+                "default": "border"
+            },
+            {
+                "type": "select",
+                "id": "mt_soldout_display",
+                "label": "t:settings_schema.mt_listing.settings.mt_soldout_display.label",
+                "info": "t:settings_schema.mt_listing.settings.mt_soldout_display.info",
+                "options": [
+                    {
+                        "value": "mark",
+                        "label": "t:settings_schema.mt_listing.settings.mt_soldout_display.options__1.label"
+                    },
+                    {
+                        "value": "hide",
+                        "label": "t:settings_schema.mt_listing.settings.mt_soldout_display.options__2.label"
+                    }
+                ],
+                "default": "mark"
+            },
+            {
                 "type": "header",
                 "content": "t:settings_schema.expert"
             },
@@ -697,6 +836,13 @@
                 "default": true
             },
             {
+                "type": "checkbox",
+                "id": "mt_detail_trust",
+                "label": "t:settings_schema.mt_detail.settings.mt_detail_trust.label",
+                "info": "t:settings_schema.mt_detail.settings.mt_detail_trust.info",
+                "default": true
+            },
+            {
                 "type": "header",
                 "content": "t:settings_schema.expert"
             },
@@ -758,6 +904,57 @@
                 "label": "t:settings_schema.mt_legal.settings.mt_legal_unit_price.label",
                 "info": "t:settings_schema.mt_legal.settings.mt_legal_unit_price.info",
                 "default": true
+            },
+            {
+                "type": "text",
+                "id": "mt_legal_shipping_time",
+                "label": "t:settings_schema.mt_legal.settings.mt_legal_shipping_time.label",
+                "info": "t:settings_schema.mt_legal.settings.mt_legal_shipping_time.info",
+                "default": "Lieferzeit: 2–4 Werktage"
+            },
+            {
+                "type": "select",
+                "id": "mt_legal_lowest_price",
+                "label": "t:settings_schema.mt_legal.settings.mt_legal_lowest_price.label",
+                "info": "t:settings_schema.mt_legal.settings.mt_legal_lowest_price.info",
+                "options": [
+                    {
+                        "value": "metafield",
+                        "label": "t:settings_schema.mt_legal.settings.mt_legal_lowest_price.options__1.label"
+                    },
+                    {
+                        "value": "off",
+                        "label": "t:settings_schema.mt_legal.settings.mt_legal_lowest_price.options__2.label"
+                    }
+                ],
+                "default": "metafield"
+            },
+            {
+                "type": "checkbox",
+                "id": "mt_legal_warranty",
+                "label": "t:settings_schema.mt_legal.settings.mt_legal_warranty.label",
+                "info": "t:settings_schema.mt_legal.settings.mt_legal_warranty.info",
+                "default": true
+            },
+            {
+                "type": "textarea",
+                "id": "mt_legal_warranty_text",
+                "label": "t:settings_schema.mt_legal.settings.mt_legal_warranty_text.label",
+                "info": "t:settings_schema.mt_legal.settings.mt_legal_warranty_text.info",
+                "default": "Für alle Artikel gilt die gesetzliche Gewährleistung (Mängelhaftung) von mindestens zwei Jahren."
+            },
+            {
+                "type": "checkbox",
+                "id": "mt_legal_gpsr",
+                "label": "t:settings_schema.mt_legal.settings.mt_legal_gpsr.label",
+                "info": "t:settings_schema.mt_legal.settings.mt_legal_gpsr.info",
+                "default": true
+            },
+            {
+                "type": "page",
+                "id": "mt_legal_withdrawal_page",
+                "label": "t:settings_schema.mt_legal.settings.mt_legal_withdrawal_page.label",
+                "info": "t:settings_schema.mt_legal.settings.mt_legal_withdrawal_page.info"
             }
         ]
     },
@@ -784,6 +981,12 @@
                     }
                 ],
                 "default": "standard"
+            },
+            {
+                "type": "page",
+                "id": "mt_a11y_statement_page",
+                "label": "t:settings_schema.mt_a11y.settings.mt_a11y_statement_page.label",
+                "info": "t:settings_schema.mt_a11y.settings.mt_a11y_statement_page.info"
             },
             {
                 "type": "header",
@@ -822,6 +1025,83 @@
         ]
     },
     {
+        "name": "t:settings_schema.mt_seo.name",
+        "settings": [
+            {
+                "type": "paragraph",
+                "content": "t:settings_schema.mt_seo.help"
+            },
+            {
+                "type": "checkbox",
+                "id": "mt_seo_jsonld",
+                "label": "t:settings_schema.mt_seo.settings.mt_seo_jsonld.label",
+                "info": "t:settings_schema.mt_seo.settings.mt_seo_jsonld.info",
+                "default": true
+            },
+            {
+                "type": "checkbox",
+                "id": "mt_seo_breadcrumbs",
+                "label": "t:settings_schema.mt_seo.settings.mt_seo_breadcrumbs.label",
+                "default": true
+            },
+            {
+                "type": "image_picker",
+                "id": "mt_seo_og_image",
+                "label": "t:settings_schema.mt_seo.settings.mt_seo_og_image.label",
+                "info": "t:settings_schema.mt_seo.settings.mt_seo_og_image.info"
+            }
+        ]
+    },
+    {
+        "name": "t:settings_schema.mt_notification.name",
+        "settings": [
+            {
+                "type": "paragraph",
+                "content": "t:settings_schema.mt_notification.help"
+            },
+            {
+                "type": "select",
+                "id": "mt_notification_placement",
+                "label": "t:settings_schema.mt_notification.settings.mt_notification_placement.label",
+                "info": "t:settings_schema.mt_notification.settings.mt_notification_placement.info",
+                "options": [
+                    {
+                        "value": "none",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_placement.options__1.label"
+                    },
+                    {
+                        "value": "header",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_placement.options__2.label"
+                    },
+                    {
+                        "value": "footer",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_placement.options__3.label"
+                    },
+                    {
+                        "value": "floating-bottom-right",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_placement.options__4.label"
+                    },
+                    {
+                        "value": "floating-bottom-left",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_placement.options__5.label"
+                    }
+                ],
+                "default": "none"
+            },
+            {
+                "type": "header",
+                "content": "t:settings_schema.expert"
+            },
+            {
+                "type": "text",
+                "id": "mt_notification_proxy_path",
+                "label": "t:settings_schema.mt_notification.settings.mt_notification_proxy_path.label",
+                "info": "t:settings_schema.mt_notification.settings.mt_notification_proxy_path.info",
+                "default": "/apps/michatheme-notifications"
+            }
+        ]
+    },
+    {
         "name": "t:settings_schema.mt_license.name",
         "settings": [
             {
@@ -833,46 +1113,6 @@
                 "id": "mt_license_token",
                 "label": "t:settings_schema.mt_license.settings.mt_license_token.label",
                 "info": "t:settings_schema.mt_license.settings.mt_license_token.info"
-            }
-        ]
-    },
-    {
-        "name": "MichaThemeV5 Notification Center",
-        "settings": [
-            {
-                "type": "select",
-                "id": "mgd_notification_placement",
-                "label": "Platzierung",
-                "default": "menu",
-                "options": [
-                    {
-                        "value": "menu",
-                        "label": "Hauptmenü"
-                    },
-                    {
-                        "value": "footer",
-                        "label": "Footer"
-                    },
-                    {
-                        "value": "floating-bottom-right",
-                        "label": "Schwebend unten rechts"
-                    },
-                    {
-                        "value": "floating-bottom-left",
-                        "label": "Schwebend unten links"
-                    },
-                    {
-                        "value": "none",
-                        "label": "Nur App-Block"
-                    }
-                ]
-            },
-            {
-                "type": "text",
-                "id": "mgd_notification_proxy_path",
-                "label": "App-Proxy-Pfad",
-                "default": "/apps/michatheme-notifications",
-                "info": "Muss mit dem in der MichaThemeV5-App eingerichteten Pfad übereinstimmen."
             }
         ]
     }

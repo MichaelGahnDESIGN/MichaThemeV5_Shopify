@@ -1,0 +1,4 @@
+{% comment %}Gewährleistungs-Hinweis, Artikelseite + Warenkorb{% endcomment %}
+{%- if settings.mt_legal_warranty and settings.mt_legal_warranty_text != blank -%}
+  <p class="mt-warranty" role="note">{{ settings.mt_legal_warranty_text | escape | newline_to_br }}</p>
+{%- endif -%}

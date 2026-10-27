@@ -12,6 +12,7 @@
       <div class="mt-listing__results">
         <ul class="mt-grid" role="list">
           {%- for product in collection.products -%}
+            {%- if settings.mt_soldout_display == 'hide' and product.available == false -%}{%- continue -%}{%- endif -%}
             <li>
               {%- if forloop.index <= 4 -%}
                 {%- render 'mt-product-card', product: product, eager: true -%}

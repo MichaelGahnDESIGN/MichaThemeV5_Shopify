@@ -21,5 +21,8 @@ jobs:
         working-directory: michatheme-v5-app
       - run: npm run check
         working-directory: michatheme-v5-app
+      # Theme Check von Shopify (offline, ohne Login)
+      - run: npm install --no-save --no-package-lock @shopify/theme-check-node@3.31.0
+      - run: node scripts/theme-check.mjs
       # ZIP muss sich bauen lassen
       - run: bash scripts/build-release.sh

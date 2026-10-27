@@ -6,6 +6,7 @@
   </div>
   <ul class="mt-grid" role="list">
     {%- for product in mt_collection.products limit: section.settings.products_to_show -%}
+      {%- if settings.mt_soldout_display == 'hide' and product.available == false -%}{%- continue -%}{%- endif -%}
       <li>{%- render 'mt-product-card', product: product -%}</li>
     {%- else -%}
       <li class="mt-empty">{{ 'collection.empty' | t }}</li>

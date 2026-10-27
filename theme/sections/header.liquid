@@ -70,6 +70,9 @@
           <button type="button" class="mt-icon-button" data-mt-size-step="1">{%- render 'mt-icon', name: 'plus' -%}<span class="mt-visually-hidden">{{ 'general.text_larger' | t }}</span></button>
         </span>
       {%- endif -%}
+      {%- if settings.mt_notification_placement == 'header' -%}
+        {%- render 'mt-notification', place: 'header' -%}
+      {%- endif -%}
       <a class="mt-icon-button mt-cart-link" href="{{ routes.cart_url }}">
         {%- render 'mt-icon', name: 'cart' -%}
         <span class="mt-visually-hidden">{{ 'general.cart' | t }}:</span>

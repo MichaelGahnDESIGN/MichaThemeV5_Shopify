@@ -3,12 +3,49 @@
     "hero": {
       "type": "hero"
     },
+    "usp": {
+      "type": "usp-bar",
+      "blocks": {
+        "usp-1": { "type": "item", "settings": { "icon": "truck", "text": "Ihr Vorteil, z. B. schneller Versand" } },
+        "usp-2": { "type": "item", "settings": { "icon": "return", "text": "Ihr Vorteil, z. B. einfache Rückgabe" } },
+        "usp-3": { "type": "item", "settings": { "icon": "lock", "text": "Ihr Vorteil, z. B. sichere Zahlung" } }
+      },
+      "block_order": ["usp-1", "usp-2", "usp-3"]
+    },
     "featured": {
       "type": "featured-collection"
+    },
+    "tiles": {
+      "type": "collection-tiles",
+      "blocks": {
+        "tile-1": { "type": "collection" },
+        "tile-2": { "type": "collection" },
+        "tile-3": { "type": "collection" }
+      },
+      "block_order": ["tile-1", "tile-2", "tile-3"]
+    },
+    "about": {
+      "type": "image-text"
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq-1": { "type": "question", "settings": { "question": "Wie lange dauert der Versand?", "answer": "<p>Tragen Sie hier Ihre Lieferzeiten ein.</p>" } },
+        "faq-2": { "type": "question", "settings": { "question": "Wie kann ich zurücksenden?", "answer": "<p>Beschreiben Sie hier Ihren Rückgabeweg und verlinken Sie die Widerrufsbelehrung.</p>" } }
+      },
+      "block_order": ["faq-1", "faq-2"]
+    },
+    "newsletter": {
+      "type": "newsletter"
     }
   },
   "order": [
     "hero",
-    "featured"
+    "usp",
+    "featured",
+    "tiles",
+    "about",
+    "faq",
+    "newsletter"
   ]
 }

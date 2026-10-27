@@ -1,7 +1,7 @@
 {% comment %}
-  Artikelseite. Varianten werden über ein GET-Formular gewählt (?variant=ID), damit Preis, Grundpreis und Verfügbarkeit
-  immer serverseitig stimmen. Kein automatisches Neuladen beim Wechsel (WCAG 3.2.2), der Button lädt die Variante.
-  Galerie: horizontale Bildleiste mit Scroll-Einrasten, Vorschaubilder sind Sprunglinks (ohne JavaScript bedienbar).
+  Artikelseite - Variante per GET-Formular (?variant=ID), Preis/Grundpreis/Verfügbarkeit kommen so vom Server
+  kein Auto-Reload beim Wechseln (WCAG 3.2.2), Galerie mit Scroll-Snap + Sprunglinks, geht ohne JS
+  Metafelder: mt.lieferzeit, gpsr.manufacturer / responsible_person / contact / safety_info
 {% endcomment %}
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 {%- assign mt_form_id = 'mt-product-form-' | append: section.id -%}
@@ -14,6 +14,9 @@
             {%- case media.media_type -%}
               {%- when 'video' -%}
                 {{ media | video_tag: controls: true, preload: 'none' }}
+              {%- when 'external_video' -%}
+                {%- comment -%}YouTube/Vimeo aus den Produktmedien > nur per 2-Klick{%- endcomment -%}
+                {%- render 'mt-video-consent', provider: media.host, video_id: media.external_id, title: product.title, poster: media.preview_image -%}
               {%- else -%}
                 {%- if media.preview_image -%}
                   {%- assign mt_alt = media.alt | default: product.title -%}
@@ -47,6 +50,12 @@
     {%- if product.vendor != blank -%}<p class="mt-product__vendor">{{ product.vendor | escape }}</p>{%- endif -%}
     <h1 class="mt-product__title">{{ product.title | escape }}</h1>
     {%- render 'mt-price', product: product, variant: current_variant -%}
+    {%- if current_variant.available -%}
+      {%- assign mt_shipping_time = product.metafields.mt.lieferzeit.value | default: settings.mt_legal_shipping_time -%}
+      {%- if mt_shipping_time != blank -%}<p class="mt-product__shipping-time">{{ mt_shipping_time | escape }}</p>{%- endif -%}
+    {%- else -%}
+      <p class="mt-product__shipping-time mt-product__shipping-time--none" role="status">{{ 'products.unavailable' | t }}</p>
+    {%- endif -%}
 
     {%- unless product.has_only_default_variant -%}
       <form class="mt-variant-picker" method="get" action="{{ product.url }}" data-mt-variant-form>
@@ -77,6 +86,17 @@
       {%- endif -%}
     {%- endform -%}
 
+    {%- if settings.mt_detail_trust -%}
+      {%- if settings.mt_trust_1 != blank or settings.mt_trust_2 != blank or settings.mt_trust_3 != blank -%}
+        <ul class="mt-trust mt-trust--product" aria-label="{{ 'footer.trust_label' | t | escape }}">
+          {%- if settings.mt_trust_1 != blank -%}<li>{{ settings.mt_trust_1 | escape }}</li>{%- endif -%}
+          {%- if settings.mt_trust_2 != blank -%}<li>{{ settings.mt_trust_2 | escape }}</li>{%- endif -%}
+          {%- if settings.mt_trust_3 != blank -%}<li>{{ settings.mt_trust_3 | escape }}</li>{%- endif -%}
+        </ul>
+      {%- endif -%}
+    {%- endif -%}
+    {%- render 'mt-warranty' -%}
+
     <div class="mt-panels" data-mt-panels>
       {%- if product.description != blank -%}
         <details class="mt-panel" open>
@@ -94,6 +114,22 @@
           </ul>
         </div>
       </details>
+      {%- if settings.mt_legal_gpsr -%}
+        {%- assign mt_gpsr = product.metafields.gpsr -%}
+        {%- if mt_gpsr.manufacturer != blank or mt_gpsr.responsible_person != blank or mt_gpsr.contact != blank or mt_gpsr.safety_info != blank -%}
+          <details class="mt-panel">
+            <summary class="mt-panel__title">{{ 'products.gpsr_title' | t }}</summary>
+            <div class="mt-panel__body">
+              <dl class="mt-gpsr">
+                {%- if mt_gpsr.manufacturer != blank -%}<dt>{{ 'products.gpsr_manufacturer' | t }}</dt><dd>{{ product.metafields.gpsr.manufacturer.value | escape | newline_to_br }}</dd>{%- endif -%}
+                {%- if mt_gpsr.responsible_person != blank -%}<dt>{{ 'products.gpsr_responsible' | t }}</dt><dd>{{ product.metafields.gpsr.responsible_person.value | escape | newline_to_br }}</dd>{%- endif -%}
+                {%- if mt_gpsr.contact != blank -%}<dt>{{ 'products.gpsr_contact' | t }}</dt><dd>{{ product.metafields.gpsr.contact.value | escape | newline_to_br }}</dd>{%- endif -%}
+                {%- if mt_gpsr.safety_info != blank -%}<dt>{{ 'products.gpsr_safety' | t }}</dt><dd>{{ product.metafields.gpsr.safety_info.value | escape | newline_to_br }}</dd>{%- endif -%}
+              </dl>
+            </div>
+          </details>
+        {%- endif -%}
+      {%- endif -%}
     </div>
   </div>
 </div>

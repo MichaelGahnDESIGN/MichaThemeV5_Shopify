@@ -1,8 +1,7 @@
-/* MichaThemeV5 – Shopify: Bedienung ohne Drittanbieter und ohne Tracking. Hand gepflegt (Vorlage in MichaThemeV5-Pro, themes/shopify/assets).
-   - Hell/Dunkel-Umschalter (speichert nur "mt-mode" in localStorage, wenn der Besucher selbst umstellt; funktional, ohne Personenbezug)
-   - Textgröße, Menü auf dem Handy, Reiter für Beschreibung
-   - Cookie-Einstellungen: KEIN eigenes Banner. Der Button ruft nur das Shopify-Banner (privacyBanner) auf oder meldet das Ereignis
-     "mt:consent-open", auf das eine Consent-App hören kann. Ohne Schnittstelle bleibt der Button verborgen. */
+/* MichaThemeV5 Shopify JS - kein Drittanbieter, kein Tracking. Vorlage > MichaThemeV5-Pro/themes/shopify/assets
+   Hell/Dunkel (localStorage "mt-mode" nur wenn selbst umgestellt), Textgröße, Handy-Menü, Tabs
+   Cookie-Button: kein eigenes Banner, nur privacyBanner von Shopify oder Event mt:consent-open für Consent-Apps
+   2-Klick Video + verwandte Artikel nachladen */
 (function () {
   'use strict';
   var root = document.documentElement;
@@ -127,8 +126,50 @@
     }
   });
 
+  // 2-Klick Video: iframe erst hier nach Klick, youtube-nocookie bzw. vimeo dnt
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest ? ev.target.closest('[data-mt-video-load]') : null;
+    if (b) { loadVideo(b); }
+  });
+  var embeds = {
+    youtube: { id: /^[A-Za-z0-9_-]{6,20}$/, url: 'https://www.youtube-nocookie.com/embed/', query: '?autoplay=1&rel=0' },
+    vimeo: { id: /^[0-9]{1,15}$/, url: 'https://player.vimeo.com/video/', query: '?autoplay=1&dnt=1' }
+  };
+  function loadVideo(btn) {
+    var box = btn.closest('[data-mt-video]');
+    if (!box) { return; }
+    var e = embeds[box.getAttribute('data-mt-video-provider')];
+    var id = box.getAttribute('data-mt-video-id') || '';
+    if (!e || !e.id.test(id)) { return; }
+    var frame = document.createElement('iframe');
+    frame.src = e.url + id + e.query;
+    frame.title = box.getAttribute('data-mt-video-title') || '';
+    frame.allow = 'autoplay; fullscreen; picture-in-picture';
+    frame.allowFullscreen = true;
+    frame.className = 'mt-video__frame';
+    box.textContent = '';
+    box.appendChild(frame);
+    box.classList.add('is-loaded');
+    frame.focus();
+  }
+
+  // verwandte Artikel > Section-Rendering von Shopify, gleiche Domain
+  function setupRecommendations() {
+    document.querySelectorAll('[data-mt-recommendations]').forEach(function (box) {
+      var url = box.getAttribute('data-url');
+      if (!url || url.charAt(0) !== '/' || !window.fetch) { return; }
+      fetch(url).then(function (r) { return r.ok ? r.text() : ''; }).then(function (html) {
+        if (!html) { return; }
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var fresh = doc.querySelector('[data-mt-recommendations]');
+        if (fresh && fresh.children.length) { box.innerHTML = fresh.innerHTML; }
+      }).catch(function () { /* ohne Empfehlungen bleibt die Section leer */ });
+    });
+  }
+
   applyMode(currentMode(), false);
   setupNav();
   setupTabs();
   setupConsent();
+  setupRecommendations();
 })();

@@ -1,0 +1,43 @@
+/* MichaThemeV5 Notification Glocke - nur Farben aus mt-tokens.css, wird nur geladen wenn eine Platzierung gewählt ist
+   Vorlage > MichaThemeV5-Pro/themes/shopify/assets */
+.mt-notification { position: relative; display: inline-block; }
+.mt-notification[hidden], .mt-notification__panel[hidden], .mt-notification__count[hidden], .mt-notification__empty[hidden] { display: none; }
+.mt-notification__button { position: relative; }
+.mt-notification__count {
+  position: absolute; top: .1rem; right: .1rem; min-width: 1.25rem; padding: 0 .3rem; border-radius: var(--mt-radius-pill);
+  background: var(--mt-accent); color: var(--mt-on-accent); font-size: var(--mt-text-xs); line-height: 1.25rem; text-align: center;
+}
+.mt-notification__panel {
+  position: absolute; right: 0; top: 100%; z-index: 850; width: min(22rem, calc(100vw - 2rem)); max-height: 22rem; overflow: auto; padding: .75rem 1rem;
+  background: var(--mt-surface); color: var(--mt-text); border: 1px solid var(--mt-border); border-radius: var(--mt-r); box-shadow: var(--mt-shadow-md);
+}
+.mt-notification__list { list-style: none; margin: 0; padding: 0; }
+.mt-notification__item { padding: .65rem 0; border-top: 1px solid var(--mt-border); }
+.mt-notification__item:first-child { border-top: 0; }
+.mt-notification__item.is-unread .mt-notification__item-title { font-weight: 700; }
+.mt-notification__item-title { display: block; }
+.mt-notification__item-text { margin: .15rem 0 0; font-size: var(--mt-text-sm); color: var(--mt-text-muted); }
+.mt-notification__empty, .mt-notification__hint { margin: 0; font-size: var(--mt-text-sm); color: var(--mt-text-muted); }
+
+/* schwebend: unten rechts oder links, Panel öffnet nach oben */
+.mt-notification--floating-bottom-right, .mt-notification--floating-bottom-left { position: fixed; bottom: 1rem; z-index: 800; }
+.mt-notification--floating-bottom-right { right: 1rem; }
+.mt-notification--floating-bottom-left { left: 1rem; }
+.mt-notification--floating-bottom-right .mt-notification__button, .mt-notification--floating-bottom-left .mt-notification__button {
+  background: var(--mt-surface); border-color: var(--mt-border-strong); border-radius: var(--mt-radius-pill); box-shadow: var(--mt-shadow-md);
+}
+.mt-notification--floating-bottom-right .mt-notification__panel, .mt-notification--floating-bottom-left .mt-notification__panel { top: auto; bottom: calc(100% + .5rem); }
+.mt-notification--floating-bottom-left .mt-notification__panel { right: auto; left: 0; }
+
+/* Footer: Panel öffnet nach oben */
+.mt-notification--footer .mt-notification__panel { top: auto; bottom: 100%; right: auto; left: 0; }
+.mt-footer__notification { width: min(100% - 2rem, 80rem); margin-inline: auto; padding-bottom: var(--mt-space-3); }
+
+/* Kopfzeile: Panel hängt am Header (Handy: volle Breite unter dem Header), ab 48rem direkt unter der Glocke */
+.mt-header { position: relative; }
+.mt-notification--header { position: static; }
+.mt-notification--header .mt-notification__panel { left: 1rem; right: 1rem; width: auto; }
+@media (min-width: 48rem) {
+  .mt-notification--header { position: relative; }
+  .mt-notification--header .mt-notification__panel { left: auto; right: 0; width: min(22rem, calc(100vw - 2rem)); }
+}

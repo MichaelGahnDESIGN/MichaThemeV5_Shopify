@@ -22,7 +22,9 @@
         "pagination": "Pages",
         "previous": "Previous",
         "next": "Next",
-        "page_n": "Page {{ n }}"
+        "page_n": "Page {{ n }}",
+        "breadcrumbs": "Breadcrumb navigation",
+        "home": "Home"
     },
     "price": {
         "regular": "Regular price",
@@ -30,7 +32,9 @@
         "unit_price": "Unit price",
         "shipping_link": "Shipping costs",
         "from_html": "from {{ price }}",
-        "shipping_suffix": ", plus shipping"
+        "shipping_suffix": ", plus shipping",
+        "lowest_30": "Lowest price of the last 30 days",
+        "lowest_missing": "Only visible in the theme editor: the lowest price of the last 30 days is missing for this strike-through price (metafield mt.lowest_price_30)."
     },
     "products": {
         "add_to_cart": "Add to cart",
@@ -42,7 +46,13 @@
         "description": "Description",
         "shipping_returns": "Shipping and returns",
         "gallery": "Product images",
-        "media_n": "Image {{ n }} of {{ count }}"
+        "media_n": "Image {{ n }} of {{ count }}",
+        "unavailable": "Currently not available",
+        "gpsr_title": "Product safety",
+        "gpsr_manufacturer": "Manufacturer",
+        "gpsr_responsible": "Responsible person in the EU",
+        "gpsr_contact": "Contact",
+        "gpsr_safety": "Safety information"
     },
     "collection": {
         "filter": "Filter and sort",
@@ -89,7 +99,10 @@
         "legal_label": "Legal",
         "payment_label": "Payment methods",
         "consent": "Cookie settings",
-        "legal_hint": "Only visible in the theme editor: legal pages are missing (e.g. privacy, returns, shipping). Please add them under Settings > Policies, as well as legal notice and terms. Technical note, no legal advice."
+        "legal_hint": "Only visible in the theme editor: legal pages are missing (e.g. privacy, returns, shipping). Please add them under Settings > Policies, as well as legal notice and terms. Technical note, no legal advice.",
+        "withdrawal": "Withdraw from contract",
+        "accessibility": "Accessibility",
+        "shipping_label": "Shipping"
     },
     "contact": {
         "name": "Name",
@@ -122,5 +135,27 @@
     },
     "date_formats": {
         "date": "%B %d, %Y"
+    },
+    "newsletter": {
+        "email": "Email address",
+        "submit": "Subscribe",
+        "success": "Thank you! Please confirm your subscription via the link in the email if we send you one.",
+        "note": "Unsubscribe at any time via the link in every email."
+    },
+    "video": {
+        "consent": "Playing the video transfers data to {{ provider }}. The video is only loaded after your click.",
+        "load": "Load video from {{ provider }}",
+        "needs_js": "JavaScript is required to play the video.",
+        "missing": "Only visible in the theme editor: please enter a YouTube or Vimeo address."
+    },
+    "notifications": {
+        "label": "Notifications",
+        "label_unread": "Notifications, %s unread",
+        "title": "Notifications",
+        "empty": "No new notifications.",
+        "editor_hint": "Only visible in the theme editor: The MichaThemeV5 app does not answer at the configured path. Visitors do not see the bell then."
+    },
+    "sections_text": {
+        "usp_label": "Our advantages"
     }
 }

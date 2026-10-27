@@ -66,7 +66,12 @@
             }
         },
         "main_cart": {
-            "name": "Warenkorb"
+            "name": "Warenkorb",
+            "settings": {
+                "checkout_info": {
+                    "content": "Der Bestellbutton („zahlungspflichtig bestellen“) liegt in der Shopify-Kasse und kann vom Theme nicht beschriftet werden. Den Link „Vertrag widerrufen“ stellen Sie unter Theme-Einstellungen > Recht ein."
+                }
+            }
         },
         "main_page": {
             "name": "Seite"
@@ -88,6 +93,218 @@
         },
         "main_password": {
             "name": "Passwortseite"
+        },
+        "usp_bar": {
+            "name": "Vorteile-Leiste",
+            "settings": {
+                "info": {
+                    "content": "Nur Vorteile nennen, die im Shop tatsächlich gelten."
+                },
+                "heading": {
+                    "label": "Überschrift (optional)"
+                }
+            },
+            "blocks": {
+                "item": {
+                    "name": "Vorteil",
+                    "settings": {
+                        "text": {
+                            "label": "Text"
+                        },
+                        "icon": {
+                            "label": "Symbol",
+                            "options__1": {
+                                "label": "Haken"
+                            },
+                            "options__2": {
+                                "label": "Lieferwagen"
+                            },
+                            "options__3": {
+                                "label": "Rückgabe"
+                            },
+                            "options__4": {
+                                "label": "Schloss"
+                            },
+                            "options__5": {
+                                "label": "Kein Symbol"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "collection_tiles": {
+            "name": "Kategorie-Kacheln",
+            "settings": {
+                "heading": {
+                    "label": "Überschrift"
+                },
+                "columns": {
+                    "label": "Spalten auf dem Desktop"
+                }
+            },
+            "blocks": {
+                "collection": {
+                    "name": "Kategorie",
+                    "settings": {
+                        "collection": {
+                            "label": "Kategorie"
+                        },
+                        "title": {
+                            "label": "Eigener Titel",
+                            "info": "Leer = Name der Kategorie"
+                        },
+                        "fallback_title": {
+                            "label": "Titel ohne gewählte Kategorie"
+                        }
+                    }
+                }
+            }
+        },
+        "image_text": {
+            "name": "Bild mit Text",
+            "settings": {
+                "image": {
+                    "label": "Bild"
+                },
+                "image_position": {
+                    "label": "Bildposition",
+                    "options__1": {
+                        "label": "Links"
+                    },
+                    "options__2": {
+                        "label": "Rechts"
+                    }
+                },
+                "heading": {
+                    "label": "Überschrift"
+                },
+                "text": {
+                    "label": "Text"
+                },
+                "button_label": {
+                    "label": "Button-Beschriftung"
+                },
+                "button_link": {
+                    "label": "Button-Ziel"
+                }
+            }
+        },
+        "rich_text": {
+            "name": "Text",
+            "settings": {
+                "heading": {
+                    "label": "Überschrift"
+                },
+                "text": {
+                    "label": "Text"
+                },
+                "align": {
+                    "label": "Ausrichtung",
+                    "options__1": {
+                        "label": "Links"
+                    },
+                    "options__2": {
+                        "label": "Mittig"
+                    }
+                }
+            }
+        },
+        "faq": {
+            "name": "Häufige Fragen",
+            "settings": {
+                "heading": {
+                    "label": "Überschrift"
+                },
+                "jsonld": {
+                    "label": "Als FAQ für Suchmaschinen auszeichnen (JSON-LD)",
+                    "info": "Nur wirksam, wenn unter Theme-Einstellungen > SEO die strukturierten Daten an sind."
+                }
+            },
+            "blocks": {
+                "question": {
+                    "name": "Frage",
+                    "settings": {
+                        "question": {
+                            "label": "Frage"
+                        },
+                        "answer": {
+                            "label": "Antwort"
+                        }
+                    }
+                }
+            }
+        },
+        "testimonials": {
+            "name": "Kundenstimmen",
+            "settings": {
+                "info": {
+                    "content": "Nur echte Kundenstimmen verwenden, nichts erfinden oder kaufen. Keine Widgets von Drittanbietern."
+                },
+                "heading": {
+                    "label": "Überschrift"
+                },
+                "note": {
+                    "label": "Hinweis zur Herkunft",
+                    "info": "Zum Beispiel, woher die Stimmen stammen und ob bzw. wie Sie die Echtheit prüfen. Technischer Hinweis, keine Rechtsberatung."
+                }
+            },
+            "blocks": {
+                "quote": {
+                    "name": "Kundenstimme",
+                    "settings": {
+                        "quote": {
+                            "label": "Text"
+                        },
+                        "author": {
+                            "label": "Name"
+                        }
+                    }
+                }
+            }
+        },
+        "newsletter": {
+            "name": "Newsletter",
+            "settings": {
+                "info": {
+                    "content": "Nutzt das Kundenformular von Shopify. Double-Opt-In bitte im Shopify-Admin für E-Mail-Marketing einschalten."
+                },
+                "heading": {
+                    "label": "Überschrift"
+                },
+                "text": {
+                    "label": "Text"
+                }
+            }
+        },
+        "video": {
+            "name": "Video",
+            "settings": {
+                "info": {
+                    "content": "YouTube (erweiterter Datenschutzmodus) oder Vimeo werden erst nach einem Klick des Besuchers geladen (2-Klick-Lösung)."
+                },
+                "heading": {
+                    "label": "Überschrift"
+                },
+                "video": {
+                    "label": "Video-Adresse"
+                },
+                "poster": {
+                    "label": "Vorschaubild",
+                    "info": "Eigenes Bild. Vorschaubilder von YouTube oder Vimeo werden nicht geladen."
+                }
+            }
+        },
+        "product_recommendations": {
+            "name": "Verwandte Artikel",
+            "settings": {
+                "heading": {
+                    "label": "Überschrift"
+                },
+                "products_to_show": {
+                    "label": "Anzahl Produkte"
+                }
+            }
         }
     },
     "settings_schema": {
@@ -133,6 +350,43 @@
                 },
                 "mt_mode_toggle": {
                     "label": "Umschalter Hell/Dunkel im Header anzeigen"
+                },
+                "mt_color_preset": {
+                    "label": "Farbvorlage",
+                    "info": "„Basis“ nutzt die geprüften Theme-Farben. „Basis mit eigenen Farben“ übernimmt die Farben unter „Experte“, getrennt für Hell und Dunkel; leere Felder behalten die Basis-Farbe.",
+                    "options__1": {
+                        "label": "Basis (geprüfte Farben)"
+                    },
+                    "options__2": {
+                        "label": "Basis mit eigenen Farben"
+                    }
+                },
+                "mt_light_bg": {
+                    "label": "Hell: Hintergrund",
+                    "info": "Eigene Farben werden nicht automatisch auf Kontrast geprüft (WCAG AA: Text mindestens 4,5:1)."
+                },
+                "mt_light_surface": {
+                    "label": "Hell: Flächen (Karten, Header, Footer)"
+                },
+                "mt_light_text": {
+                    "label": "Hell: Text"
+                },
+                "mt_light_accent": {
+                    "label": "Hell: Akzent",
+                    "info": "Ersetzt im hellen Modus die Akzentfarbe und die eigene Akzentfarbe. Die Schrift auf Buttons wird schwarz oder weiß gewählt."
+                },
+                "mt_dark_bg": {
+                    "label": "Dunkel: Hintergrund"
+                },
+                "mt_dark_surface": {
+                    "label": "Dunkel: Flächen (Karten, Header, Footer)"
+                },
+                "mt_dark_text": {
+                    "label": "Dunkel: Text"
+                },
+                "mt_dark_accent": {
+                    "label": "Dunkel: Akzent",
+                    "info": "Ersetzt im dunklen Modus die Akzentfarbe."
                 }
             }
         },
@@ -297,6 +551,14 @@
                 },
                 "mt_favicon": {
                     "label": "Favicon"
+                },
+                "mt_logo_height_mobile": {
+                    "label": "Logohöhe auf dem Handy in Pixel",
+                    "info": "Gilt für Bildschirme unter 768 Pixel Breite."
+                },
+                "mt_touch_icon": {
+                    "label": "Touch-Icon (Startbildschirm)",
+                    "info": "Quadratisch, mindestens 180 × 180 Pixel, ohne Transparenz."
                 }
             }
         },
@@ -373,6 +635,21 @@
                 },
                 "mt_trust_3": {
                     "label": "Vertrauens-Hinweis 3"
+                },
+                "mt_footer_newsletter": {
+                    "label": "Newsletter-Feld im Footer zeigen",
+                    "info": "Nutzt das Kundenformular von Shopify (keine Drittanbieter). Double-Opt-In bitte im Shopify-Admin für E-Mail-Marketing einschalten (Bestätigungsmail an neue Abonnenten). Das Theme verschickt selbst keine E-Mails. Technischer Hinweis, keine Rechtsberatung."
+                },
+                "mt_newsletter_heading": {
+                    "label": "Newsletter: Überschrift"
+                },
+                "mt_newsletter_text": {
+                    "label": "Newsletter: Text",
+                    "info": "Nur versprechen, was Sie auch schicken."
+                },
+                "mt_footer_shipping_methods": {
+                    "label": "Versandarten im Footer",
+                    "info": "Zum Beispiel „DHL, DPD, Abholung“. Shopify stellt die Versanddienstleister dem Theme nicht bereit, daher als Text. Leer = ausgeblendet; der Link zur Versandrichtlinie erscheint automatisch."
                 }
             }
         },
@@ -479,6 +756,28 @@
                     "options__2": {
                         "label": "Oben"
                     }
+                },
+                "mt_card_style": {
+                    "label": "Kartenstil",
+                    "options__1": {
+                        "label": "Flach"
+                    },
+                    "options__2": {
+                        "label": "Mit Rahmen"
+                    },
+                    "options__3": {
+                        "label": "Mit Schatten"
+                    }
+                },
+                "mt_soldout_display": {
+                    "label": "Ausverkaufte Artikel in Listen",
+                    "info": "Auf der Artikelseite bleibt ein ausverkaufter Artikel immer erreichbar und gekennzeichnet, der Kaufbutton ist deaktiviert. Ausblenden kann die Anzahl je Seite verringern.",
+                    "options__1": {
+                        "label": "Anzeigen und kennzeichnen"
+                    },
+                    "options__2": {
+                        "label": "Ausblenden"
+                    }
                 }
             }
         },
@@ -521,6 +820,10 @@
                     "options__2": {
                         "label": "Aufklappbar"
                     }
+                },
+                "mt_detail_trust": {
+                    "label": "Vertrauens-Hinweise unter dem Kaufbutton",
+                    "info": "Zeigt die Vertrauens-Hinweise 1 bis 3 aus „Footer“."
                 }
             }
         },
@@ -535,6 +838,36 @@
                 "mt_legal_unit_price": {
                     "label": "Grundpreis anzeigen",
                     "info": "Pflicht, wo die Preisangabenverordnung einen Grundpreis verlangt."
+                },
+                "mt_legal_shipping_time": {
+                    "label": "Lieferzeit",
+                    "info": "Standard für alle Artikel. Je Artikel überschreibbar mit dem Produkt-Metafeld mt.lieferzeit (einzeiliger Text). Leer = keine Angabe."
+                },
+                "mt_legal_lowest_price": {
+                    "label": "Niedrigster Preis der letzten 30 Tage bei Streichpreisen",
+                    "info": "Shopify speichert keine Preishistorie. Den Wert pflegen Sie im Metafeld mt.lowest_price_30 (Typ Geldbetrag, an Variante oder Produkt). Fehlt er bei einem Streichpreis, erscheint nur im Theme-Editor ein Hinweis. Technischer Hinweis, keine Rechtsberatung.",
+                    "options__1": {
+                        "label": "Aus Metafeld anzeigen"
+                    },
+                    "options__2": {
+                        "label": "Nicht anzeigen"
+                    }
+                },
+                "mt_legal_warranty": {
+                    "label": "Hinweis zur gesetzlichen Gewährleistung",
+                    "info": "Auf der Artikelseite und im Warenkorb."
+                },
+                "mt_legal_warranty_text": {
+                    "label": "Text zur Gewährleistung",
+                    "info": "Textvorschlag, rechtlich prüfen lassen."
+                },
+                "mt_legal_gpsr": {
+                    "label": "Produktsicherheit (GPSR) auf der Artikelseite",
+                    "info": "Liest die Produkt-Metafelder gpsr.manufacturer (Hersteller), gpsr.responsible_person (verantwortliche Person in der EU), gpsr.contact (Kontakt) und gpsr.safety_info (Sicherheitshinweise), jeweils mehrzeiliger Text. Ohne Werte erscheint nichts."
+                },
+                "mt_legal_withdrawal_page": {
+                    "label": "Seite „Vertrag widerrufen“",
+                    "info": "Wird im Footer verlinkt. Die Seite sollte das Widerrufsformular bzw. die Widerrufsfunktion enthalten. Den Bestellbutton beschriftet die Shopify-Kasse, nicht das Theme."
                 }
             }
         },
@@ -554,6 +887,10 @@
                 },
                 "mt_a11y_text_widget": {
                     "label": "Textgrößen-Schalter anzeigen"
+                },
+                "mt_a11y_statement_page": {
+                    "label": "Seite Barrierefreiheitserklärung",
+                    "info": "Wird im Footer verlinkt."
                 }
             }
         },
@@ -566,6 +903,52 @@
                 },
                 "mt_perf_preload_fonts": {
                     "label": "Haupt-Schrift vorladen"
+                }
+            }
+        },
+        "mt_seo": {
+            "name": "SEO",
+            "help": "Strukturierte Daten, Brotkrümel und Vorschaubild für soziale Netzwerke",
+            "settings": {
+                "mt_seo_jsonld": {
+                    "label": "Strukturierte Daten (JSON-LD)",
+                    "info": "Produkt mit Angeboten, Brotkrümel und Organisation für Suchmaschinen. Ausschalten, wenn eine App dieselben Daten ausgibt."
+                },
+                "mt_seo_breadcrumbs": {
+                    "label": "Brotkrümelnavigation anzeigen"
+                },
+                "mt_seo_og_image": {
+                    "label": "Standardbild für soziale Netzwerke",
+                    "info": "Wird genutzt, wenn eine Seite kein eigenes Bild hat. Empfohlen 1200 × 630 Pixel."
+                }
+            }
+        },
+        "mt_notification": {
+            "name": "Benachrichtigungen",
+            "help": "Glocke für Meldungen aus der MichaThemeV5-App",
+            "settings": {
+                "mt_notification_placement": {
+                    "label": "Platzierung der Glocke",
+                    "info": "Die Glocke erscheint nur, wenn hier ein Platz gewählt ist, und nur, wenn die MichaThemeV5-App Meldungen liefert. „Aus“ blendet sie ganz aus.",
+                    "options__1": {
+                        "label": "Aus"
+                    },
+                    "options__2": {
+                        "label": "Kopfzeile (neben dem Warenkorb)"
+                    },
+                    "options__3": {
+                        "label": "Footer"
+                    },
+                    "options__4": {
+                        "label": "Schwebend unten rechts"
+                    },
+                    "options__5": {
+                        "label": "Schwebend unten links"
+                    }
+                },
+                "mt_notification_proxy_path": {
+                    "label": "App-Proxy-Pfad",
+                    "info": "Muss mit dem Pfad in der MichaThemeV5-App übereinstimmen. Erlaubt sind nur Pfade, die mit /apps/, /a/, /community/ oder /tools/ beginnen."
                 }
             }
         },

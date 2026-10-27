@@ -1,9 +1,7 @@
 {% comment %}
-  Fußbereich mit Vertrauens-Hinweisen, Menü, Zahlungsarten und Rechtstexten.
-  Rechtstexte: alle im Shopify-Admin unter Einstellungen > Richtlinien hinterlegten Seiten (shop.policies), z. B. Impressum,
-  Datenschutzerklärung, Widerrufsbelehrung, Versand, AGB. Das Theme erstellt keine Rechtstexte und kein Cookie-Banner.
-  Cookie-Banner: Shopify-Banner (Einstellungen > Kundendatenschutz) oder eine Consent-App. Der Button "Cookie-Einstellungen"
-  erscheint nur, wenn eine Schnittstelle vorhanden ist (siehe assets/mt-shopify.js, Ereignis mt:consent-open).
+  Footer - Vertrauen, Menü, Rechtliches, Versand, Zahlung, Newsletter
+  Rechtstexte aus shop.policies (Admin > Einstellungen > Richtlinien), Widerruf + Barrierefreiheit als Seite wählbar
+  Cookie-Button nur wenn Shopify-Banner oder Consent-App da ist > mt-shopify.js, Event mt:consent-open
 {% endcomment %}
 {%- assign mt_trust = '' -%}
 {%- if settings.mt_footer_trust -%}
@@ -36,6 +34,12 @@
         {%- for policy in shop.policies -%}
           <li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>
         {%- endfor -%}
+        {%- if settings.mt_legal_withdrawal_page != blank -%}
+          <li><a href="{{ settings.mt_legal_withdrawal_page.url }}">{{ 'footer.withdrawal' | t }}</a></li>
+        {%- endif -%}
+        {%- if settings.mt_a11y_statement_page != blank -%}
+          <li><a href="{{ settings.mt_a11y_statement_page.url }}">{{ 'footer.accessibility' | t }}</a></li>
+        {%- endif -%}
         <li data-mt-consent-item hidden><button type="button" class="mt-link-button" data-mt-consent-open>{{ 'footer.consent' | t }}</button></li>
       </ul>
       {%- if request.design_mode -%}
@@ -44,6 +48,13 @@
         {%- endif -%}
       {%- endif -%}
     </nav>
+    {%- if settings.mt_footer_shipping_methods != blank -%}
+      <div class="mt-footer__col">
+        <h2 class="mt-footer__title">{{ 'footer.shipping_label' | t }}</h2>
+        <p class="mt-footer__text">{{ settings.mt_footer_shipping_methods | escape }}</p>
+        {%- if shop.shipping_policy != blank -%}<p><a href="{{ shop.shipping_policy.url }}">{{ shop.shipping_policy.title | escape }}</a></p>{%- endif -%}
+      </div>
+    {%- endif -%}
     {%- if settings.mt_footer_payment and shop.enabled_payment_types.size > 0 -%}
       <div class="mt-footer__col">
         <h2 class="mt-footer__title">{{ 'footer.payment_label' | t }}</h2>
@@ -54,7 +65,15 @@
         </ul>
       </div>
     {%- endif -%}
+    {%- if settings.mt_footer_newsletter -%}
+      <div class="mt-footer__col">
+        {%- render 'mt-newsletter', form_id: 'mt-newsletter-footer', heading: settings.mt_newsletter_heading, text: settings.mt_newsletter_text -%}
+      </div>
+    {%- endif -%}
   </div>
+  {%- if settings.mt_notification_placement == 'footer' -%}
+    <div class="mt-footer__notification">{%- render 'mt-notification', place: 'footer' -%}</div>
+  {%- endif -%}
   <p class="mt-footer__copy">&copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}</p>
 </footer>
 

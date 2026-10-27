@@ -22,7 +22,9 @@
         "pagination": "Seiten",
         "previous": "Zurück",
         "next": "Weiter",
-        "page_n": "Seite {{ n }}"
+        "page_n": "Seite {{ n }}",
+        "breadcrumbs": "Brotkrümelnavigation",
+        "home": "Startseite"
     },
     "price": {
         "regular": "Regulärer Preis",
@@ -30,7 +32,9 @@
         "unit_price": "Grundpreis",
         "shipping_link": "Versandkosten",
         "from_html": "ab {{ price }}",
-        "shipping_suffix": ", zzgl. Versand"
+        "shipping_suffix": ", zzgl. Versand",
+        "lowest_30": "Niedrigster Preis der letzten 30 Tage",
+        "lowest_missing": "Nur im Theme-Editor sichtbar: Für diesen Streichpreis fehlt der niedrigste Preis der letzten 30 Tage (Metafeld mt.lowest_price_30)."
     },
     "products": {
         "add_to_cart": "In den Warenkorb",
@@ -42,7 +46,13 @@
         "description": "Beschreibung",
         "shipping_returns": "Versand und Rückgabe",
         "gallery": "Produktbilder",
-        "media_n": "Bild {{ n }} von {{ count }}"
+        "media_n": "Bild {{ n }} von {{ count }}",
+        "unavailable": "Derzeit nicht lieferbar",
+        "gpsr_title": "Produktsicherheit",
+        "gpsr_manufacturer": "Hersteller",
+        "gpsr_responsible": "Verantwortliche Person in der EU",
+        "gpsr_contact": "Kontakt",
+        "gpsr_safety": "Sicherheitshinweise"
     },
     "collection": {
         "filter": "Filter und Sortierung",
@@ -89,7 +99,10 @@
         "legal_label": "Rechtliches",
         "payment_label": "Zahlungsarten",
         "consent": "Cookie-Einstellungen",
-        "legal_hint": "Nur im Theme-Editor sichtbar: Es fehlen Rechtstexte (z. B. Datenschutz, Widerruf, Versand). Bitte unter Einstellungen > Richtlinien hinterlegen, ebenso Impressum und AGB. Technischer Hinweis, keine Rechtsberatung."
+        "legal_hint": "Nur im Theme-Editor sichtbar: Es fehlen Rechtstexte (z. B. Datenschutz, Widerruf, Versand). Bitte unter Einstellungen > Richtlinien hinterlegen, ebenso Impressum und AGB. Technischer Hinweis, keine Rechtsberatung.",
+        "withdrawal": "Vertrag widerrufen",
+        "accessibility": "Barrierefreiheit",
+        "shipping_label": "Versand"
     },
     "contact": {
         "name": "Name",
@@ -122,5 +135,27 @@
     },
     "date_formats": {
         "date": "%d.%m.%Y"
+    },
+    "newsletter": {
+        "email": "E-Mail-Adresse",
+        "submit": "Anmelden",
+        "success": "Danke! Bitte bestätigen Sie die Anmeldung über den Link in der E-Mail, falls wir Ihnen eine schicken.",
+        "note": "Abmeldung jederzeit über den Link in jeder E-Mail."
+    },
+    "video": {
+        "consent": "Beim Abspielen werden Daten an {{ provider }} übertragen. Das Video wird erst nach Ihrem Klick geladen.",
+        "load": "Video von {{ provider }} laden",
+        "needs_js": "Zum Abspielen wird JavaScript benötigt.",
+        "missing": "Nur im Theme-Editor sichtbar: Bitte eine YouTube- oder Vimeo-Adresse eintragen."
+    },
+    "notifications": {
+        "label": "Benachrichtigungen",
+        "label_unread": "Benachrichtigungen, %s ungelesen",
+        "title": "Benachrichtigungen",
+        "empty": "Keine neuen Benachrichtigungen.",
+        "editor_hint": "Nur im Theme-Editor sichtbar: Die MichaThemeV5-App antwortet nicht unter dem eingestellten Pfad. Besucher sehen die Glocke dann nicht."
+    },
+    "sections_text": {
+        "usp_label": "Unsere Vorteile"
     }
 }
