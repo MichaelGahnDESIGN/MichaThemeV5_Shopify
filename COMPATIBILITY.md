@@ -5,3 +5,5 @@
 Bei einer Nichtübereinstimmung zeigt die Oberfläche ausschließlich öffentliche Meldungen. Kundendaten werden dann nicht angefordert.
 
 Die eingebettete App verwaltet manuelle Meldungen über `GET` und `POST /admin/notifications`. Jede Anfrage benötigt einen von Shopify App Bridge erzeugten Session-Token. Der Server prüft dessen HMAC, Ablaufdatum und Shop-Domain. Dieses API ist der Backend-Vertrag für die App-Oberfläche; Theme-Code erhält keinen Admin-Zugang und keine Kundendaten.
+
+Die Glocke im Theme ist beim Start aus. Sie erscheint erst, wenn in den Theme-Einstellungen (Benachrichtigungen) eine Platzierung gewählt ist und die App mit einer passenden API-Version antwortet.
