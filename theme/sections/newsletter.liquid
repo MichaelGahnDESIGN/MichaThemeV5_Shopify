@@ -1,0 +1,17 @@
+{% comment %}Newsletter als eigene Section, gleiches Formular wie Footer > mt-newsletter{% endcomment %}
+<section class="mt-section mt-newsletter-section">
+  {%- assign mt_form_id = 'mt-newsletter-' | append: section.id -%}
+  {%- render 'mt-newsletter', form_id: mt_form_id, heading: section.settings.heading, text: section.settings.text -%}
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.newsletter.name",
+  "settings": [
+    { "type": "paragraph", "content": "t:sections.newsletter.settings.info.content" },
+    { "type": "text", "id": "heading", "label": "t:sections.newsletter.settings.heading.label", "default": "Newsletter" },
+    { "type": "text", "id": "text", "label": "t:sections.newsletter.settings.text.label", "default": "Neuigkeiten per E-Mail. Abmeldung jederzeit möglich." }
+  ],
+  "presets": [ { "name": "t:sections.newsletter.name" } ]
+}
+{% endschema %}

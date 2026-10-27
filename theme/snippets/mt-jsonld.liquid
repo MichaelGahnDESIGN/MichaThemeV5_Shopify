@@ -1,0 +1,25 @@
+{% comment %}JSON-LD Organisation (Startseite) selbst mit | json, Produkt + Blogartikel über structured_data, Brotkrümel > mt-breadcrumbs{% endcomment %}
+{%- if settings.mt_seo_jsonld -%}
+  {%- if request.page_type == 'index' -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": {{ shop.name | json }},
+        "url": {{ request.origin | append: routes.root_url | json }}
+        {%- if settings.mt_logo_light != blank -%}
+          ,"logo": {{ settings.mt_logo_light | image_url: width: 600 | prepend: 'https:' | json }}
+        {%- endif %}
+      }
+    </script>
+  {%- elsif request.page_type == 'product' -%}
+    {%- comment -%}Produkt + Offers > Shopify-Filter structured_data (von Shopify empfohlen, nicht selbst nachbauen){%- endcomment -%}
+    <script type="application/ld+json">
+      {{ product | structured_data }}
+    </script>
+  {%- elsif request.page_type == 'article' -%}
+    <script type="application/ld+json">
+      {{ article | structured_data }}
+    </script>
+  {%- endif -%}
+{%- endif -%}

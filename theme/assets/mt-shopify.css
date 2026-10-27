@@ -1,6 +1,5 @@
-/* MichaThemeV5 – Shopify-Adapter. Hand gepflegt (Vorlage im Repo MichaThemeV5-Pro, themes/shopify/assets).
-   Mobile first: Grundregeln gelten für das Handy, @media (min-width: …) erweitert für größere Bildschirme.
-   Farben nur über --mt-*-Variablen aus mt-tokens.css (Hell/Dunkel, Kontrast nach WCAG 2.2 AA geprüft in den Tokens). */
+/* MichaThemeV5 Shopify CSS - Vorlage > MichaThemeV5-Pro/themes/shopify/assets
+   mobile first, min-width erweitert. Farben nur über --mt-* aus mt-tokens.css (AA geprüft) */
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-padding-bottom: 5rem; }
@@ -51,7 +50,13 @@ input[type="search"], input[type="text"], input[type="email"], input[type="tel"]
 .mt-header { background: var(--mt-surface); border-bottom: 1px solid var(--mt-border); }
 :root[data-mt-sticky="1"] .mt-header { position: sticky; top: 0; z-index: 800; }
 .mt-header__inner { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem var(--mt-gap); width: min(100% - 2rem, 80rem); margin-inline: auto; padding-block: .5rem; }
-.mt-header__brand { flex: 1 1 auto; min-height: var(--mt-logo-height); display: flex; align-items: center; }
+.mt-header__brand { flex: 1 1 auto; min-height: var(--mt-logo-height-mobile, var(--mt-logo-height)); display: flex; align-items: center; }
+/* Logo Handy kleiner */
+.mt-header .mt-logo { height: var(--mt-logo-height-mobile, var(--mt-logo-height)); }
+@media (min-width: 48rem) {
+  .mt-header__brand { min-height: var(--mt-logo-height); }
+  .mt-header .mt-logo { height: var(--mt-logo-height); }
+}
 .mt-header__shop { margin: 0; font-size: inherit; }
 .mt-logo-link { display: inline-flex; }
 .mt-site-title { color: var(--mt-text); font-family: var(--mt-font-heading); font-weight: 800; font-size: var(--mt-text-xl); text-decoration: none; }
@@ -140,6 +145,9 @@ input[type="search"], input[type="text"], input[type="email"], input[type="tel"]
 .mt-card:focus-within { outline: var(--mt-focus-width) solid var(--mt-focus); outline-offset: 2px; }
 .mt-card__vendor { margin: 0; color: var(--mt-text-muted); font-size: var(--mt-text-sm); }
 .mt-card--text { padding: 0; }
+/* Kartenstil flach / Rahmen / Schatten */
+:root[data-mt-card="flat"] .mt-card { border-color: transparent; box-shadow: none; }
+:root[data-mt-card="shadow"] .mt-card { border-color: transparent; box-shadow: var(--mt-shadow-md); }
 @media (min-width: 48rem) { .mt-grid { grid-template-columns: repeat(min(var(--mt-listing-cols), 3), minmax(0, 1fr)); } .mt-grid--wide { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 75rem) { .mt-grid { grid-template-columns: repeat(var(--mt-listing-cols), minmax(0, 1fr)); } .mt-grid--wide { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 :root[data-mt-listing="large"] .mt-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); }
@@ -253,3 +261,79 @@ input[type="search"], input[type="text"], input[type="email"], input[type="tel"]
 .mt-article__media { margin-block: var(--mt-gap); border-radius: var(--mt-r-lg); overflow: hidden; }
 .mt-gift-code { font-size: var(--mt-text-xl); letter-spacing: .05em; }
 .mt-size-steps { display: inline-flex; }
+
+/* Brotkrümel */
+.mt-breadcrumbs { padding-block: var(--mt-gap) 0; font-size: var(--mt-text-sm); }
+.mt-breadcrumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 .5rem; }
+.mt-breadcrumbs li { display: inline-flex; align-items: center; }
+.mt-breadcrumbs li + li::before { content: "/"; margin-right: .5rem; color: var(--mt-text-muted); }
+.mt-breadcrumbs a { display: inline-flex; align-items: center; min-height: 44px; color: var(--mt-accent-text); }
+.mt-breadcrumbs [aria-current] { color: var(--mt-text-muted); }
+
+/* Artikelseite Extras: Lieferzeit, Vertrauen, Gewährleistung, GPSR, 30-Tage-Preis */
+.mt-product__shipping-time { margin: .5rem 0 0; color: var(--mt-success); font-weight: 600; }
+.mt-product__shipping-time--none { color: var(--mt-text-muted); }
+.mt-trust { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.mt-trust--product { margin-block: var(--mt-gap); }
+.mt-trust--product li::before { content: "✓"; margin-right: .5rem; color: var(--mt-success); }
+.mt-warranty { margin: var(--mt-gap) 0; padding: .75rem; font-size: var(--mt-text-sm); background: var(--mt-info-bg); color: var(--mt-info); border: 1px solid var(--mt-info-border); border-radius: var(--mt-r); }
+.mt-cart__summary .mt-warranty { text-align: left; max-width: 40rem; }
+.mt-gpsr { margin: 0; display: grid; gap: .25rem; }
+.mt-gpsr dt { font-weight: 700; margin-top: .5rem; }
+.mt-gpsr dd { margin: 0; }
+.mt-price__lowest { font-size: var(--mt-text-sm); color: var(--mt-text-muted); }
+.mt-editor-hint { font-size: var(--mt-text-sm); padding: .5rem .75rem; background: var(--mt-warning-bg); color: var(--mt-warning); border: 1px solid var(--mt-warning-border); border-radius: var(--mt-r); }
+
+/* Footer Newsletter + Versand */
+.mt-footer .mt-newsletter__title { font-size: var(--mt-text-md); margin: 0 0 .5rem; }
+.mt-footer__text { margin: 0 0 .5rem; }
+.mt-newsletter__row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .35rem; }
+.mt-newsletter__row input { flex: 1 1 12rem; }
+.mt-newsletter label { font-weight: 600; }
+.mt-newsletter-section .mt-newsletter { max-width: 40rem; margin-inline: auto; text-align: center; }
+.mt-newsletter-section .mt-newsletter__form { text-align: left; }
+
+/* Startseite Sections */
+.mt-usp__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--mt-gap); grid-template-columns: 1fr; }
+.mt-usp__item { display: flex; align-items: center; gap: .75rem; padding: var(--mt-gap); background: var(--mt-surface); border: 1px solid var(--mt-border); border-radius: var(--mt-r-lg); font-weight: 600; }
+.mt-usp__item .mt-icon { color: var(--mt-accent-text); }
+.mt-tiles__grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--mt-gap); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.mt-tiles__link { display: grid; gap: .5rem; color: var(--mt-text); text-decoration: none; }
+.mt-tiles__media { display: block; aspect-ratio: 4 / 3; background: var(--mt-surface-2); border-radius: var(--mt-r-lg); overflow: hidden; }
+.mt-tiles__img { width: 100%; height: 100%; object-fit: cover; }
+.mt-tiles__title { font-weight: 700; font-family: var(--mt-font-heading); }
+.mt-tiles__link:hover .mt-tiles__title { color: var(--mt-accent-text); text-decoration: underline; }
+.mt-image-text { display: grid; gap: calc(var(--mt-gap) * 1.5); align-items: center; }
+.mt-image-text__media { border-radius: var(--mt-r-lg); overflow: hidden; background: var(--mt-surface-2); aspect-ratio: 4 / 3; }
+.mt-image-text__img, .mt-image-text__placeholder { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mt-richtext--center { text-align: center; }
+.mt-richtext--center .mt-rte { margin-inline: auto; }
+.mt-faq .mt-panels { max-width: 56rem; }
+.mt-testimonials__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--mt-gap); }
+.mt-testimonial { margin: 0; height: 100%; padding: calc(var(--mt-gap) * 1.25); background: var(--mt-surface); border: 1px solid var(--mt-border); border-radius: var(--mt-r-lg); }
+.mt-testimonial__quote { margin: 0; font-size: var(--mt-text-lg); }
+.mt-testimonial__quote p { margin: 0; }
+.mt-testimonial__author { margin-top: .75rem; color: var(--mt-text-muted); font-weight: 600; }
+@media (min-width: 48rem) {
+  .mt-usp__list { grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
+  .mt-tiles__grid { grid-template-columns: repeat(min(var(--mt-tiles-cols, 3), 3), minmax(0, 1fr)); }
+  .mt-testimonials__list { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+}
+@media (min-width: 64rem) {
+  .mt-tiles__grid { grid-template-columns: repeat(var(--mt-tiles-cols, 3), minmax(0, 1fr)); }
+  .mt-image-text { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mt-image-text--right .mt-image-text__media { order: 2; }
+}
+
+/*verwandte Artikel: leer bis JS nachlädt, dann kein Leerraum */
+.mt-related:not(:has(*)) { padding: 0; }
+
+/* Video 2-Klick, Platz fest 16:9 */
+.mt-video { position: relative; display: grid; aspect-ratio: 16 / 9; background: var(--mt-surface-2); border-radius: var(--mt-r-lg); overflow: hidden; }
+.mt-video > * { grid-area: 1 / 1; }
+.mt-video__poster { width: 100%; height: 100%; object-fit: cover; }
+.mt-video__consent { align-self: center; justify-self: center; margin: var(--mt-gap); padding: var(--mt-gap); max-width: 32rem; background: var(--mt-surface); color: var(--mt-text); border-radius: var(--mt-r-lg); text-align: center; font-size: var(--mt-text-sm); }
+.mt-video__consent p { margin: 0 0 .5rem; }
+.mt-video__frame { width: 100%; height: 100%; border: 0; }
+.mt-js .mt-js-hint { display: none; }
+.mt-gallery__item .mt-video { width: 100%; }

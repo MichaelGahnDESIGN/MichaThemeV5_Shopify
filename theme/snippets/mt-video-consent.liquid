@@ -1,0 +1,16 @@
+{% comment %}2-Klick Video YouTube/Vimeo - iframe baut erst mt-shopify.js nach Klick (youtube-nocookie / vimeo dnt). Params: provider, video_id, title, poster (optional, eigenes Bild){% endcomment %}
+{%- assign mt_video_host = 'YouTube' -%}
+{%- if provider == 'vimeo' -%}{%- assign mt_video_host = 'Vimeo' -%}{%- endif -%}
+<div class="mt-video" data-mt-video data-mt-video-provider="{{ provider | escape }}" data-mt-video-id="{{ video_id | escape }}" data-mt-video-title="{{ title | escape }}">
+  {%- if poster != blank -%}
+    {{ poster | image_url: width: 1280 | image_tag: class: 'mt-video__poster', widths: '640, 960, 1280', sizes: '(min-width: 80rem) 80rem, 100vw', loading: 'lazy', alt: '' }}
+  {%- endif -%}
+  <div class="mt-video__consent">
+    <p>{{ 'video.consent' | t: provider: mt_video_host }}</p>
+    {%- if shop.privacy_policy != blank -%}
+      <p><a href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title | escape }}</a></p>
+    {%- endif -%}
+    <button type="button" class="mt-btn" data-mt-video-load>{{ 'video.load' | t: provider: mt_video_host }}<span class="mt-visually-hidden">: {{ title | escape }}</span></button>
+    <p class="mt-js-hint">{{ 'video.needs_js' | t }}</p>
+  </div>
+</div>

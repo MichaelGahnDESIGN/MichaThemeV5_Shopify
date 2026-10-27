@@ -1,0 +1,23 @@
+{% comment %}Video YouTube/Vimeo nur per 2-Klick > mt-video-consent, vorher lädt nix von extern{% endcomment %}
+<section class="mt-section mt-video-section"{% if section.settings.heading != blank %} aria-labelledby="mt-vid-{{ section.id }}"{% endif %}>
+  {%- if section.settings.heading != blank -%}<h2 id="mt-vid-{{ section.id }}">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+  {%- if section.settings.video != blank -%}
+    {%- assign mt_title = section.settings.heading | default: shop.name -%}
+    {%- render 'mt-video-consent', provider: section.settings.video.type, video_id: section.settings.video.id, title: mt_title, poster: section.settings.poster -%}
+  {%- elsif request.design_mode -%}
+    <p class="mt-editor-hint" role="note">{{ 'video.missing' | t }}</p>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.video.name",
+  "settings": [
+    { "type": "paragraph", "content": "t:sections.video.settings.info.content" },
+    { "type": "text", "id": "heading", "label": "t:sections.video.settings.heading.label", "default": "Video" },
+    { "type": "video_url", "id": "video", "accept": ["youtube", "vimeo"], "label": "t:sections.video.settings.video.label" },
+    { "type": "image_picker", "id": "poster", "label": "t:sections.video.settings.poster.label", "info": "t:sections.video.settings.poster.info" }
+  ],
+  "presets": [ { "name": "t:sections.video.name" } ]
+}
+{% endschema %}

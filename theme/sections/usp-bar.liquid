@@ -1,0 +1,47 @@
+{% comment %}Vorteile / USP-Leiste - nur Text + Icon, Icons lokal > mt-icon{% endcomment %}
+{%- if section.blocks.size > 0 -%}
+  <section class="mt-section mt-usp" {% if section.settings.heading != blank %}aria-labelledby="mt-usp-{{ section.id }}"{% else %}aria-label="{{ 'sections_text.usp_label' | t | escape }}"{% endif %}>
+    {%- if section.settings.heading != blank -%}<h2 id="mt-usp-{{ section.id }}">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+    <ul class="mt-usp__list" role="list">
+      {%- for block in section.blocks -%}
+        <li class="mt-usp__item" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != 'none' -%}{%- render 'mt-icon', name: block.settings.icon -%}{%- endif -%}
+          <span>{{ block.settings.text | escape }}</span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.usp_bar.name",
+  "settings": [
+    { "type": "paragraph", "content": "t:sections.usp_bar.settings.info.content" },
+    { "type": "text", "id": "heading", "label": "t:sections.usp_bar.settings.heading.label" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "t:sections.usp_bar.blocks.item.name",
+      "settings": [
+        { "type": "text", "id": "text", "label": "t:sections.usp_bar.blocks.item.settings.text.label", "default": "Ihr Vorteil, z. B. Versand innerhalb von 24 Stunden" },
+        {
+          "type": "select", "id": "icon", "label": "t:sections.usp_bar.blocks.item.settings.icon.label", "default": "check",
+          "options": [
+            { "value": "check", "label": "t:sections.usp_bar.blocks.item.settings.icon.options__1.label" },
+            { "value": "truck", "label": "t:sections.usp_bar.blocks.item.settings.icon.options__2.label" },
+            { "value": "return", "label": "t:sections.usp_bar.blocks.item.settings.icon.options__3.label" },
+            { "value": "lock", "label": "t:sections.usp_bar.blocks.item.settings.icon.options__4.label" },
+            { "value": "none", "label": "t:sections.usp_bar.blocks.item.settings.icon.options__5.label" }
+          ]
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    { "name": "t:sections.usp_bar.name", "blocks": [ { "type": "item", "settings": { "icon": "truck" } }, { "type": "item", "settings": { "icon": "return" } }, { "type": "item", "settings": { "icon": "lock" } } ] }
+  ]
+}
+{% endschema %}

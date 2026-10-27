@@ -66,7 +66,12 @@
             }
         },
         "main_cart": {
-            "name": "Cart"
+            "name": "Cart",
+            "settings": {
+                "checkout_info": {
+                    "content": "The order button (“buy now”) is part of Shopify checkout and cannot be labeled by the theme. Set the link “Withdraw from contract” under theme settings > Legal."
+                }
+            }
         },
         "main_page": {
             "name": "Page"
@@ -88,6 +93,218 @@
         },
         "main_password": {
             "name": "Password page"
+        },
+        "usp_bar": {
+            "name": "Advantages bar",
+            "settings": {
+                "info": {
+                    "content": "Only name advantages that actually apply in the shop."
+                },
+                "heading": {
+                    "label": "Heading (optional)"
+                }
+            },
+            "blocks": {
+                "item": {
+                    "name": "Advantage",
+                    "settings": {
+                        "text": {
+                            "label": "Text"
+                        },
+                        "icon": {
+                            "label": "Icon",
+                            "options__1": {
+                                "label": "Check"
+                            },
+                            "options__2": {
+                                "label": "Truck"
+                            },
+                            "options__3": {
+                                "label": "Return"
+                            },
+                            "options__4": {
+                                "label": "Lock"
+                            },
+                            "options__5": {
+                                "label": "No icon"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "collection_tiles": {
+            "name": "Collection tiles",
+            "settings": {
+                "heading": {
+                    "label": "Heading"
+                },
+                "columns": {
+                    "label": "Columns on desktop"
+                }
+            },
+            "blocks": {
+                "collection": {
+                    "name": "Collection",
+                    "settings": {
+                        "collection": {
+                            "label": "Collection"
+                        },
+                        "title": {
+                            "label": "Custom title",
+                            "info": "Empty = collection name"
+                        },
+                        "fallback_title": {
+                            "label": "Title without selected collection"
+                        }
+                    }
+                }
+            }
+        },
+        "image_text": {
+            "name": "Image with text",
+            "settings": {
+                "image": {
+                    "label": "Image"
+                },
+                "image_position": {
+                    "label": "Image position",
+                    "options__1": {
+                        "label": "Left"
+                    },
+                    "options__2": {
+                        "label": "Right"
+                    }
+                },
+                "heading": {
+                    "label": "Heading"
+                },
+                "text": {
+                    "label": "Text"
+                },
+                "button_label": {
+                    "label": "Button label"
+                },
+                "button_link": {
+                    "label": "Button link"
+                }
+            }
+        },
+        "rich_text": {
+            "name": "Rich text",
+            "settings": {
+                "heading": {
+                    "label": "Heading"
+                },
+                "text": {
+                    "label": "Text"
+                },
+                "align": {
+                    "label": "Alignment",
+                    "options__1": {
+                        "label": "Left"
+                    },
+                    "options__2": {
+                        "label": "Center"
+                    }
+                }
+            }
+        },
+        "faq": {
+            "name": "FAQ",
+            "settings": {
+                "heading": {
+                    "label": "Heading"
+                },
+                "jsonld": {
+                    "label": "Mark up as FAQ for search engines (JSON-LD)",
+                    "info": "Only effective when structured data is on under theme settings > SEO."
+                }
+            },
+            "blocks": {
+                "question": {
+                    "name": "Question",
+                    "settings": {
+                        "question": {
+                            "label": "Question"
+                        },
+                        "answer": {
+                            "label": "Answer"
+                        }
+                    }
+                }
+            }
+        },
+        "testimonials": {
+            "name": "Testimonials",
+            "settings": {
+                "info": {
+                    "content": "Only use genuine customer feedback, never invent or buy it. No third-party widgets."
+                },
+                "heading": {
+                    "label": "Heading"
+                },
+                "note": {
+                    "label": "Note on origin",
+                    "info": "For example where the feedback comes from and whether or how you verify it. Technical note, not legal advice."
+                }
+            },
+            "blocks": {
+                "quote": {
+                    "name": "Testimonial",
+                    "settings": {
+                        "quote": {
+                            "label": "Text"
+                        },
+                        "author": {
+                            "label": "Name"
+                        }
+                    }
+                }
+            }
+        },
+        "newsletter": {
+            "name": "Newsletter",
+            "settings": {
+                "info": {
+                    "content": "Uses the Shopify customer form. Please turn on double opt-in for email marketing in the Shopify admin."
+                },
+                "heading": {
+                    "label": "Heading"
+                },
+                "text": {
+                    "label": "Text"
+                }
+            }
+        },
+        "video": {
+            "name": "Video",
+            "settings": {
+                "info": {
+                    "content": "YouTube (privacy-enhanced mode) or Vimeo is only loaded after the visitor clicks (two-click solution)."
+                },
+                "heading": {
+                    "label": "Heading"
+                },
+                "video": {
+                    "label": "Video address"
+                },
+                "poster": {
+                    "label": "Preview image",
+                    "info": "Your own image. Preview images from YouTube or Vimeo are not loaded."
+                }
+            }
+        },
+        "product_recommendations": {
+            "name": "Related products",
+            "settings": {
+                "heading": {
+                    "label": "Heading"
+                },
+                "products_to_show": {
+                    "label": "Number of products"
+                }
+            }
         }
     },
     "settings_schema": {
@@ -133,6 +350,43 @@
                 },
                 "mt_mode_toggle": {
                     "label": "Show light/dark switch in the header"
+                },
+                "mt_color_preset": {
+                    "label": "Color preset",
+                    "info": "“Basic” uses the checked theme colors. “Basic with custom colors” applies the colors under “Expert”, separately for light and dark; empty fields keep the basic color.",
+                    "options__1": {
+                        "label": "Basic (checked colors)"
+                    },
+                    "options__2": {
+                        "label": "Basic with custom colors"
+                    }
+                },
+                "mt_light_bg": {
+                    "label": "Light: background",
+                    "info": "Custom colors are not contrast-checked automatically (WCAG AA: text at least 4.5:1)."
+                },
+                "mt_light_surface": {
+                    "label": "Light: surfaces (cards, header, footer)"
+                },
+                "mt_light_text": {
+                    "label": "Light: text"
+                },
+                "mt_light_accent": {
+                    "label": "Light: accent",
+                    "info": "Replaces the accent color and the custom accent color in light mode. Button text is set to black or white."
+                },
+                "mt_dark_bg": {
+                    "label": "Dark: background"
+                },
+                "mt_dark_surface": {
+                    "label": "Dark: surfaces (cards, header, footer)"
+                },
+                "mt_dark_text": {
+                    "label": "Dark: text"
+                },
+                "mt_dark_accent": {
+                    "label": "Dark: accent",
+                    "info": "Replaces the accent color in dark mode."
                 }
             }
         },
@@ -297,6 +551,14 @@
                 },
                 "mt_favicon": {
                     "label": "Favicon"
+                },
+                "mt_logo_height_mobile": {
+                    "label": "Logo height on mobile in pixels",
+                    "info": "Applies to screens narrower than 768 pixels."
+                },
+                "mt_touch_icon": {
+                    "label": "Touch icon (home screen)",
+                    "info": "Square, at least 180 × 180 pixels, without transparency."
                 }
             }
         },
@@ -373,6 +635,21 @@
                 },
                 "mt_trust_3": {
                     "label": "Trust note 3"
+                },
+                "mt_footer_newsletter": {
+                    "label": "Show newsletter field in the footer",
+                    "info": "Uses the Shopify customer form (no third parties). Please turn on double opt-in for email marketing in the Shopify admin (confirmation email to new subscribers). The theme itself sends no emails. Technical note, not legal advice."
+                },
+                "mt_newsletter_heading": {
+                    "label": "Newsletter: heading"
+                },
+                "mt_newsletter_text": {
+                    "label": "Newsletter: text",
+                    "info": "Only promise what you actually send."
+                },
+                "mt_footer_shipping_methods": {
+                    "label": "Shipping methods in the footer",
+                    "info": "For example “DHL, DPD, pickup”. Shopify does not provide the carriers to the theme, so this is text. Empty = hidden; the link to the shipping policy appears automatically."
                 }
             }
         },
@@ -479,6 +756,28 @@
                     "options__2": {
                         "label": "Top"
                     }
+                },
+                "mt_card_style": {
+                    "label": "Card style",
+                    "options__1": {
+                        "label": "Flat"
+                    },
+                    "options__2": {
+                        "label": "With border"
+                    },
+                    "options__3": {
+                        "label": "With shadow"
+                    }
+                },
+                "mt_soldout_display": {
+                    "label": "Sold-out products in lists",
+                    "info": "On the product page a sold-out product always stays reachable and marked, the buy button is disabled. Hiding can reduce the number per page.",
+                    "options__1": {
+                        "label": "Show and mark"
+                    },
+                    "options__2": {
+                        "label": "Hide"
+                    }
                 }
             }
         },
@@ -521,6 +820,10 @@
                     "options__2": {
                         "label": "Accordion"
                     }
+                },
+                "mt_detail_trust": {
+                    "label": "Trust notes below the buy button",
+                    "info": "Shows trust notes 1 to 3 from “Footer”."
                 }
             }
         },
@@ -535,6 +838,36 @@
                 "mt_legal_unit_price": {
                     "label": "Show unit price",
                     "info": "Mandatory where price indication rules require a unit price."
+                },
+                "mt_legal_shipping_time": {
+                    "label": "Delivery time",
+                    "info": "Default for all products. Can be overridden per product with the product metafield mt.lieferzeit (single line text). Empty = no information."
+                },
+                "mt_legal_lowest_price": {
+                    "label": "Lowest price of the last 30 days for strike-through prices",
+                    "info": "Shopify does not store a price history. Maintain the value in the metafield mt.lowest_price_30 (type money, on the variant or product). If it is missing for a strike-through price, a note appears in the theme editor only. Technical note, not legal advice.",
+                    "options__1": {
+                        "label": "Show from metafield"
+                    },
+                    "options__2": {
+                        "label": "Do not show"
+                    }
+                },
+                "mt_legal_warranty": {
+                    "label": "Note on the statutory warranty",
+                    "info": "On the product page and in the cart."
+                },
+                "mt_legal_warranty_text": {
+                    "label": "Warranty text",
+                    "info": "Suggested text, have it checked legally."
+                },
+                "mt_legal_gpsr": {
+                    "label": "Product safety (GPSR) on the product page",
+                    "info": "Reads the product metafields gpsr.manufacturer (manufacturer), gpsr.responsible_person (responsible person in the EU), gpsr.contact (contact) and gpsr.safety_info (safety information), each multi-line text. Without values nothing appears."
+                },
+                "mt_legal_withdrawal_page": {
+                    "label": "Page “Withdraw from contract”",
+                    "info": "Linked in the footer. The page should contain the withdrawal form or function. The order button is labeled by Shopify checkout, not by the theme."
                 }
             }
         },
@@ -554,6 +887,10 @@
                 },
                 "mt_a11y_text_widget": {
                     "label": "Show text size buttons"
+                },
+                "mt_a11y_statement_page": {
+                    "label": "Accessibility statement page",
+                    "info": "Linked in the footer."
                 }
             }
         },
@@ -566,6 +903,52 @@
                 },
                 "mt_perf_preload_fonts": {
                     "label": "Preload main font"
+                }
+            }
+        },
+        "mt_seo": {
+            "name": "SEO",
+            "help": "Structured data, breadcrumbs and preview image for social networks",
+            "settings": {
+                "mt_seo_jsonld": {
+                    "label": "Structured data (JSON-LD)",
+                    "info": "Product with offers, breadcrumbs and organization for search engines. Turn off if an app outputs the same data."
+                },
+                "mt_seo_breadcrumbs": {
+                    "label": "Show breadcrumb navigation"
+                },
+                "mt_seo_og_image": {
+                    "label": "Default image for social networks",
+                    "info": "Used when a page has no image of its own. Recommended 1200 × 630 pixels."
+                }
+            }
+        },
+        "mt_notification": {
+            "name": "Notifications",
+            "help": "Bell for messages from the MichaThemeV5 app",
+            "settings": {
+                "mt_notification_placement": {
+                    "label": "Bell placement",
+                    "info": "The bell only appears when a place is chosen here and only if the MichaThemeV5 app delivers messages. \"Off\" hides it completely.",
+                    "options__1": {
+                        "label": "Off"
+                    },
+                    "options__2": {
+                        "label": "Header (next to the cart)"
+                    },
+                    "options__3": {
+                        "label": "Footer"
+                    },
+                    "options__4": {
+                        "label": "Floating bottom right"
+                    },
+                    "options__5": {
+                        "label": "Floating bottom left"
+                    }
+                },
+                "mt_notification_proxy_path": {
+                    "label": "App proxy path",
+                    "info": "Must match the path set in the MichaThemeV5 app. Only paths starting with /apps/, /a/, /community/ or /tools/ are allowed."
                 }
             }
         },

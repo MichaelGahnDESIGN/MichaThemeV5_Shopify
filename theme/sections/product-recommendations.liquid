@@ -1,0 +1,24 @@
+{% comment %}Verwandte Artikel über Shopify product_recommendations (kein Drittanbieter). Erst leer, mt-shopify.js holt die Section nach{% endcomment %}
+<section class="mt-section mt-related" data-mt-recommendations data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&amp;product_id={{ product.id }}&amp;limit={{ section.settings.products_to_show }}&amp;intent=related">
+  {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+    <h2 id="mt-related-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+    <ul class="mt-grid" role="list" aria-labelledby="mt-related-{{ section.id }}">
+      {%- for rec in recommendations.products -%}
+        {%- if settings.mt_soldout_display == 'hide' and rec.available == false -%}{%- continue -%}{%- endif -%}
+        <li>{%- render 'mt-product-card', product: rec -%}</li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.product_recommendations.name",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "t:sections.product_recommendations.settings.heading.label", "default": "Das könnte Ihnen auch gefallen" },
+    { "type": "range", "id": "products_to_show", "min": 2, "max": 8, "step": 1, "default": 4, "label": "t:sections.product_recommendations.settings.products_to_show.label" }
+  ],
+  "enabled_on": { "templates": ["product"] },
+  "presets": [ { "name": "t:sections.product_recommendations.name" } ]
+}
+{% endschema %}

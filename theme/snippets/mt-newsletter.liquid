@@ -1,0 +1,24 @@
+{% comment %}Newsletter über Shopify-Kundenformular, kein Drittanbieter. Params: form_id (eindeutig!), heading, text. Double-Opt-In > Shopify-Admin{% endcomment %}
+<div class="mt-newsletter">
+  {%- if heading != blank -%}<h2 class="mt-newsletter__title">{{ heading | escape }}</h2>{%- endif -%}
+  {%- if text != blank -%}<p class="mt-newsletter__text">{{ text | escape }}</p>{%- endif -%}
+  {%- form 'customer', id: form_id, class: 'mt-newsletter__form' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    {%- if form.posted_successfully? -%}
+      <p class="mt-alert mt-alert--success" role="status">{{ 'newsletter.success' | t }}</p>
+    {%- else -%}
+      {%- if form.errors -%}
+        <div class="mt-alert mt-alert--danger" role="alert">{{ form.errors | default_errors }}</div>
+      {%- endif -%}
+      <label for="{{ form_id }}-email">{{ 'newsletter.email' | t }}</label>
+      <div class="mt-newsletter__row">
+        <input type="email" id="{{ form_id }}-email" name="contact[email]" required autocomplete="email" spellcheck="false" aria-describedby="{{ form_id }}-note">
+        <button type="submit" class="mt-btn">{{ 'newsletter.submit' | t }}</button>
+      </div>
+    {%- endif -%}
+    <p class="mt-form__hint" id="{{ form_id }}-note">
+      {{ 'newsletter.note' | t }}
+      {%- if shop.privacy_policy != blank %} <a href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title | escape }}</a>{%- endif -%}
+    </p>
+  {%- endform -%}
+</div>

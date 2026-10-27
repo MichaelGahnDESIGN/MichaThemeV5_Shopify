@@ -1,8 +1,7 @@
 {% comment %}
-  MichaThemeV5 für Shopify (Online Store 2.0). Layout für alle Seiten außer Passwortseite und Kasse.
-  Struktur: https://shopify.dev/docs/storefronts/themes/architecture/layouts
-  Keine externen Ressourcen: Schriften, CSS und JS liegen in assets/. Cookie-Banner: nicht Teil des Themes (siehe README).
-  Lizenz: proprietär, Michael Gahn DESIGN (https://theme.michael-gahn.de). Schriften: SIL Open Font License 1.1 (snippets/mt-font-licenses.liquid).
+  MichaThemeV5 Shopify - Layout alle Seiten außer Passwort + Kasse
+  alles lokal > assets/, kein Cookie-Banner im Theme (README)
+  Lizenz proprietär Michael Gahn DESIGN (https://theme.michael-gahn.de), Schriften OFL 1.1 > snippets/mt-font-licenses.liquid
 {% endcomment %}
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
@@ -19,28 +18,36 @@
     {%- if settings.mt_favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.mt_favicon | image_url: width: 48, height: 48 }}">
     {%- endif -%}
+    {%- if settings.mt_touch_icon != blank -%}
+      <link rel="apple-touch-icon" href="{{ settings.mt_touch_icon | image_url: width: 180, height: 180, crop: 'center' }}">
+    {%- endif -%}
     <title>{{ page_title | escape }}{% if current_page != 1 %} – {{ 'general.page_n' | t: n: current_page }}{% endif %}{% unless page_title contains shop.name %} – {{ shop.name | escape }}{% endunless %}</title>
     {%- render 'mt-meta' -%}
     {{ 'mt-tokens.css' | asset_url | stylesheet_tag }}
     {{ 'mt-base.css' | asset_url | stylesheet_tag }}
     {{ 'mt-shopify.css' | asset_url | stylesheet_tag }}
+    {%- if settings.mt_notification_placement != 'none' -%}
+      {{ 'mt-notification.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
+    {%- render 'mt-colors' -%}
+    {%- render 'mt-jsonld' -%}
     {{ content_for_header }}
   </head>
   <body class="mt-template-{{ request.page_type | handleize }}">
     <a class="mt-skip" href="#MainContent">{{ 'general.skip_to_content' | t }}</a>
     {% sections 'header-group' %}
-    {%- comment -%}Notification Glocke (Menü + schwebend) > sections/mgd-notification-center.liquid{%- endcomment -%}
-    {%- unless settings.mgd_notification_placement == 'footer' or settings.mgd_notification_placement == 'none' -%}
-      {% section 'mgd-notification-center' %}
-    {%- endunless -%}
     <main id="MainContent" class="mt-main" tabindex="-1">
+      {%- render 'mt-breadcrumbs' -%}
       {{ content_for_layout }}
     </main>
     {% sections 'footer-group' %}
-    {%- comment -%}Notification Glocke im Footer{%- endcomment -%}
-    {%- if settings.mgd_notification_placement == 'footer' -%}
-      {% section 'mgd-notification-center' %}
-    {%- endif -%}
     <script src="{{ 'mt-shopify.js' | asset_url }}" defer></script>
+    {%- comment -%}Notification Glocke > snippets/mt-notification.liquid (Kopfzeile + Footer rendern die Sections selbst){%- endcomment -%}
+    {%- if settings.mt_notification_placement != 'none' -%}
+      {%- if settings.mt_notification_placement contains 'floating' -%}
+        {%- render 'mt-notification', place: settings.mt_notification_placement -%}
+      {%- endif -%}
+      <script src="{{ 'mt-notification.js' | asset_url }}" defer></script>
+    {%- endif -%}
   </body>
 </html>

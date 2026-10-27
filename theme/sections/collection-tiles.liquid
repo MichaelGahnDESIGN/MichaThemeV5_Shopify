@@ -1,0 +1,46 @@
+{% comment %}Kategorie-Kacheln - Bild aus Kategorie, sonst erstes Produktbild, sonst Platzhalter. Feste Ratio gegen Layout-Shift{% endcomment %}
+<section class="mt-section mt-tiles" aria-labelledby="mt-tiles-{{ section.id }}" style="--mt-tiles-cols: {{ section.settings.columns }};">
+  <h2 id="mt-tiles-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+  <ul class="mt-tiles__grid" role="list">
+    {%- for block in section.blocks -%}
+      {%- assign mt_col = block.settings.collection -%}
+      {%- assign mt_title = block.settings.title | default: mt_col.title | default: block.settings.fallback_title -%}
+      {%- assign mt_img = mt_col.image | default: mt_col.products.first.featured_image -%}
+      <li class="mt-tiles__item" {{ block.shopify_attributes }}>
+        <a class="mt-tiles__link" href="{{ mt_col.url | default: routes.collections_url }}">
+          <span class="mt-tiles__media">
+            {%- if mt_img != blank -%}
+              {{ mt_img | image_url: width: 800 | image_tag: class: 'mt-tiles__img', widths: '300, 500, 800', sizes: '(min-width: 64rem) 33vw, 50vw', loading: 'lazy', alt: '' }}
+            {%- endif -%}
+          </span>
+          <span class="mt-tiles__title">{{ mt_title | escape }}</span>
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.collection_tiles.name",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "t:sections.collection_tiles.settings.heading.label", "default": "Kategorien" },
+    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "default": 3, "label": "t:sections.collection_tiles.settings.columns.label" }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "t:sections.collection_tiles.blocks.collection.name",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "t:sections.collection_tiles.blocks.collection.settings.collection.label" },
+        { "type": "text", "id": "title", "label": "t:sections.collection_tiles.blocks.collection.settings.title.label", "info": "t:sections.collection_tiles.blocks.collection.settings.title.info" },
+        { "type": "text", "id": "fallback_title", "label": "t:sections.collection_tiles.blocks.collection.settings.fallback_title.label", "default": "Kategorie" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    { "name": "t:sections.collection_tiles.name", "blocks": [ { "type": "collection" }, { "type": "collection" }, { "type": "collection" } ] }
+  ]
+}
+{% endschema %}
