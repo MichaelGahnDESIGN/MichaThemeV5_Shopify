@@ -28,6 +28,9 @@ for (const file of ['layout/theme.liquid', 'config/settings_schema.json', 'confi
   if (!existsSync(join(theme, file))) fail(`theme/${file} fehlt`);
 }
 
+// Lizenzdatei
+if (!existsSync(join(root, 'LICENSE'))) fail('LICENSE fehlt');
+
 // JSON-Dateien
 const files = walk(root);
 for (const file of files.filter((f) => f.endsWith('.json'))) readJson(file);
