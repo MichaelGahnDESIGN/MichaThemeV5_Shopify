@@ -1,0 +1,584 @@
+{
+    "sections": {
+        "header": {
+            "name": "Header",
+            "settings": {
+                "menu": {
+                    "label": "Menü"
+                }
+            }
+        },
+        "footer": {
+            "name": "Footer",
+            "settings": {
+                "menu": {
+                    "label": "Menü"
+                }
+            }
+        },
+        "hero": {
+            "name": "Hero",
+            "settings": {
+                "info": {
+                    "content": "Texte, Bild und Stil des Hero-Bereichs stehen in den Theme-Einstellungen unter „Startseite“."
+                }
+            }
+        },
+        "featured_collection": {
+            "name": "Produkte einer Kategorie",
+            "settings": {
+                "heading": {
+                    "label": "Überschrift"
+                },
+                "collection": {
+                    "label": "Kategorie"
+                },
+                "products_to_show": {
+                    "label": "Anzahl Produkte"
+                },
+                "show_view_all": {
+                    "label": "Link „Alle ansehen“ zeigen"
+                }
+            }
+        },
+        "main_product": {
+            "name": "Produkt",
+            "settings": {
+                "info": {
+                    "content": "Aufbau, Galerie und Beschreibung stehen in den Theme-Einstellungen unter „Artikelseite“."
+                }
+            }
+        },
+        "main_collection": {
+            "name": "Kategorie",
+            "settings": {
+                "products_per_page": {
+                    "label": "Produkte pro Seite"
+                }
+            }
+        },
+        "main_search": {
+            "name": "Suchergebnisse",
+            "settings": {
+                "results_per_page": {
+                    "label": "Ergebnisse pro Seite"
+                }
+            }
+        },
+        "main_cart": {
+            "name": "Warenkorb"
+        },
+        "main_page": {
+            "name": "Seite"
+        },
+        "contact_form": {
+            "name": "Kontaktformular"
+        },
+        "main_404": {
+            "name": "Seite nicht gefunden"
+        },
+        "main_list_collections": {
+            "name": "Alle Kategorien"
+        },
+        "main_blog": {
+            "name": "Blog"
+        },
+        "main_article": {
+            "name": "Blogbeitrag"
+        },
+        "main_password": {
+            "name": "Passwortseite"
+        }
+    },
+    "settings_schema": {
+        "mt_colors": {
+            "name": "Farben",
+            "help": "Akzentfarbe, Modus und eigene Farben",
+            "settings": {
+                "mt_color_mode": {
+                    "label": "Farbmodus",
+                    "info": "Hell, Dunkel oder dem Gerät folgen. Besucher können im Shop umschalten.",
+                    "options__1": {
+                        "label": "Wie das Gerät"
+                    },
+                    "options__2": {
+                        "label": "Hell"
+                    },
+                    "options__3": {
+                        "label": "Dunkel"
+                    }
+                },
+                "mt_accent": {
+                    "label": "Akzentfarbe",
+                    "info": "Farbe für Buttons, Links und Hervorhebungen. Alle Varianten sind für Hell und Dunkel auf Kontrast geprüft.",
+                    "options__1": {
+                        "label": "Petrol"
+                    },
+                    "options__2": {
+                        "label": "Indigo"
+                    },
+                    "options__3": {
+                        "label": "Bernstein"
+                    },
+                    "options__4": {
+                        "label": "Rose"
+                    },
+                    "options__5": {
+                        "label": "Graphit"
+                    }
+                },
+                "mt_accent_custom": {
+                    "label": "Eigene Akzentfarbe",
+                    "info": "Leer lassen, um die Akzentfarbe von oben zu nutzen. Achtung: Eigene Farben werden nicht automatisch auf Kontrast geprüft."
+                },
+                "mt_mode_toggle": {
+                    "label": "Umschalter Hell/Dunkel im Header anzeigen"
+                }
+            }
+        },
+        "mt_typography": {
+            "name": "Schriften",
+            "help": "Lokale Schriften und Größen",
+            "settings": {
+                "mt_font_body": {
+                    "label": "Schrift für Text",
+                    "info": "Alle Schriften liegen lokal im Theme, es gibt keinen Abruf bei Google.",
+                    "options__1": {
+                        "label": "Systemschrift (Arial/Helvetica)"
+                    },
+                    "options__2": {
+                        "label": "Roboto"
+                    },
+                    "options__3": {
+                        "label": "Open Sans"
+                    },
+                    "options__4": {
+                        "label": "Inter"
+                    },
+                    "options__5": {
+                        "label": "Lato"
+                    },
+                    "options__6": {
+                        "label": "Montserrat"
+                    },
+                    "options__7": {
+                        "label": "Source Sans 3"
+                    },
+                    "options__8": {
+                        "label": "Nunito"
+                    },
+                    "options__9": {
+                        "label": "Merriweather"
+                    },
+                    "options__10": {
+                        "label": "Playfair Display"
+                    }
+                },
+                "mt_font_heading": {
+                    "label": "Schrift für Überschriften",
+                    "options__1": {
+                        "label": "Systemschrift (Arial/Helvetica)"
+                    },
+                    "options__2": {
+                        "label": "Roboto"
+                    },
+                    "options__3": {
+                        "label": "Open Sans"
+                    },
+                    "options__4": {
+                        "label": "Inter"
+                    },
+                    "options__5": {
+                        "label": "Lato"
+                    },
+                    "options__6": {
+                        "label": "Montserrat"
+                    },
+                    "options__7": {
+                        "label": "Source Sans 3"
+                    },
+                    "options__8": {
+                        "label": "Nunito"
+                    },
+                    "options__9": {
+                        "label": "Merriweather"
+                    },
+                    "options__10": {
+                        "label": "Playfair Display"
+                    }
+                },
+                "mt_font_size": {
+                    "label": "Schriftgröße",
+                    "options__1": {
+                        "label": "Klein"
+                    },
+                    "options__2": {
+                        "label": "Normal"
+                    },
+                    "options__3": {
+                        "label": "Groß"
+                    }
+                }
+            }
+        },
+        "mt_shape": {
+            "name": "Form und Stil",
+            "help": "Ecken, Abstände, Schatten, Buttons",
+            "settings": {
+                "mt_radius": {
+                    "label": "Ecken",
+                    "info": "Rundung von Karten, Buttons und Bildern.",
+                    "options__1": {
+                        "label": "Eckig"
+                    },
+                    "options__2": {
+                        "label": "Leicht gerundet"
+                    },
+                    "options__3": {
+                        "label": "Stark gerundet"
+                    }
+                },
+                "mt_density": {
+                    "label": "Abstände",
+                    "options__1": {
+                        "label": "Kompakt"
+                    },
+                    "options__2": {
+                        "label": "Normal"
+                    },
+                    "options__3": {
+                        "label": "Luftig"
+                    }
+                },
+                "mt_shadows": {
+                    "label": "Schatten",
+                    "options__1": {
+                        "label": "Keine"
+                    },
+                    "options__2": {
+                        "label": "Weich"
+                    },
+                    "options__3": {
+                        "label": "Kräftig"
+                    }
+                },
+                "mt_buttons": {
+                    "label": "Button-Stil",
+                    "options__1": {
+                        "label": "Gefüllt"
+                    },
+                    "options__2": {
+                        "label": "Umrandet"
+                    },
+                    "options__3": {
+                        "label": "Pillenform"
+                    }
+                }
+            }
+        },
+        "mt_logo": {
+            "name": "Logo",
+            "help": "Logo, Favicon, Größe",
+            "settings": {
+                "mt_logo_light": {
+                    "label": "Logo (heller Hintergrund)",
+                    "info": "SVG oder PNG, mindestens doppelte Größe für scharfe Darstellung."
+                },
+                "mt_logo_dark": {
+                    "label": "Logo (dunkler Hintergrund)",
+                    "info": "Optional. Ohne Angabe wird das helle Logo genutzt."
+                },
+                "mt_logo_alt": {
+                    "label": "Alternativtext des Logos",
+                    "info": "Wird von Screenreadern vorgelesen. Meist der Shopname."
+                },
+                "mt_logo_height": {
+                    "label": "Logohöhe in Pixel"
+                },
+                "mt_favicon": {
+                    "label": "Favicon"
+                }
+            }
+        },
+        "mt_header": {
+            "name": "Header",
+            "help": "Kopfbereich und Suche",
+            "settings": {
+                "mt_header_layout": {
+                    "label": "Header-Layout",
+                    "info": "Aufbau des Kopfbereichs.",
+                    "options__1": {
+                        "label": "Klassisch (Logo links)"
+                    },
+                    "options__2": {
+                        "label": "Zentriert (Logo mittig)"
+                    },
+                    "options__3": {
+                        "label": "Kompakt (eine Zeile)"
+                    }
+                },
+                "mt_header_sticky": {
+                    "label": "Header beim Scrollen fixieren"
+                },
+                "mt_header_search": {
+                    "label": "Suche",
+                    "options__1": {
+                        "label": "Nur Symbol"
+                    },
+                    "options__2": {
+                        "label": "Suchfeld"
+                    },
+                    "options__3": {
+                        "label": "Großes Suchfeld"
+                    }
+                },
+                "mt_announcement": {
+                    "label": "Ankündigungsleiste anzeigen"
+                },
+                "mt_announcement_text": {
+                    "label": "Text der Ankündigungsleiste",
+                    "info": "Bitte nur belegbare Aussagen verwenden (UWG)."
+                }
+            }
+        },
+        "mt_footer": {
+            "name": "Footer",
+            "help": "Fußbereich",
+            "settings": {
+                "mt_footer_layout": {
+                    "label": "Footer-Layout",
+                    "options__1": {
+                        "label": "Mehrspaltig"
+                    },
+                    "options__2": {
+                        "label": "Zentriert"
+                    },
+                    "options__3": {
+                        "label": "Minimal"
+                    }
+                },
+                "mt_footer_payment": {
+                    "label": "Zahlungsarten im Footer zeigen"
+                },
+                "mt_footer_trust": {
+                    "label": "Vertrauens-Hinweise zeigen",
+                    "info": "Zum Beispiel Rückgabe, Versand, Support. Nur Aussagen eintragen, die stimmen."
+                },
+                "mt_trust_1": {
+                    "label": "Vertrauens-Hinweis 1",
+                    "info": "Nur eintragen, was im Shop tatsächlich gilt."
+                },
+                "mt_trust_2": {
+                    "label": "Vertrauens-Hinweis 2"
+                },
+                "mt_trust_3": {
+                    "label": "Vertrauens-Hinweis 3"
+                }
+            }
+        },
+        "mt_hero": {
+            "name": "Startseite",
+            "help": "Hero-Bereich",
+            "settings": {
+                "mt_hero_style": {
+                    "label": "Hero-Bereich",
+                    "info": "Großer Einstieg auf der Startseite.",
+                    "options__1": {
+                        "label": "Bild mit Text"
+                    },
+                    "options__2": {
+                        "label": "Farbverlauf"
+                    },
+                    "options__3": {
+                        "label": "Ohne"
+                    }
+                },
+                "mt_hero_height": {
+                    "label": "Hero-Höhe",
+                    "options__1": {
+                        "label": "Niedrig"
+                    },
+                    "options__2": {
+                        "label": "Mittel"
+                    },
+                    "options__3": {
+                        "label": "Hoch"
+                    }
+                },
+                "mt_hero_title": {
+                    "label": "Überschrift"
+                },
+                "mt_hero_text": {
+                    "label": "Text"
+                },
+                "mt_hero_cta_label": {
+                    "label": "Button-Beschriftung"
+                },
+                "mt_hero_cta_url": {
+                    "label": "Button-Ziel (Adresse)",
+                    "info": "Interne Adresse wie /neuheiten oder vollständige Adresse."
+                },
+                "mt_hero_image": {
+                    "label": "Hero-Bild",
+                    "info": "Eigenes Bild verwenden, keine Stockfotos ohne Lizenz."
+                }
+            }
+        },
+        "mt_listing": {
+            "name": "Kategorie und Listing",
+            "help": "Produktlisten",
+            "settings": {
+                "mt_listing_layout": {
+                    "label": "Produktliste",
+                    "info": "Darstellung in Kategorien und Suche.",
+                    "options__1": {
+                        "label": "Raster"
+                    },
+                    "options__2": {
+                        "label": "Große Bilder"
+                    },
+                    "options__3": {
+                        "label": "Liste"
+                    }
+                },
+                "mt_listing_columns": {
+                    "label": "Spalten auf dem Desktop"
+                },
+                "mt_listing_ratio": {
+                    "label": "Bildformat",
+                    "options__1": {
+                        "label": "Quadrat (1:1)"
+                    },
+                    "options__2": {
+                        "label": "Hochformat (4:5)"
+                    },
+                    "options__3": {
+                        "label": "Querformat (4:3)"
+                    }
+                },
+                "mt_listing_hover": {
+                    "label": "Effekt beim Darüberfahren",
+                    "options__1": {
+                        "label": "Keiner"
+                    },
+                    "options__2": {
+                        "label": "Zoom"
+                    },
+                    "options__3": {
+                        "label": "Zweites Bild"
+                    }
+                },
+                "mt_listing_badges": {
+                    "label": "Sonderpreis- und Neu-Siegel zeigen"
+                },
+                "mt_listing_filter": {
+                    "label": "Filter",
+                    "options__1": {
+                        "label": "Seitenleiste"
+                    },
+                    "options__2": {
+                        "label": "Oben"
+                    }
+                }
+            }
+        },
+        "mt_detail": {
+            "name": "Artikelseite",
+            "help": "Produkt-Detailseite",
+            "settings": {
+                "mt_detail_layout": {
+                    "label": "Artikelseite",
+                    "options__1": {
+                        "label": "Klassisch (Galerie links)"
+                    },
+                    "options__2": {
+                        "label": "Untereinander"
+                    },
+                    "options__3": {
+                        "label": "Kaufbox bleibt sichtbar"
+                    }
+                },
+                "mt_detail_gallery": {
+                    "label": "Galerie",
+                    "options__1": {
+                        "label": "Vorschau unten"
+                    },
+                    "options__2": {
+                        "label": "Vorschau links"
+                    },
+                    "options__3": {
+                        "label": "Punkte"
+                    }
+                },
+                "mt_detail_sticky_cart": {
+                    "label": "Fixierter Warenkorb-Button auf dem Handy"
+                },
+                "mt_detail_tabs": {
+                    "label": "Beschreibung",
+                    "options__1": {
+                        "label": "Reiter"
+                    },
+                    "options__2": {
+                        "label": "Aufklappbar"
+                    }
+                }
+            }
+        },
+        "mt_legal": {
+            "name": "Recht",
+            "help": "Preisangaben und Pflichttexte",
+            "settings": {
+                "mt_legal_price_note": {
+                    "label": "Hinweis neben dem Preis",
+                    "info": "Pflichtangabe nach PAngV. Der Link zu den Versandkosten bleibt immer erhalten."
+                },
+                "mt_legal_unit_price": {
+                    "label": "Grundpreis anzeigen",
+                    "info": "Pflicht, wo die Preisangabenverordnung einen Grundpreis verlangt."
+                }
+            }
+        },
+        "mt_a11y": {
+            "name": "Barrierefreiheit",
+            "help": "Fokus, Textgröße, Bewegung",
+            "settings": {
+                "mt_a11y_focus": {
+                    "label": "Fokusrahmen",
+                    "info": "Sichtbarer Rahmen bei Tastaturbedienung.",
+                    "options__1": {
+                        "label": "Standard"
+                    },
+                    "options__2": {
+                        "label": "Kräftig"
+                    }
+                },
+                "mt_a11y_text_widget": {
+                    "label": "Textgrößen-Schalter anzeigen"
+                }
+            }
+        },
+        "mt_performance": {
+            "name": "Geschwindigkeit",
+            "help": "Ladezeit",
+            "settings": {
+                "mt_perf_lazy": {
+                    "label": "Bilder erst beim Scrollen laden"
+                },
+                "mt_perf_preload_fonts": {
+                    "label": "Haupt-Schrift vorladen"
+                }
+            }
+        },
+        "mt_license": {
+            "name": "Lizenz",
+            "help": "Optionaler Lizenzschlüssel für separat erhältliche Erweiterungen. Ohne Schlüssel läuft das Theme mit allen Funktionen dieser Version. Verwaltung unter https://theme.michael-gahn.de (Konto erforderlich).",
+            "settings": {
+                "mt_license_token": {
+                    "label": "Lizenzschlüssel",
+                    "info": "In diesem Theme findet keine Lizenzprüfung statt. Der Schlüssel wird nicht ausgewertet und nicht im Shop ausgegeben. Er dient nur separat erhältlichen Erweiterungen. Verwaltung unter https://theme.michael-gahn.de (Konto erforderlich)."
+                }
+            }
+        },
+        "expert": "Experte"
+    }
+}

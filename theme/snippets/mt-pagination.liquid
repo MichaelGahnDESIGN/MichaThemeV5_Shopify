@@ -1,0 +1,24 @@
+{% comment %}Seitenzahlen. Parameter: paginate (Pflicht, Objekt aus {% paginate %}).{% endcomment %}
+{%- if paginate.pages > 1 -%}
+  <nav class="mt-pagination" aria-label="{{ 'general.pagination' | t }}">
+    <ul>
+      {%- if paginate.previous -%}
+        <li><a class="mt-btn mt-btn--ghost" href="{{ paginate.previous.url }}" rel="prev">{{ 'general.previous' | t }}</a></li>
+      {%- endif -%}
+      {%- for part in paginate.parts -%}
+        <li>
+          {%- if part.is_link -%}
+            <a class="mt-pagination__page" href="{{ part.url }}" aria-label="{{ 'general.page_n' | t: n: part.title }}">{{ part.title }}</a>
+          {%- elsif part.title == paginate.current_page -%}
+            <span class="mt-pagination__page mt-pagination__page--current" aria-current="page">{{ part.title }}</span>
+          {%- else -%}
+            <span class="mt-pagination__gap">{{ part.title }}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+      {%- if paginate.next -%}
+        <li><a class="mt-btn mt-btn--ghost" href="{{ paginate.next.url }}" rel="next">{{ 'general.next' | t }}</a></li>
+      {%- endif -%}
+    </ul>
+  </nav>
+{%- endif -%}

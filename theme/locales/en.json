@@ -1,0 +1,126 @@
+{
+    "general": {
+        "skip_to_content": "Skip to content",
+        "menu": "Menu",
+        "main_menu": "Main menu",
+        "search": "Search",
+        "search_placeholder": "What are you looking for?",
+        "account": "Account",
+        "cart": "Cart",
+        "cart_count": {
+            "one": "{{ count }} item",
+            "other": "{{ count }} items"
+        },
+        "mode_toggle": "Change color mode",
+        "mode_system": "Like the device",
+        "mode_light": "Light",
+        "mode_dark": "Dark",
+        "mode_label": "Color mode: %s. Click to change.",
+        "text_size": "Text size",
+        "text_smaller": "Smaller text",
+        "text_larger": "Larger text",
+        "pagination": "Pages",
+        "previous": "Previous",
+        "next": "Next",
+        "page_n": "Page {{ n }}"
+    },
+    "price": {
+        "regular": "Regular price",
+        "sale": "Sale price",
+        "unit_price": "Unit price",
+        "shipping_link": "Shipping costs",
+        "from_html": "from {{ price }}",
+        "shipping_suffix": ", plus shipping"
+    },
+    "products": {
+        "add_to_cart": "Add to cart",
+        "sold_out": "Sold out",
+        "sale": "Sale",
+        "variant": "Variant",
+        "choose_variant": "Show variant",
+        "quantity": "Quantity",
+        "description": "Description",
+        "shipping_returns": "Shipping and returns",
+        "gallery": "Product images",
+        "media_n": "Image {{ n }} of {{ count }}"
+    },
+    "collection": {
+        "filter": "Filter and sort",
+        "apply": "Apply",
+        "reset": "Reset",
+        "sort_by": "Sort by",
+        "price_from": "Price from",
+        "price_to": "to",
+        "products_count": {
+            "one": "{{ count }} product",
+            "other": "{{ count }} products"
+        },
+        "empty": "There are no products here yet.",
+        "view_all": "View all",
+        "all_title": "Collections"
+    },
+    "cart": {
+        "title": "Cart",
+        "product": "Product",
+        "quantity": "Quantity",
+        "quantity_for": "Quantity for {{ title }}",
+        "total": "Total",
+        "remove": "Remove",
+        "note": "Order note",
+        "subtotal": "Subtotal",
+        "taxes_included": "incl. VAT",
+        "taxes_excluded": "plus VAT",
+        "shipping_at_checkout": "Shipping is calculated at checkout.",
+        "update": "Update cart",
+        "checkout": "Check out",
+        "empty": "Your cart is empty.",
+        "continue": "Continue shopping"
+    },
+    "search": {
+        "title": "Search",
+        "results_count": {
+            "one": "{{ count }} result for “{{ terms }}”",
+            "other": "{{ count }} results for “{{ terms }}”"
+        },
+        "no_results": "No results. Please try another term."
+    },
+    "footer": {
+        "trust_label": "Our promises",
+        "legal_label": "Legal",
+        "payment_label": "Payment methods",
+        "consent": "Cookie settings",
+        "legal_hint": "Only visible in the theme editor: legal pages are missing (e.g. privacy, returns, shipping). Please add them under Settings > Policies, as well as legal notice and terms. Technical note, no legal advice."
+    },
+    "contact": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "message": "Message",
+        "send": "Send",
+        "success": "Thank you! Your message has been sent.",
+        "privacy_hint": "We only use your details to handle your request. More in the"
+    },
+    "not_found": {
+        "title": "Page not found",
+        "text": "This page does not exist (anymore). Maybe the search helps.",
+        "back": "Back to the home page"
+    },
+    "blog": {
+        "empty": "No posts yet.",
+        "back": "Back to the blog"
+    },
+    "password": {
+        "label": "Password",
+        "submit": "Enter shop"
+    },
+    "gift_card": {
+        "title": "Gift card",
+        "code_label": "Gift card code",
+        "disabled": "This gift card is no longer valid.",
+        "expires_on": "Valid until {{ date }}",
+        "shop_link": "Go to the shop"
+    },
+    "date_formats": {
+        "date": "%B %d, %Y"
+    }
+}

@@ -1,0 +1,34 @@
+<div class="mt-container">
+  <h1>{{ 'collection.all_title' | t }}</h1>
+  <ul class="mt-grid" role="list">
+    {%- for collection in collections -%}
+      {%- if collection.handle != 'frontpage' -%}
+        <li>
+          <article class="mt-card">
+            <div class="mt-card__media">
+              <a href="{{ collection.url }}" tabindex="-1" aria-hidden="true">
+                {%- assign mt_img = collection.featured_image | default: collection.products.first.featured_image -%}
+                {%- if mt_img -%}
+                  {{ mt_img | image_url: width: 600 | image_tag: class: 'mt-card__img', widths: '300, 400, 600', sizes: '(min-width: 48rem) 33vw, 50vw', loading: 'lazy', alt: '' }}
+                {%- else -%}
+                  <span class="mt-card__placeholder"></span>
+                {%- endif -%}
+              </a>
+            </div>
+            <div class="mt-card__body">
+              <h2 class="mt-card__title"><a href="{{ collection.url }}">{{ collection.title | escape }}</a></h2>
+              <p class="mt-card__vendor">{{ 'collection.products_count' | t: count: collection.products_count }}</p>
+            </div>
+          </article>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main_list_collections.name",
+  "settings": []
+}
+{% endschema %}

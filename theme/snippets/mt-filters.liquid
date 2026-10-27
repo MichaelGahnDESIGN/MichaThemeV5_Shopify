@@ -1,0 +1,54 @@
+{% comment %}
+  Filter und Sortierung (Storefront-Filter von Shopify). Parameter: results (collection oder search), form_id (eindeutige ID).
+  Funktioniert ohne JavaScript: normales GET-Formular mit Button.
+{% endcomment %}
+<form class="mt-filters" id="{{ form_id }}" method="get" action="{{ results.url | default: request.path }}">
+  {%- if results.terms != blank -%}<input type="hidden" name="q" value="{{ results.terms | escape }}">{%- endif -%}
+  <h2 class="mt-filters__title">{{ 'collection.filter' | t }}</h2>
+  {%- for filter in results.filters -%}
+    {%- case filter.type -%}
+      {%- when 'price_range' -%}
+        <fieldset class="mt-filters__group">
+          <legend>{{ filter.label | escape }}</legend>
+          <div class="mt-filters__range">
+            <label for="{{ form_id }}-min">{{ 'collection.price_from' | t }}</label>
+            <input type="number" id="{{ form_id }}-min" name="{{ filter.min_value.param_name }}" min="0" inputmode="decimal"
+              {% if filter.min_value.value %}value="{{ filter.min_value.value | divided_by: 100.0 }}"{% endif %} placeholder="0">
+            <label for="{{ form_id }}-max">{{ 'collection.price_to' | t }}</label>
+            <input type="number" id="{{ form_id }}-max" name="{{ filter.max_value.param_name }}" min="0" inputmode="decimal"
+              {% if filter.max_value.value %}value="{{ filter.max_value.value | divided_by: 100.0 }}"{% endif %} placeholder="{{ filter.range_max | divided_by: 100.0 }}">
+          </div>
+        </fieldset>
+      {%- else -%}
+        <fieldset class="mt-filters__group">
+          <legend>{{ filter.label | escape }}</legend>
+          {%- for value in filter.values -%}
+            <div class="mt-check">
+              <input type="checkbox" id="{{ form_id }}-{{ filter.param_name | handleize }}-{{ forloop.index }}" name="{{ value.param_name }}" value="{{ value.value | escape }}"
+                {% if value.active %}checked{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %}>
+              <label for="{{ form_id }}-{{ filter.param_name | handleize }}-{{ forloop.index }}">{{ value.label | escape }} ({{ value.count }})</label>
+            </div>
+          {%- endfor -%}
+        </fieldset>
+    {%- endcase -%}
+  {%- endfor -%}
+  {%- assign mt_sort = results.sort_by | default: results.default_sort_by -%}
+  {%- if results.sort_options -%}
+    <div class="mt-field">
+      <label for="{{ form_id }}-sort">{{ 'collection.sort_by' | t }}</label>
+      <select id="{{ form_id }}-sort" name="sort_by">
+        {%- for option in results.sort_options -%}
+          <option value="{{ option.value | escape }}"{% if option.value == mt_sort %} selected{% endif %}>{{ option.name | escape }}</option>
+        {%- endfor -%}
+      </select>
+    </div>
+  {%- endif -%}
+  <div class="mt-filters__actions">
+    <button type="submit" class="mt-btn">{{ 'collection.apply' | t }}</button>
+    {%- assign mt_active = 0 -%}
+    {%- for filter in results.filters -%}{%- assign mt_active = mt_active | plus: filter.active_values.size -%}{%- if filter.min_value.value or filter.max_value.value -%}{%- assign mt_active = mt_active | plus: 1 -%}{%- endif -%}{%- endfor -%}
+    {%- if mt_active > 0 -%}
+      <a class="mt-btn mt-btn--ghost" href="{{ results.url | default: request.path }}{% if results.terms != blank %}?q={{ results.terms | url_encode }}{% endif %}">{{ 'collection.reset' | t }}</a>
+    {%- endif -%}
+  </div>
+</form>

@@ -1,0 +1,24 @@
+<article class="mt-container mt-page mt-article">
+  <header>
+    <h1>{{ article.title | escape }}</h1>
+    <p class="mt-card__vendor">
+      <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'date' }}</time>
+      {%- if article.author != blank %} · {{ article.author | escape }}{%- endif -%}
+    </p>
+  </header>
+  {%- if article.image -%}
+    {%- assign mt_alt = article.image.alt | default: '' -%}
+    <div class="mt-article__media">
+      {{ article.image | image_url: width: 1400 | image_tag: widths: '600, 900, 1400', sizes: '(min-width: 64rem) 60rem, 100vw', loading: 'eager', alt: mt_alt }}
+    </div>
+  {%- endif -%}
+  <div class="mt-rte">{{ article.content }}</div>
+  <p><a href="{{ blog.url }}">{{ 'blog.back' | t }}</a></p>
+</article>
+
+{% schema %}
+{
+  "name": "t:sections.main_article.name",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,37 @@
+{% comment %}
+  Preisangabe mit Pflichtangaben. Parameter: product (Pflicht), variant (optional, sonst die gewählte oder erste verfügbare Variante), show_from (true: "ab" bei unterschiedlichen Preisen).
+  - Hinweis neben dem Preis: Standard (oder leer) richtet sich nach der Steuereinstellung des Shops (cart.taxes_included: inkl. oder zzgl. MwSt.) plus "zzgl. Versand"; ein eigener Text in den Theme-Einstellungen ersetzt das.
+  - Bei "ab"-Preisen wird kein Grundpreis gezeigt (er gälte nur für eine Variante); er erscheint auf der Artikelseite je Variante.
+  - Der Link zu den Versandkosten bleibt immer erhalten, sobald im Shopify-Admin eine Versandrichtlinie hinterlegt ist.
+  - Grundpreis: Shopify liefert ihn aus den Produktdaten (Maßeinheit am Produkt). Technischer Hinweis, keine Rechtsberatung.
+{% endcomment %}
+{%- assign mt_variant = variant | default: product.selected_or_first_available_variant -%}
+{%- assign mt_on_sale = false -%}
+{%- if mt_variant.compare_at_price > mt_variant.price -%}{%- assign mt_on_sale = true -%}{%- endif -%}
+<div class="mt-price-block">
+  <p class="mt-price{% if mt_on_sale %} mt-price--sale{% endif %}">
+    {%- if mt_on_sale -%}
+      <span class="mt-visually-hidden">{{ 'price.regular' | t }}</span>
+      <s class="mt-price__old">{{ mt_variant.compare_at_price | money }}</s>
+      <span class="mt-visually-hidden">{{ 'price.sale' | t }}</span>
+    {%- endif -%}
+    {%- if show_from and product.price_varies and variant == blank -%}
+      {%- assign mt_from = product.price_min | money -%}
+      {{ 'price.from_html' | t: price: mt_from }}
+    {%- else -%}
+      {{ mt_variant.price | money }}
+    {%- endif -%}
+  </p>
+  {%- assign mt_is_from = false -%}
+  {%- if show_from and product.price_varies and variant == blank -%}{%- assign mt_is_from = true -%}{%- endif -%}
+  {%- if settings.mt_legal_unit_price and mt_variant.unit_price_measurement and mt_is_from == false -%}
+    <p class="mt-price__unit">{{ 'price.unit_price' | t }}: {{ mt_variant.unit_price | unit_price_with_measurement: mt_variant.unit_price_measurement }}</p>
+  {%- endif -%}
+  <p class="mt-price__note">
+    {%- comment -%}Standardtext oder leer: aus der Steuereinstellung des Shops (inkl./zzgl. MwSt.) plus Versand; ein eigener Text ersetzt das.{%- endcomment -%}
+    {%- if settings.mt_legal_price_note == blank or settings.mt_legal_price_note == 'inkl. MwSt., zzgl. Versand' -%}
+      {%- if cart.taxes_included -%}{{ 'cart.taxes_included' | t }}{%- else -%}{{ 'cart.taxes_excluded' | t }}{%- endif -%}{{ 'price.shipping_suffix' | t }}
+    {%- else -%}{{ settings.mt_legal_price_note | escape }}{%- endif -%}
+    {%- if shop.shipping_policy.url != blank %} <a href="{{ shop.shipping_policy.url }}">{{ 'price.shipping_link' | t }}</a>{%- endif -%}
+  </p>
+</div>

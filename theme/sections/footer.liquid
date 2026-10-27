@@ -1,0 +1,70 @@
+{% comment %}
+  Fußbereich mit Vertrauens-Hinweisen, Menü, Zahlungsarten und Rechtstexten.
+  Rechtstexte: alle im Shopify-Admin unter Einstellungen > Richtlinien hinterlegten Seiten (shop.policies), z. B. Impressum,
+  Datenschutzerklärung, Widerrufsbelehrung, Versand, AGB. Das Theme erstellt keine Rechtstexte und kein Cookie-Banner.
+  Cookie-Banner: Shopify-Banner (Einstellungen > Kundendatenschutz) oder eine Consent-App. Der Button "Cookie-Einstellungen"
+  erscheint nur, wenn eine Schnittstelle vorhanden ist (siehe assets/mt-shopify.js, Ereignis mt:consent-open).
+{% endcomment %}
+{%- assign mt_trust = '' -%}
+{%- if settings.mt_footer_trust -%}
+  {%- if settings.mt_trust_1 != blank or settings.mt_trust_2 != blank or settings.mt_trust_3 != blank -%}{%- assign mt_trust = 'show' -%}{%- endif -%}
+{%- endif -%}
+{%- if mt_trust == 'show' -%}
+  <section class="mt-section" aria-label="{{ 'footer.trust_label' | t }}">
+    <ul class="mt-trust">
+      {%- if settings.mt_trust_1 != blank -%}<li>{{ settings.mt_trust_1 | escape }}</li>{%- endif -%}
+      {%- if settings.mt_trust_2 != blank -%}<li>{{ settings.mt_trust_2 | escape }}</li>{%- endif -%}
+      {%- if settings.mt_trust_3 != blank -%}<li>{{ settings.mt_trust_3 | escape }}</li>{%- endif -%}
+    </ul>
+  </section>
+{%- endif -%}
+<footer class="mt-footer">
+  <div class="mt-footer__inner">
+    {%- if section.settings.menu != blank -%}
+      <nav class="mt-footer__col" aria-label="{{ section.settings.menu.title | escape }}">
+        <h2 class="mt-footer__title">{{ section.settings.menu.title | escape }}</h2>
+        <ul class="mt-footer__list">
+          {%- for link in section.settings.menu.links -%}
+            <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+    <nav class="mt-footer__col" aria-label="{{ 'footer.legal_label' | t }}">
+      <h2 class="mt-footer__title">{{ 'footer.legal_label' | t }}</h2>
+      <ul class="mt-footer__list">
+        {%- for policy in shop.policies -%}
+          <li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>
+        {%- endfor -%}
+        <li data-mt-consent-item hidden><button type="button" class="mt-link-button" data-mt-consent-open>{{ 'footer.consent' | t }}</button></li>
+      </ul>
+      {%- if request.design_mode -%}
+        {%- if shop.privacy_policy == blank or shop.refund_policy == blank or shop.shipping_policy == blank -%}
+          <p class="mt-footer__hint" role="note">{{ 'footer.legal_hint' | t }}</p>
+        {%- endif -%}
+      {%- endif -%}
+    </nav>
+    {%- if settings.mt_footer_payment and shop.enabled_payment_types.size > 0 -%}
+      <div class="mt-footer__col">
+        <h2 class="mt-footer__title">{{ 'footer.payment_label' | t }}</h2>
+        <ul class="mt-payment">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>{{ type | payment_type_svg_tag: class: 'mt-payment__icon' }}</li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  </div>
+  <p class="mt-footer__copy">&copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}</p>
+</footer>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "class": "mt-section-footer",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "t:sections.footer.settings.menu.label", "default": "footer" }
+  ]
+}
+{% endschema %}

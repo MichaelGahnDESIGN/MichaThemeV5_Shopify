@@ -1,0 +1,30 @@
+{% comment %}
+  Produktkarte. Parameter: product (Pflicht), eager (true: Bild sofort laden, z. B. erste Reihe).
+  Das Bild-Container-Format (aspect-ratio) ist fest, damit beim Laden nichts springt.
+{% endcomment %}
+{%- assign mt_lazy = 'lazy' -%}
+{%- if eager or settings.mt_perf_lazy == false -%}{%- assign mt_lazy = 'eager' -%}{%- endif -%}
+<article class="mt-card">
+  <div class="mt-card__media">
+    <a href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+      {%- if product.featured_image -%}
+        {{ product.featured_image | image_url: width: 600 | image_tag: class: 'mt-card__img', widths: '200, 300, 400, 600', sizes: '(min-width: 75rem) 25vw, (min-width: 48rem) 33vw, 50vw', loading: mt_lazy, alt: '' }}
+        {%- if product.images[1] -%}
+          {{ product.images[1] | image_url: width: 600 | image_tag: class: 'mt-card__img mt-card__img--second', widths: '200, 300, 400, 600', sizes: '(min-width: 75rem) 25vw, (min-width: 48rem) 33vw, 50vw', loading: 'lazy', alt: '' }}
+        {%- endif -%}
+      {%- else -%}
+        <span class="mt-card__placeholder"></span>
+      {%- endif -%}
+    </a>
+    {%- if product.available == false -%}
+      <span class="mt-badge mt-badge--sold">{{ 'products.sold_out' | t }}</span>
+    {%- elsif product.compare_at_price > product.price -%}
+      <span class="mt-badge mt-badge--sale">{{ 'products.sale' | t }}</span>
+    {%- endif -%}
+  </div>
+  <div class="mt-card__body">
+    <h3 class="mt-card__title"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
+    {%- if product.vendor != blank -%}<p class="mt-card__vendor">{{ product.vendor | escape }}</p>{%- endif -%}
+    {%- render 'mt-price', product: product, show_from: true -%}
+  </div>
+</article>

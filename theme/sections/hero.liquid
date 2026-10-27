@@ -1,0 +1,37 @@
+{% comment %}Hero der Startseite. Inhalte kommen aus den Theme-Einstellungen (Startseite). Das Bild ist dekorativ (alt leer); der Text steht auf einer Fläche mit geprüftem Kontrast.{% endcomment %}
+{%- if settings.mt_hero_style != 'none' -%}
+  <section class="mt-hero-wrap" aria-labelledby="mt-hero-title-{{ section.id }}">
+    <div class="mt-hero{% if settings.mt_hero_style == 'image' and settings.mt_hero_image != blank %} mt-hero--image{% endif %}">
+      {%- if settings.mt_hero_style == 'image' and settings.mt_hero_image != blank -%}
+        {{ settings.mt_hero_image | image_url: width: 1920 | image_tag: class: 'mt-hero__img', widths: '750, 1100, 1500, 1920', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: '' }}
+      {%- endif -%}
+      <div class="mt-hero__body">
+        <h2 class="mt-hero__title" id="mt-hero-title-{{ section.id }}">{{ settings.mt_hero_title | escape }}</h2>
+        {%- if settings.mt_hero_text != blank -%}<p class="mt-hero__text">{{ settings.mt_hero_text | escape | newline_to_br }}</p>{%- endif -%}
+        {%- if settings.mt_hero_cta_label != blank -%}
+          {%- comment -%}Nur interne Pfade (/…) oder http(s)-Adressen, sonst Link auf alle Produkte (kein javascript: o. Ä.){%- endcomment -%}
+          {%- assign mt_cta = settings.mt_hero_cta_url | strip -%}
+          {%- assign mt_c1 = mt_cta | slice: 0, 1 -%}
+          {%- assign mt_c2 = mt_cta | slice: 0, 2 -%}
+          {%- assign mt_c7 = mt_cta | slice: 0, 7 | downcase -%}
+          {%- assign mt_c8 = mt_cta | slice: 0, 8 | downcase -%}
+          {%- assign mt_ok = false -%}
+          {%- if mt_c1 == '/' and mt_c2 != '//' -%}{%- assign mt_ok = true -%}{%- endif -%}
+          {%- if mt_c8 == 'https://' or mt_c7 == 'http://' -%}{%- assign mt_ok = true -%}{%- endif -%}
+          {%- unless mt_ok -%}{%- assign mt_cta = routes.all_products_collection_url -%}{%- endunless -%}
+          <p><a class="mt-btn" href="{{ mt_cta | escape }}">{{ settings.mt_hero_cta_label | escape }}</a></p>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.hero.name",
+  "settings": [
+    { "type": "paragraph", "content": "t:sections.hero.settings.info.content" }
+  ],
+  "presets": [ { "name": "t:sections.hero.name" } ]
+}
+{% endschema %}

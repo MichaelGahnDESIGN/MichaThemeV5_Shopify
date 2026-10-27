@@ -1,0 +1,35 @@
+{%- paginate blog.articles by 12 -%}
+  <div class="mt-container">
+    <h1>{{ blog.title | escape }}</h1>
+    <ul class="mt-grid mt-grid--wide" role="list">
+      {%- for article in blog.articles -%}
+        <li>
+          <article class="mt-card">
+            {%- if article.image -%}
+              <div class="mt-card__media mt-card__media--wide">
+                <a href="{{ article.url }}" tabindex="-1" aria-hidden="true">
+                  {{ article.image | image_url: width: 800 | image_tag: class: 'mt-card__img', widths: '400, 600, 800', sizes: '(min-width: 48rem) 50vw, 100vw', loading: 'lazy', alt: '' }}
+                </a>
+              </div>
+            {%- endif -%}
+            <div class="mt-card__body">
+              <h2 class="mt-card__title"><a href="{{ article.url }}">{{ article.title | escape }}</a></h2>
+              <p class="mt-card__vendor"><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'date' }}</time></p>
+              <p>{{ article.excerpt_or_content | strip_html | truncatewords: 30 }}</p>
+            </div>
+          </article>
+        </li>
+      {%- else -%}
+        <li class="mt-empty">{{ 'blog.empty' | t }}</li>
+      {%- endfor -%}
+    </ul>
+    {%- render 'mt-pagination', paginate: paginate -%}
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "t:sections.main_blog.name",
+  "settings": []
+}
+{% endschema %}
