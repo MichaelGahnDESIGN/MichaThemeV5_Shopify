@@ -602,7 +602,7 @@
                 },
                 "mt_announcement_text": {
                     "label": "Text der Ankündigungsleiste",
-                    "info": "Bitte nur belegbare Aussagen verwenden (UWG)."
+                    "info": "Leer = keine Meldung. Bitte nur belegbare Aussagen verwenden (UWG), zum Beispiel eine Versandgrenze nur, wenn sie im Shop wirklich gilt."
                 }
             }
         },

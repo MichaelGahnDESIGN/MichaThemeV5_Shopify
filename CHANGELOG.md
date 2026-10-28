@@ -1,5 +1,14 @@
 # Änderungen
 
+## 0.3.1 (Entwurf, Pre-Alpha)
+
+Kleine Korrektur zum neuen Design.
+
+- Geändert: Der Text der Ankündigungsleiste ist standardmäßig leer (kein erfundener Beispieltext).
+- Geändert: Links ändern beim Darüberfahren die Farbe aus dem Akzent-Linkton (`accent-text`) und sind so auch bei eigenen Akzentfarben gut lesbar.
+- Der Standard-Akzent, die Farben und alle Einstellungen bleiben wie in 0.3.0. Prozent-Siegel und Countdown gibt es nur in den Pro-Erweiterungen und sind dort jetzt aus.
+- Bekannt offen: nicht im Theme Store, nicht in einem echten Shop getestet, App ohne Oberfläche.
+
 ## 0.3.0 (Entwurf, Pre-Alpha)
 
 Neues, einheitliches Design. Es gilt gleich für die vier MichaThemeV5-Themes (WooCommerce, Shopware, JTL-Shop, Shopify).
