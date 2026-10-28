@@ -29,7 +29,8 @@
         "fav_add": "Zu Favoriten hinzufügen: %s",
         "fav_remove": "Aus Favoriten entfernen: %s",
         "fav_title": "Favoriten",
-        "fav_count": "Favoriten, %s Einträge"
+        "fav_count": "Favoriten, %s Einträge",
+        "fav_count_one": "Favoriten, %s Eintrag"
     },
     "price": {
         "regular": "Regulärer Preis",

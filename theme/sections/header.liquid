@@ -69,7 +69,7 @@
       {%- if settings.mt_favorites -%}
         {%- comment -%}Favoriten > unsichtbar bis mt-theme.js Einträge im localStorage findet{%- endcomment -%}
         <div class="mt-hdr-item mt-hdr-item--favs" data-mt-fav-item hidden>
-          <button type="button" class="mt-icon-button" data-mt-fav-open aria-expanded="false" aria-controls="mt-fav-panel" data-label-count="{{ 'general.fav_count' | t | escape }}" aria-label="{{ 'general.fav_title' | t | escape }}">
+          <button type="button" class="mt-icon-button" data-mt-fav-open aria-expanded="false" aria-controls="mt-fav-panel" data-label-count="{{ 'general.fav_count' | t | escape }}" data-label-count-one="{{ 'general.fav_count_one' | t | escape }}" aria-label="{{ 'general.fav_title' | t | escape }}">
             <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
             <span class="mt-list-count" data-mt-fav-count aria-hidden="true">0</span>
           </button>

@@ -1,5 +1,12 @@
 # Änderungen
 
+## 0.4.1 (Entwurf, Pre-Alpha)
+
+Kleine Korrektur zu 0.4.0.
+
+- Korrigiert: Der Zähl-Text der Favoriten stimmt jetzt in der Einzahl. Deutsch: „Favoriten, 1 Eintrag“ (vorher „1 Einträge“). Englisch: „Favorites, 1 item“. Dafür gibt es die neue Übersetzung `general.fav_count_one`.
+- Doku: Hinweis zu Farben und Palette. Gespeicherte Farbpaletten gibt es bei Shopify nicht (siehe README).
+
 ## 0.4.0 (Entwurf, Pre-Alpha)
 
 Neue Icon-Leiste in der Kopfzeile. Sie gilt gleich für die vier MichaThemeV5-Themes.
