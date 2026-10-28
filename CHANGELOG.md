@@ -1,5 +1,24 @@
 # Änderungen
 
+## 0.3.0 (Entwurf, Pre-Alpha)
+
+Neues, einheitliches Design. Es gilt gleich für die vier MichaThemeV5-Themes (WooCommerce, Shopware, JTL-Shop, Shopify).
+
+- Geändert: Hell = weiße Karten auf Hellgrau, Dunkel = Anthrazit. Standard-Akzent ist jetzt Rot, jeder andere Akzent und die eigene Farbe bleiben wählbar. Wer schon einen Akzent gespeichert hat, behält ihn.
+- Geändert: Rot nur für Bedienbares (Kaufen-Button, aktiver Menüpunkt, aktuelle Seite, Warenkorb-Zähler). Pro Seite gibt es einen Haupt-Button, die anderen sind neutral umrandet oder Text-Buttons (Filter, Newsletter im Footer, Video laden, Blättern, Warenkorb aktualisieren).
+- Geändert: Sonderpreis-Siegel getönt mit Text (vorher Vollfläche), Ausverkauft neutral umrandet. Der Sonderpreis steht in der Textfarbe, der Streichpreis durchgestrichen und gedämpft. Hinweise zum Preis sind jetzt mindestens 14 px groß.
+- Geändert: Produktkarten mit Rahmen, ohne Hüpfen. Hover hell = Schatten, dunkel = hellere Fläche. Titel höchstens zwei Zeilen, Preis steht am Kartenende. Die Einstellung „Kartenstil“ bleibt.
+- Geändert: Kopfzeile (Logo, Suche in der Mitte, Werkzeuge rechts, Menü in zweiter Zeile mit Unterstrich beim aktiven Punkt). Warenkorb-Zähler als Pille, bei leerem Warenkorb ohne Zähler. Die Kopfzeilen-Höhe wird für den festen Header gemessen.
+- Geändert: Footer auf `surface-2`, Brotkrümel gedämpft, Seitenzahlen, Formulare (Platzhalter, Fokus) und Bildkante.
+- Neu: Fehlerboxen mit Symbol, dem Wort „Fehler:“ und Rand (Kontakt, Passwort, Newsletter, Gutschein). Nie rot gefüllt.
+- Geändert: Es gibt nur noch die Schriftgewichte 400 und 700 (Gewichte 600 und 800 gab es in den lokalen Schriften nicht).
+- Behoben: Eigene Akzentfarbe (Experte): Die Schrift auf dem Button wird nach dem Kontrast gewählt (vorher nach der Helligkeit, mittelhelle Farben wie Orange hatten zu wenig Kontrast). Hover und Link-Ton werden abgeleitet.
+- Geändert: Lieferzeit und Text der Ankündigungsleiste sind standardmäßig leer (vorher ein erfundener Beispieltext). Der Hilfetext nennt „Lieferzeit: 2–4 Werktage“ nur noch als Beispiel.
+- Geändert: Die Farben der App-Glocke (Ordner `michatheme-v5-app`) kommen jetzt aus dem Theme statt fest eingetragen zu sein.
+- Geprüft: offizielles Theme Check (keine Fehler, keine Warnungen), Tests der Plattform, Kontrast der Farben, Screenshots in Hell und Dunkel bei 1280 und 390 Pixel Breite aus einer statischen Vorschau mit Beispieldaten.
+- Hinweis: Kasse, Danke-Seite, Bestellstatus und neue Kundenkonten steuert Shopify, nicht das Theme (siehe README).
+- Bekannt offen: nicht im Theme Store, nicht in einem echten Shop oder Entwicklungs-Shop getestet (die Screenshots sind keine echten Shopify-Seiten), App ohne Oberfläche und ohne Installationsablauf.
+
 ## 0.2.0 (Entwurf, Pre-Alpha)
 
 Das Theme kommt jetzt komplett aus dem Generator der Plattform. Es enthält alle Funktionen, die dort seit 0.1.0 dazugekommen sind.

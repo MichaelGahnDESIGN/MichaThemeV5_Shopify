@@ -1,0 +1,28 @@
+{% comment %}
+  Akzent-Variablen aus einer eigenen Farbe. Params: color (Pflicht), mode ('light' oder 'dark').
+  Schrift auf Akzent: Kontrast gegen Weiß und Schwarz, die Farbe mit mehr Kontrast gewinnt (Mitte bei Luminanz ca. 0.179, nicht mehr nach einfacher Helligkeit).
+  Link-Ton: die Farbe selbst nur, wenn sie auf der dunkelsten hellen bzw. hellsten dunklen Fläche mindestens 4,5:1 hat, sonst zum Text hin gemischt.
+  Hover: zur Gegenfarbe der Schrift gemischt, dadurch steigt der Kontrast der Button-Schrift beim Hover immer.
+{% endcomment %}
+{%- assign mt_cw = color | color_contrast: '#ffffff' -%}
+{%- assign mt_cb = color | color_contrast: '#000000' -%}
+{%- if mt_cb > mt_cw -%}
+  {%- assign mt_on = '#000000' -%}{%- assign mt_opp = '#ffffff' -%}
+{%- else -%}
+  {%- assign mt_on = '#ffffff' -%}{%- assign mt_opp = '#000000' -%}
+{%- endif -%}
+{%- if mode == 'dark' -%}
+  {%- assign mt_ref = '#2d2f34' -%}{%- assign mt_pull = '#ffffff' -%}
+{%- else -%}
+  {%- assign mt_ref = '#eceef0' -%}{%- assign mt_pull = '#000000' -%}
+{%- endif -%}
+{%- assign mt_ct = color | color_contrast: mt_ref -%}
+--mt-accent: {{ color }} !important;
+--mt-on-accent: {{ mt_on }} !important;
+--mt-accent-hover: color-mix(in srgb, {{ color }} 88%, {{ mt_opp }}) !important;
+{%- if mt_ct >= 4.5 %}
+--mt-accent-text: {{ color }} !important;
+{%- else %}
+--mt-accent-text: color-mix(in srgb, {{ color }} 40%, {{ mt_pull }}) !important;
+{%- endif %}
+--mt-accent-subtle: color-mix(in srgb, {{ color }} 10%, var(--mt-surface)) !important;

@@ -5,7 +5,8 @@
       <p class="mt-alert mt-alert--success" role="status">{{ 'contact.success' | t }}</p>
     {%- endif -%}
     {%- if form.errors -%}
-      <div class="mt-alert mt-alert--danger" role="alert">{{ form.errors | default_errors }}</div>
+      {%- capture mt_errors -%}{{ form.errors | default_errors }}{%- endcapture -%}
+      {%- render 'mt-error', html: mt_errors -%}
     {%- endif -%}
     <div class="mt-field">
       <label for="mt-contact-name">{{ 'contact.name' | t }}</label>

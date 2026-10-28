@@ -20,7 +20,8 @@
       <h1>{{ 'gift_card.title' | t }}</h1>
       <p class="mt-price">{{ gift_card.balance | money }}</p>
       {%- if gift_card.enabled == false or gift_card.expired -%}
-        <p class="mt-alert mt-alert--danger" role="alert">{{ 'gift_card.disabled' | t }}</p>
+        {%- assign mt_disabled = 'gift_card.disabled' | t -%}
+        {%- render 'mt-error', html: mt_disabled -%}
       {%- endif -%}
       {%- if gift_card.expires_on -%}
         {%- assign mt_expires = gift_card.expires_on | date: format: 'date' -%}
