@@ -2,7 +2,7 @@
   Notification Glocke > Platzierung aus Theme-Einstellungen (mt_notification_placement)
   Parameter: place = header | footer | floating-bottom-right | floating-bottom-left
   Meldungen kommen aus der MichaThemeV5-App über den App-Proxy (Pfad mt_notification_proxy_path)
-  Unsichtbar (hidden), bis assets/mt-notification.js eine gültige Antwort der App hat. Ohne JS oder ohne App sieht niemand eine tote Glocke.
+  Unsichtbar (hidden), bis assets/mt-notification.js eine gültige Antwort mit mindestens 1 Eintrag hat. Ohne JS oder ohne App sieht niemand eine tote Glocke.
 {% endcomment %}
 {%- assign mt_n_path = settings.mt_notification_proxy_path | default: '/apps/michatheme-notifications' -%}
 <div class="mt-notification mt-notification--{{ place | handleize }}" data-mt-notification data-proxy-path="{{ mt_n_path | escape }}" data-app-api="1"

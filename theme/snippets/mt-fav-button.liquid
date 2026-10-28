@@ -1,0 +1,11 @@
+{% comment %}
+  Favoriten-Herz. Parameter: product (Pflicht), place = card | detail
+  Liste liegt nur im Browser (localStorage mt-favs), Logik > assets/mt-theme.js. Aus bei Einstellung mt_favorites = aus.
+{% endcomment %}
+{%- if settings.mt_favorites -%}
+  {%- assign mt_fav_add = 'general.fav_add' | t -%}
+  <button type="button" class="mt-fav-toggle{% if place == 'card' %} mt-fav-toggle--card{% endif %}" data-mt-fav-toggle data-mt-fav-id="{{ product.id }}" data-mt-fav-title="{{ product.title | escape }}" data-mt-fav-url="{{ product.url }}"
+    aria-pressed="false" aria-label="{{ mt_fav_add | replace: '%s', product.title | escape }}" data-label-add="{{ mt_fav_add | escape }}" data-label-remove="{{ 'general.fav_remove' | t | escape }}">
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+  </button>
+{%- endif -%}

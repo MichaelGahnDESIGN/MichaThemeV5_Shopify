@@ -1,6 +1,6 @@
 /* MichaThemeV5 Notification Glocke - Meldungen aus der MichaThemeV5-App (App-Proxy), kein Drittanbieter, kein Tracking
    Vorlage > MichaThemeV5-Pro/themes/shopify/assets
-   Glocke bleibt versteckt, bis die App antwortet (im Theme-Editor kommt ein Hinweis)
+   Glocke bleibt versteckt, bis die App mindestens 1 Eintrag liefert (im Theme-Editor kommt ein Hinweis)
    Tastatur: Enter/Leertaste öffnet, Escape schließt und setzt den Fokus zurück auf die Glocke */
 (function () {
   'use strict';
@@ -96,7 +96,8 @@
       var items = feed.items.filter(function (item) { return item && (compatible || item.scope === 'public'); });
       render(items);
       setUnread(items.filter(function (item) { return !item.readAt; }).length);
-      root.hidden = false;
+      // ohne Einträge bleibt die Glocke weg
+      root.hidden = items.length === 0;
     }).catch(failed);
   }
 

@@ -352,7 +352,21 @@
                     "info": "Leave empty to use the accent color above. Note: custom colors are not contrast-checked automatically."
                 },
                 "mt_mode_toggle": {
-                    "label": "Show light/dark switch in the header"
+                    "label": "Show light/dark switch",
+                    "info": "Off = no switch in the shop. Choose below where it appears."
+                },
+                "mt_mode_toggle_place": {
+                    "label": "Place of the light/dark switch",
+                    "info": "Header = icon in the icon bar (default). Footer = row in the footer. Customer account: Shopify manages customer accounts itself, so the theme cannot add anything there. The switch then appears as a row in the footer.",
+                    "options__1": {
+                        "label": "Header"
+                    },
+                    "options__2": {
+                        "label": "Footer"
+                    },
+                    "options__3": {
+                        "label": "Customer account settings"
+                    }
                 },
                 "mt_color_preset": {
                     "label": "Color preset",
@@ -603,6 +617,10 @@
                 "mt_announcement_text": {
                     "label": "Announcement bar text",
                     "info": "Only use statements you can prove (unfair competition law)."
+                },
+                "mt_favorites": {
+                    "label": "Show favorites (heart list)",
+                    "info": "Visitors can mark products with a heart. The list stays in their own browser and is not sent to the shop. The header icon appears only when at least one favorite is saved."
                 }
             }
         },

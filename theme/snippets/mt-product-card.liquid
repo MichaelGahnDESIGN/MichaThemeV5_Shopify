@@ -22,6 +22,7 @@
       <span class="mt-badge mt-badge--sale">{{ 'products.sale' | t }}</span>
     {%- endif -%}
   </div>
+  {%- render 'mt-fav-button', product: product, place: 'card' -%}
   <div class="mt-card__body">
     <h3 class="mt-card__title"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
     {%- if product.vendor != blank -%}<p class="mt-card__vendor">{{ product.vendor | escape }}</p>{%- endif -%}

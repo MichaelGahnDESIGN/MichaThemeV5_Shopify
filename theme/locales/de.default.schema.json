@@ -352,7 +352,21 @@
                     "info": "Leer lassen, um die Akzentfarbe von oben zu nutzen. Achtung: Eigene Farben werden nicht automatisch auf Kontrast geprüft."
                 },
                 "mt_mode_toggle": {
-                    "label": "Umschalter Hell/Dunkel im Header anzeigen"
+                    "label": "Umschalter Hell/Dunkel anzeigen",
+                    "info": "Aus = es gibt keinen Umschalter im Shop. Wo er steht, wählen Sie darunter."
+                },
+                "mt_mode_toggle_place": {
+                    "label": "Ort des Hell/Dunkel-Schalters",
+                    "info": "Header = Symbol in der Icon-Leiste (Standard). Footer = Zeile im Fußbereich. Benutzerkonto: Shopify steuert die Kundenkonten selbst, das Theme kann dort nichts einfügen. Der Schalter steht dann als Zeile im Footer.",
+                    "options__1": {
+                        "label": "Header"
+                    },
+                    "options__2": {
+                        "label": "Footer"
+                    },
+                    "options__3": {
+                        "label": "Benutzerkonto-Einstellungen"
+                    }
                 },
                 "mt_color_preset": {
                     "label": "Farbvorlage",
@@ -603,6 +617,10 @@
                 "mt_announcement_text": {
                     "label": "Text der Ankündigungsleiste",
                     "info": "Leer = keine Meldung. Bitte nur belegbare Aussagen verwenden (UWG), zum Beispiel eine Versandgrenze nur, wenn sie im Shop wirklich gilt."
+                },
+                "mt_favorites": {
+                    "label": "Favoriten (Herz-Liste) anzeigen",
+                    "info": "Besucher können Artikel mit dem Herz merken. Die Liste liegt nur im eigenen Browser, sie wird nicht an den Shop gesendet. Das Symbol im Header erscheint erst, wenn mindestens ein Favorit gespeichert ist."
                 }
             }
         },

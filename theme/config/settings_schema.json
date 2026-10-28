@@ -2,7 +2,7 @@
     {
         "name": "theme_info",
         "theme_name": "MichaThemeV5",
-        "theme_version": "0.3.1",
+        "theme_version": "0.4.0",
         "theme_author": "Michael Gahn DESIGN",
         "theme_documentation_url": "https://theme.michael-gahn.de",
         "theme_support_url": "https://theme.michael-gahn.de"
@@ -72,7 +72,29 @@
                 "type": "checkbox",
                 "id": "mt_mode_toggle",
                 "label": "t:settings_schema.mt_colors.settings.mt_mode_toggle.label",
+                "info": "t:settings_schema.mt_colors.settings.mt_mode_toggle.info",
                 "default": true
+            },
+            {
+                "type": "select",
+                "id": "mt_mode_toggle_place",
+                "label": "t:settings_schema.mt_colors.settings.mt_mode_toggle_place.label",
+                "info": "t:settings_schema.mt_colors.settings.mt_mode_toggle_place.info",
+                "options": [
+                    {
+                        "value": "header",
+                        "label": "t:settings_schema.mt_colors.settings.mt_mode_toggle_place.options__1.label"
+                    },
+                    {
+                        "value": "footer",
+                        "label": "t:settings_schema.mt_colors.settings.mt_mode_toggle_place.options__2.label"
+                    },
+                    {
+                        "value": "account",
+                        "label": "t:settings_schema.mt_colors.settings.mt_mode_toggle_place.options__3.label"
+                    }
+                ],
+                "default": "header"
             },
             {
                 "type": "select",
@@ -493,6 +515,13 @@
                 "id": "mt_announcement_text",
                 "label": "t:settings_schema.mt_header.settings.mt_announcement_text.label",
                 "info": "t:settings_schema.mt_header.settings.mt_announcement_text.info"
+            },
+            {
+                "type": "checkbox",
+                "id": "mt_favorites",
+                "label": "t:settings_schema.mt_header.settings.mt_favorites.label",
+                "info": "t:settings_schema.mt_header.settings.mt_favorites.info",
+                "default": true
             }
         ]
     },

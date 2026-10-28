@@ -94,6 +94,18 @@ input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="
 /* Warenkorb Zähler - rote Pille, leer = nicht sichtbar */
 .mt-cart-count { display: inline-flex; align-items: center; justify-content: center; min-width: 1.25rem; height: 1.25rem; padding: 0 .35rem; border-radius: var(--mt-radius-pill); background: var(--mt-accent); color: var(--mt-on-accent); font-size: var(--mt-text-xs); font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
 .mt-cart-count--empty { display: none; }
+/* Icon-Leiste: Favoriten + Glocke, Zähler hängt am Button */
+.mt-header { position: relative; }
+.mt-hdr-item .mt-icon-button { position: relative; }
+.mt-hdr-item--favs { position: static; }
+/* Favoriten Panel Handy = volle Breite unter dem Header (wie Glocke) */
+.mt-header .mt-fav-panel { left: 1rem; right: 1rem; width: auto; }
+/* Footer Zeile Farbmodus */
+.mt-footer__mode { width: min(100% - 2rem, 80rem); margin-inline: auto; padding-bottom: var(--mt-gap); }
+.mt-footer .mt-mode-toggle { background: transparent; }
+/* Titelzeile Artikelseite mit Herz */
+.mt-product__titlebar { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--mt-gap); }
+.mt-product__titlebar .mt-product__title { flex: 1 1 auto; min-width: 0; }
 .mt-search { display: flex; gap: .5rem; align-items: center; }
 .mt-search--inline { display: none; }
 .mt-header__search { display: none; }
@@ -107,6 +119,8 @@ input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="
 .mt-search--page input { flex: 1 1 12rem; }
 
 @media (min-width: 48rem) {
+  .mt-hdr-item--favs { position: relative; }
+  .mt-header .mt-fav-panel { left: auto; right: 0; width: min(22rem, calc(100vw - 2rem)); }
   /* Suche mittig: Marke links und Werkzeuge rechts teilen sich den Rest gleich, dadurch sitzt die Suche in der Mitte. */
   :root:not([data-mt-search="icon"]) .mt-header__search { display: flex; flex: 0 1 32rem; justify-content: center; }
   :root:not([data-mt-search="icon"]) .mt-header__brand,

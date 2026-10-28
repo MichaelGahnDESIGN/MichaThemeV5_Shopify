@@ -1,31 +1,10 @@
 /* MichaThemeV5 Shopify JS - kein Drittanbieter, kein Tracking. Vorlage > MichaThemeV5-Pro/themes/shopify/assets
-   Hell/Dunkel (localStorage "mt-mode" nur wenn selbst umgestellt), Textgröße, Handy-Menü, Tabs
+   Hell/Dunkel, Textgröße + Favoriten > mt-theme.js (aus dem Kern), hier nur Handy-Menü, Tabs
    Cookie-Button: kein eigenes Banner, nur privacyBanner von Shopify oder Event mt:consent-open für Consent-Apps
    2-Klick Video + verwandte Artikel nachladen */
 (function () {
   'use strict';
   var root = document.documentElement;
-  var order = ['system', 'light', 'dark'];
-
-  function currentMode() {
-    var t = root.getAttribute('data-theme');
-    return t === 'light' || t === 'dark' ? t : 'system';
-  }
-  function labelMode(b, mode) {
-    var label = b.getAttribute('data-label-' + mode) || mode;
-    var pattern = b.getAttribute('data-label-pattern') || '%s';
-    b.setAttribute('aria-label', pattern.replace('%s', label));
-    var out = b.querySelector('[data-mt-mode-label]');
-    if (out) { out.textContent = label; }
-  }
-  function applyMode(mode, save) {
-    if (mode === 'system') { root.removeAttribute('data-theme'); } else { root.setAttribute('data-theme', mode); }
-    if (save) {
-      try { window.localStorage.setItem('mt-mode', mode); } catch (e) { /* kein Speicher verfügbar */ }
-    }
-    document.querySelectorAll('[data-mt-mode-toggle]').forEach(function (b) { labelMode(b, mode); });
-  }
-
   function setupNav() {
     document.querySelectorAll('[data-mt-nav-toggle]').forEach(function (btn) {
       var nav = document.getElementById(btn.getAttribute('aria-controls'));
@@ -114,18 +93,6 @@
     });
   }
 
-  document.addEventListener('click', function (e) {
-    var t = e.target.closest ? e.target.closest('[data-mt-mode-toggle]') : null;
-    if (t) { applyMode(order[(order.indexOf(currentMode()) + 1) % order.length], true); }
-    var s = e.target.closest ? e.target.closest('[data-mt-size-step]') : null;
-    if (s) {
-      var sizes = ['small', 'normal', 'large'];
-      var i = sizes.indexOf(root.getAttribute('data-mt-size') || 'normal');
-      i = Math.max(0, Math.min(2, i + parseInt(s.getAttribute('data-mt-size-step'), 10)));
-      root.setAttribute('data-mt-size', sizes[i]);
-    }
-  });
-
   // 2-Klick Video: iframe erst hier nach Klick, youtube-nocookie bzw. vimeo dnt
   document.addEventListener('click', function (ev) {
     var b = ev.target.closest ? ev.target.closest('[data-mt-video-load]') : null;
@@ -162,7 +129,11 @@
         if (!html) { return; }
         var doc = new DOMParser().parseFromString(html, 'text/html');
         var fresh = doc.querySelector('[data-mt-recommendations]');
-        if (fresh && fresh.children.length) { box.innerHTML = fresh.innerHTML; }
+        if (fresh && fresh.children.length) {
+          box.innerHTML = fresh.innerHTML;
+          // neue Karten > Herz-Status nachziehen
+          document.dispatchEvent(new Event('mt:favs-sync'));
+        }
       }).catch(function () { /* ohne Empfehlungen bleibt die Section leer */ });
     });
   }
@@ -176,7 +147,6 @@
     window.addEventListener('resize', set);
   }
 
-  applyMode(currentMode(), false);
   setupHeaderHeight();
   setupNav();
   setupTabs();
