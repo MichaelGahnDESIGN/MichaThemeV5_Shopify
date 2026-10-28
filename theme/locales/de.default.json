@@ -25,7 +25,11 @@
         "next": "Weiter",
         "page_n": "Seite {{ n }}",
         "breadcrumbs": "Brotkrümelnavigation",
-        "home": "Startseite"
+        "home": "Startseite",
+        "fav_add": "Zu Favoriten hinzufügen: %s",
+        "fav_remove": "Aus Favoriten entfernen: %s",
+        "fav_title": "Favoriten",
+        "fav_count": "Favoriten, %s Einträge"
     },
     "price": {
         "regular": "Regulärer Preis",
@@ -103,7 +107,8 @@
         "legal_hint": "Nur im Theme-Editor sichtbar: Es fehlen Rechtstexte (z. B. Datenschutz, Widerruf, Versand). Bitte unter Einstellungen > Richtlinien hinterlegen, ebenso Impressum und AGB. Technischer Hinweis, keine Rechtsberatung.",
         "withdrawal": "Vertrag widerrufen",
         "accessibility": "Barrierefreiheit",
-        "shipping_label": "Versand"
+        "shipping_label": "Versand",
+        "mode_name": "Farbmodus"
     },
     "contact": {
         "name": "Name",

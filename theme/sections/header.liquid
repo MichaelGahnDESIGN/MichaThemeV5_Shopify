@@ -52,26 +52,36 @@
           <button type="submit" class="mt-btn">{{ 'general.search' | t }}</button>
         </form>
       </details>
-      {%- if shop.customer_accounts_enabled -%}
-        <a class="mt-icon-button" href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}">
-          {%- render 'mt-icon', name: 'account' -%}<span class="mt-visually-hidden">{{ 'general.account' | t }}</span>
-        </a>
-      {%- endif -%}
-      {%- if settings.mt_mode_toggle -%}
-        <button type="button" class="mt-mode-toggle mt-mode-toggle--icon" data-mt-mode-toggle
-          data-label-system="{{ 'general.mode_system' | t | escape }}" data-label-light="{{ 'general.mode_light' | t | escape }}" data-label-dark="{{ 'general.mode_dark' | t | escape }}"
-          data-label-pattern="{{ 'general.mode_label' | t | escape }}" aria-label="{{ 'general.mode_toggle' | t | escape }}">
-          {%- render 'mt-icon', name: 'contrast' -%}<span class="mt-visually-hidden" data-mt-mode-label>{{ 'general.mode_system' | t }}</span>
-        </button>
-      {%- endif -%}
+      {%- comment -%}Icon-Leiste links > rechts: Schalter, Glocke, Merkliste (gibt es bei Shopify nicht), Favoriten, Konto, Warenkorb{%- endcomment -%}
       {%- if settings.mt_a11y_text_widget -%}
         <span class="mt-size-steps" role="group" aria-label="{{ 'general.text_size' | t | escape }}">
           <button type="button" class="mt-icon-button" data-mt-size-step="-1">{%- render 'mt-icon', name: 'minus' -%}<span class="mt-visually-hidden">{{ 'general.text_smaller' | t }}</span></button>
           <button type="button" class="mt-icon-button" data-mt-size-step="1">{%- render 'mt-icon', name: 'plus' -%}<span class="mt-visually-hidden">{{ 'general.text_larger' | t }}</span></button>
         </span>
       {%- endif -%}
+      {%- assign mt_mode_place = settings.mt_mode_toggle_place | default: 'header' -%}
+      {%- if settings.mt_mode_toggle and mt_mode_place == 'header' -%}
+        {%- render 'mt-mode-toggle', place: 'header' -%}
+      {%- endif -%}
       {%- if settings.mt_notification_placement == 'header' -%}
         {%- render 'mt-notification', place: 'header' -%}
+      {%- endif -%}
+      {%- if settings.mt_favorites -%}
+        {%- comment -%}Favoriten > unsichtbar bis mt-theme.js Einträge im localStorage findet{%- endcomment -%}
+        <div class="mt-hdr-item mt-hdr-item--favs" data-mt-fav-item hidden>
+          <button type="button" class="mt-icon-button" data-mt-fav-open aria-expanded="false" aria-controls="mt-fav-panel" data-label-count="{{ 'general.fav_count' | t | escape }}" aria-label="{{ 'general.fav_title' | t | escape }}">
+            <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            <span class="mt-list-count" data-mt-fav-count aria-hidden="true">0</span>
+          </button>
+          <section id="mt-fav-panel" class="mt-fav-panel" data-mt-fav-panel data-label-remove="{{ 'general.fav_remove' | t | escape }}" aria-label="{{ 'general.fav_title' | t | escape }}" hidden>
+            <ul class="mt-fav-list" data-mt-fav-list></ul>
+          </section>
+        </div>
+      {%- endif -%}
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="mt-icon-button" href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}">
+          {%- render 'mt-icon', name: 'account' -%}<span class="mt-visually-hidden">{{ 'general.account' | t }}</span>
+        </a>
       {%- endif -%}
       <a class="mt-icon-button mt-cart-link" href="{{ routes.cart_url }}">
         {%- render 'mt-icon', name: 'cart' -%}

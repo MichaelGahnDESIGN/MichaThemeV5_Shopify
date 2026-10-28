@@ -1,5 +1,20 @@
 # Änderungen
 
+## 0.4.0 (Entwurf, Pre-Alpha)
+
+Neue Icon-Leiste in der Kopfzeile. Sie gilt gleich für die vier MichaThemeV5-Themes.
+
+- Neu: Reihenfolge rechts in der Kopfzeile: Hell/Dunkel-Schalter, Glocke, Favoriten, Konto, Warenkorb. Die Suche bleibt in der Mitte.
+- Geändert: Der Hell/Dunkel-Schalter ist nur noch ein Symbol (44 × 44 Pixel). Der Zustand steht im Tooltip und für Screenreader im Label.
+- Neu: Einstellung „Ort des Hell/Dunkel-Schalters“: Header oder Footer (Zeile im Footer).
+- Einschränkung: „Benutzerkonto-Einstellungen“ gibt es bei Shopify nicht richtig. Das Kundenkonto gehört Shopify, das Theme kann dort nichts einfügen. Bei dieser Wahl steht der Schalter als Zeile im Footer.
+- Neu: Favoriten (Herz) auf Produktkarten und der Artikelseite. Das Symbol im Header erscheint erst, wenn mindestens ein Favorit gemerkt ist. Die Liste bleibt im Browser des Besuchers. Mit der Einstellung „Favoriten“ abschaltbar.
+- Einschränkung: Keine Merkliste, denn Shopify hat keine eigene Wunschliste.
+- Geändert: Die Glocke bleibt unsichtbar, solange die App keine Meldung liefert (vorher auch bei leerer Antwort sichtbar).
+- Geändert: Hell/Dunkel, Textgröße und Favoriten kommen aus einer gemeinsamen Datei (`mt-theme.js`). Der doppelte Code in `mt-shopify.js` ist weg.
+- Geprüft: offizielles Theme Check (keine Fehler, keine Warnungen), Tests der Plattform, Sichtprüfung aus einer statischen Vorschau mit Beispieldaten (Hell und Dunkel, 1280 und 390 Pixel).
+- Bekannt offen: nicht im Theme Store, nicht in einem echten Shop getestet, App ohne Oberfläche.
+
 ## 0.3.1 (Entwurf, Pre-Alpha)
 
 Kleine Korrektur zum neuen Design.

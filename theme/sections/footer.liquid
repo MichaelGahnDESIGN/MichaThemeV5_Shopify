@@ -74,6 +74,11 @@
   {%- if settings.mt_notification_placement == 'footer' -%}
     <div class="mt-footer__notification">{%- render 'mt-notification', place: 'footer' -%}</div>
   {%- endif -%}
+  {%- assign mt_mode_place = settings.mt_mode_toggle_place | default: 'header' -%}
+  {%- if settings.mt_mode_toggle and mt_mode_place != 'header' -%}
+    {%- comment -%}Schalter Footer/Konto > Shopify steuert Kundenkonten selbst, bei "account" steht die Zeile deshalb hier{%- endcomment -%}
+    <div class="mt-footer__mode">{%- render 'mt-mode-toggle', place: mt_mode_place -%}</div>
+  {%- endif -%}
   <p class="mt-footer__copy">&copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}</p>
 </footer>
 

@@ -25,7 +25,11 @@
         "next": "Next",
         "page_n": "Page {{ n }}",
         "breadcrumbs": "Breadcrumb navigation",
-        "home": "Home"
+        "home": "Home",
+        "fav_add": "Add to favorites: %s",
+        "fav_remove": "Remove from favorites: %s",
+        "fav_title": "Favorites",
+        "fav_count": "Favorites, %s items"
     },
     "price": {
         "regular": "Regular price",
@@ -103,7 +107,8 @@
         "legal_hint": "Only visible in the theme editor: legal pages are missing (e.g. privacy, returns, shipping). Please add them under Settings > Policies, as well as legal notice and terms. Technical note, no legal advice.",
         "withdrawal": "Withdraw from contract",
         "accessibility": "Accessibility",
-        "shipping_label": "Shipping"
+        "shipping_label": "Shipping",
+        "mode_name": "Color mode"
     },
     "contact": {
         "name": "Name",

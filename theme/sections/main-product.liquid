@@ -48,7 +48,10 @@
 
   <div class="mt-product__info">
     {%- if product.vendor != blank -%}<p class="mt-product__vendor">{{ product.vendor | escape }}</p>{%- endif -%}
-    <h1 class="mt-product__title">{{ product.title | escape }}</h1>
+    <div class="mt-product__titlebar">
+      <h1 class="mt-product__title">{{ product.title | escape }}</h1>
+      {%- render 'mt-fav-button', product: product, place: 'detail' -%}
+    </div>
     {%- render 'mt-price', product: product, variant: current_variant -%}
     {%- if current_variant.available -%}
       {%- assign mt_shipping_time = product.metafields.mt.lieferzeit.value | default: settings.mt_legal_shipping_time -%}

@@ -41,6 +41,8 @@
       {{ content_for_layout }}
     </main>
     {% sections 'footer-group' %}
+    {%- comment -%}mt-theme.js aus dem Kern (Hell/Dunkel, Textgröße, Favoriten), vor mt-shopify.js{%- endcomment -%}
+    <script src="{{ 'mt-theme.js' | asset_url }}" defer></script>
     <script src="{{ 'mt-shopify.js' | asset_url }}" defer></script>
     {%- comment -%}Notification Glocke > snippets/mt-notification.liquid (Kopfzeile + Footer rendern die Sections selbst){%- endcomment -%}
     {%- if settings.mt_notification_placement != 'none' -%}
