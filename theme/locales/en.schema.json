@@ -329,18 +329,21 @@
                     "label": "Accent color",
                     "info": "Color for buttons, links and highlights. All variants are contrast-checked for light and dark.",
                     "options__1": {
-                        "label": "Teal"
+                        "label": "Red"
                     },
                     "options__2": {
-                        "label": "Indigo"
+                        "label": "Teal"
                     },
                     "options__3": {
-                        "label": "Amber"
+                        "label": "Indigo"
                     },
                     "options__4": {
-                        "label": "Rose"
+                        "label": "Amber"
                     },
                     "options__5": {
+                        "label": "Rose"
+                    },
+                    "options__6": {
                         "label": "Graphite"
                     }
                 },
@@ -841,7 +844,7 @@
                 },
                 "mt_legal_shipping_time": {
                     "label": "Delivery time",
-                    "info": "Default for all products. Can be overridden per product with the product metafield mt.lieferzeit (single line text). Empty = no information."
+                    "info": "Default for all products, for example “Delivery time: 2–4 working days”. Only enter what you really keep. Can be overridden per product with the product metafield mt.lieferzeit (single line text). Empty = no information."
                 },
                 "mt_legal_lowest_price": {
                     "label": "Lowest price of the last 30 days for strike-through prices",

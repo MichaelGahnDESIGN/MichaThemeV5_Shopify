@@ -2,7 +2,7 @@
     {
         "name": "theme_info",
         "theme_name": "MichaThemeV5",
-        "theme_version": "0.2.0",
+        "theme_version": "0.3.0",
         "theme_author": "Michael Gahn DESIGN",
         "theme_documentation_url": "https://theme.michael-gahn.de",
         "theme_support_url": "https://theme.michael-gahn.de"
@@ -42,27 +42,31 @@
                 "info": "t:settings_schema.mt_colors.settings.mt_accent.info",
                 "options": [
                     {
-                        "value": "teal",
+                        "value": "red",
                         "label": "t:settings_schema.mt_colors.settings.mt_accent.options__1.label"
                     },
                     {
-                        "value": "indigo",
+                        "value": "teal",
                         "label": "t:settings_schema.mt_colors.settings.mt_accent.options__2.label"
                     },
                     {
-                        "value": "amber",
+                        "value": "indigo",
                         "label": "t:settings_schema.mt_colors.settings.mt_accent.options__3.label"
                     },
                     {
-                        "value": "rose",
+                        "value": "amber",
                         "label": "t:settings_schema.mt_colors.settings.mt_accent.options__4.label"
                     },
                     {
-                        "value": "graphite",
+                        "value": "rose",
                         "label": "t:settings_schema.mt_colors.settings.mt_accent.options__5.label"
+                    },
+                    {
+                        "value": "graphite",
+                        "label": "t:settings_schema.mt_colors.settings.mt_accent.options__6.label"
                     }
                 ],
-                "default": "indigo"
+                "default": "red"
             },
             {
                 "type": "checkbox",
@@ -488,8 +492,7 @@
                 "type": "text",
                 "id": "mt_announcement_text",
                 "label": "t:settings_schema.mt_header.settings.mt_announcement_text.label",
-                "info": "t:settings_schema.mt_header.settings.mt_announcement_text.info",
-                "default": "Kostenloser Versand ab 50 €"
+                "info": "t:settings_schema.mt_header.settings.mt_announcement_text.info"
             }
         ]
     },
@@ -909,8 +912,7 @@
                 "type": "text",
                 "id": "mt_legal_shipping_time",
                 "label": "t:settings_schema.mt_legal.settings.mt_legal_shipping_time.label",
-                "info": "t:settings_schema.mt_legal.settings.mt_legal_shipping_time.info",
-                "default": "Lieferzeit: 2–4 Werktage"
+                "info": "t:settings_schema.mt_legal.settings.mt_legal_shipping_time.info"
             },
             {
                 "type": "select",

@@ -167,7 +167,17 @@
     });
   }
 
+  // Höhe Kopfzeile für sticky Header (Desktop hat zwei Zeilen)
+  function setupHeaderHeight() {
+    var header = document.querySelector('.mt-header');
+    if (!header) { return; }
+    var set = function () { root.style.setProperty('--mt-header-h', header.offsetHeight + 'px'); };
+    set();
+    window.addEventListener('resize', set);
+  }
+
   applyMode(currentMode(), false);
+  setupHeaderHeight();
   setupNav();
   setupTabs();
   setupConsent();

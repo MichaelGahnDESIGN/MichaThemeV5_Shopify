@@ -1,5 +1,6 @@
 {
     "general": {
+        "error": "Error:",
         "skip_to_content": "Skip to content",
         "menu": "Menu",
         "main_menu": "Main menu",

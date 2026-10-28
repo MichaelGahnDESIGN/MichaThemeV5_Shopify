@@ -1,4 +1,4 @@
-{% comment %}Icons inline, dekorativ (aria-hidden). name = search | cart | account | menu | close | contrast | plus | minus | check | truck | return | lock | bell{% endcomment %}
+{% comment %}Icons inline, dekorativ (aria-hidden). name = search | cart | account | menu | close | contrast | plus | minus | check | truck | return | lock | bell | alert{% endcomment %}
 <svg class="mt-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   {%- case name -%}
     {%- when 'search' -%}<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
@@ -13,6 +13,7 @@
     {%- when 'truck' -%}<path d="M3 6h11v10H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/>
     {%- when 'return' -%}<path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/>
     {%- when 'bell' -%}<path d="M6 17V11a6 6 0 0 1 12 0v6l1.5 2h-15z"/><path d="M10 21a2 2 0 0 0 4 0"/>
+    {%- when 'alert' -%}<path d="M12 3 2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.5v.01"/>
     {%- when 'lock' -%}<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>
   {%- endcase -%}
 </svg>

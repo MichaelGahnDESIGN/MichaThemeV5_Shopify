@@ -67,7 +67,7 @@
     {%- endif -%}
     {%- if settings.mt_footer_newsletter -%}
       <div class="mt-footer__col">
-        {%- render 'mt-newsletter', form_id: 'mt-newsletter-footer', heading: settings.mt_newsletter_heading, text: settings.mt_newsletter_text -%}
+        {%- render 'mt-newsletter', form_id: 'mt-newsletter-footer', heading: settings.mt_newsletter_heading, text: settings.mt_newsletter_text, secondary: true -%}
       </div>
     {%- endif -%}
   </div>

@@ -1,1 +1,4 @@
-.mgd-notification-center{position:relative;display:inline-block}.mgd-notification-center__button{border:1px solid currentColor;border-radius:50%;background:#fff;color:#111;width:2.75rem;height:2.75rem}.mgd-notification-center__panel{position:absolute;right:0;width:20rem;background:#fff;color:#111;border:1px solid #777;padding:1rem;z-index:20}
+/* Glocke aus der App - Farben aus dem Theme (--mt-*), Fallback = System-Farben, dadurch passt Hell und Dunkel */
+.mgd-notification-center{position:relative;display:inline-block}
+.mgd-notification-center__button{border:1px solid currentColor;border-radius:50%;background:var(--mt-surface,Canvas);color:var(--mt-text,CanvasText);width:2.75rem;height:2.75rem}
+.mgd-notification-center__panel{position:absolute;right:0;width:20rem;background:var(--mt-surface,Canvas);color:var(--mt-text,CanvasText);border:1px solid var(--mt-border-strong,GrayText);border-radius:var(--mt-r,8px);padding:1rem;z-index:20}

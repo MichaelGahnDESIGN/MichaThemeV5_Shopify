@@ -17,7 +17,7 @@
       {%- endif -%}
     </a>
     {%- if product.available == false -%}
-      <span class="mt-badge mt-badge--sold">{{ 'products.sold_out' | t }}</span>
+      <span class="mt-badge mt-badge--soldout">{{ 'products.sold_out' | t }}</span>
     {%- elsif product.compare_at_price > product.price -%}
       <span class="mt-badge mt-badge--sale">{{ 'products.sale' | t }}</span>
     {%- endif -%}

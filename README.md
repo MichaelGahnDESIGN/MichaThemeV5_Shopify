@@ -2,7 +2,7 @@
 
 Ein Theme für deinen Shopify-Shop von Michael Gahn DESIGN. Es hat einen Hell- und Dunkelmodus, viele Einstellungen und lokale Schriften (kein Google Fonts, kein CDN).
 
-**Status: Entwurf (Pre-Alpha), Version 0.2.0.**
+**Status: Entwurf (Pre-Alpha), Version 0.3.0.**
 Das Theme ist noch nicht im Shopify Theme Store. Es ist noch nicht in einem echten Shop getestet. Geprüft ist es mit dem offiziellen Theme Check von Shopify (offline, ohne Anmeldung: keine Fehler, keine Warnungen) und mit der Prüfung der Plattform. Ein Test in einem Entwicklungs-Shop (`shopify theme dev`) steht noch aus. Nutze es zum Ausprobieren, zum Beispiel in einem Entwicklungs-Shop. Nicht für einen Live-Shop mit echten Kunden.
 
 ## Was ist in diesem Repo?
@@ -18,14 +18,33 @@ Das Theme ist noch nicht im Shopify Theme Store. Es ist noch nicht in einem echt
 ## Theme installieren (Schritt für Schritt)
 
 1. Öffne die Seite [Releases](https://github.com/MichaelGahnDESIGN/MichaThemeV5_Shopify/releases).
-2. Lade die Datei `MichaThemeV5_Shopify-0.2.0.zip` herunter. Entpacke sie nicht.
-3. Lade zum Prüfen auch `MichaThemeV5_Shopify-0.2.0.zip.sha256` herunter. Auf dem Mac gibst du im Terminal `shasum -a 256 -c MichaThemeV5_Shopify-0.2.0.zip.sha256` ein. Es muss `OK` erscheinen.
+2. Lade die Datei `MichaThemeV5_Shopify-0.3.0.zip` herunter. Entpacke sie nicht.
+3. Lade zum Prüfen auch `MichaThemeV5_Shopify-0.3.0.zip.sha256` herunter. Auf dem Mac gibst du im Terminal `shasum -a 256 -c MichaThemeV5_Shopify-0.3.0.zip.sha256` ein. Es muss `OK` erscheinen.
 4. Gehe in deinem Shopify-Admin zu **Onlineshop → Themes**.
 5. Klicke auf **Theme hinzufügen → ZIP-Datei hochladen** und wähle die ZIP-Datei.
 6. Warte, bis das Theme hochgeladen ist. Klicke dann auf **Anpassen**, um es zuerst anzusehen.
 7. Wenn alles passt, klicke auf **Veröffentlichen**. Mach vorher eine Sicherung deines aktuellen Themes (**Duplizieren**).
 
 Du kannst auch die Shopify CLI nutzen: `shopify theme push --path theme` (im Ordner dieses Repos).
+
+## Neues Aussehen in 0.3.0
+
+Das Theme sieht jetzt ruhiger und moderner aus. Es soll den anderen MichaThemeV5-Themes (WooCommerce, Shopware, JTL-Shop) ähnlich sehen.
+
+- Hell: weiße Karten auf hellgrauem Grund. Dunkel: Anthrazit, nicht schwarz.
+- Die Standard-Akzentfarbe ist jetzt **Rot**. Du kannst sie in den Theme-Einstellungen bei **Farben** ändern oder eine eigene Farbe wählen. Wer schon einen Akzent gespeichert hat, behält ihn.
+- Rot steht nur bei Dingen, die man anklickt: Kaufen-Button, aktiver Menüpunkt, aktuelle Seite, Zähler am Warenkorb. Alle anderen Buttons sind grau umrandet.
+- Das Sonderpreis-Siegel ist hellrot mit Text (nicht knallrot). Fehlermeldungen haben ein Symbol, das Wort „Fehler:“ und einen Rand.
+- Produktkarten haben einen Rahmen und hüpfen nicht mehr beim Darüberfahren. Die Einstellung „Kartenstil“ gibt es weiter.
+- Kopfzeile: Logo links, Suche in der Mitte, Konto und Warenkorb rechts. Das Menü steht darunter in einer zweiten Zeile.
+- Eigene Akzentfarbe: Die Schrift auf dem Button wird jetzt nach dem Kontrast gewählt (schwarz oder weiß, mindestens 4,5 zu 1).
+- Die Lieferzeit und der Text der Ankündigungsleiste sind jetzt **leer**. Bitte trage nur ein, was in deinem Shop wirklich stimmt.
+
+## Was das Theme in Shopify nicht steuert
+
+- Die **Kasse**, die **Danke-Seite**, der Bestellstatus und die **neuen Kundenkonten** gehören Shopify. Das Theme kann ihr Aussehen nicht ändern. Nach unserem Kenntnisstand stellst du sie im Shopify-Admin unter **Einstellungen → Kasse → Anpassen** ein (Logo, Farben, Ecken). Was dort möglich ist, hängt von deinem Tarif ab. Das haben wir nicht in einem Shop geprüft.
+- Tipp: Nimm dort dasselbe Rot und dasselbe Logo wie im Theme, dann sieht es zusammenpassend aus.
+- Den Text des Bestell-Buttons legt Shopify fest. Prüfe in einer Test-Bestellung, dass er eindeutig „zahlungspflichtig“ ist.
 
 ## Benachrichtigungs-Glocke einschalten
 
@@ -79,7 +98,7 @@ Die App speichert nur Shop-ID, Kunden-ID, Nachricht, Ereignisquelle und Lesestat
 
 - Prüfen: `node scripts/check-release.mjs` (Ordner, JSON, Versionen, Lizenzdatei, Zugangsdaten).
 - Theme Check von Shopify (offline, ohne Anmeldung): `npm install --no-save --no-package-lock @shopify/theme-check-node@3.31.0`, dann `node scripts/theme-check.mjs`.
-- ZIP bauen: `bash scripts/build-release.sh` (legt `dist/MichaThemeV5_Shopify-0.2.0.zip` und die `.sha256`-Datei an).
+- ZIP bauen: `bash scripts/build-release.sh` (legt `dist/MichaThemeV5_Shopify-0.3.0.zip` und die `.sha256`-Datei an).
 - Das ZIP enthält nur den Inhalt von `theme/`, direkt im ZIP-Stamm (so erwartet es Shopify).
 - Jede Datei mit der Version muss gleich sein: `theme/config/settings_schema.json` (`theme_version`), `release-manifest.json`, `michatheme-v5-app/package.json`, dieses README und `CHANGELOG.md`.
 - Das ganze Theme wird in der privaten Plattform erzeugt (auch die Glocke). Änderungen am Theme gehören dorthin, nicht von Hand in `theme/`. Bauen: `php bin/build-themes.php shopify <dieses Repo>/theme --version=<Version>` im Plattform-Repo. Danach hier `theme/` ersetzen und prüfen.

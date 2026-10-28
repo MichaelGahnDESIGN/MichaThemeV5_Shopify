@@ -5,10 +5,8 @@
     {%- if settings.mt_light_surface != blank -%}--mt-surface: {{ settings.mt_light_surface }};{%- endif -%}
     {%- if settings.mt_light_text != blank -%}--mt-text: {{ settings.mt_light_text }};{%- endif -%}
     {%- if settings.mt_light_accent != blank -%}
-      {%- assign mt_b = settings.mt_light_accent | color_brightness -%}
       {%- comment -%}!important wegen Inline-Style aus mt-init (eigene Akzentfarbe){%- endcomment -%}
-      --mt-accent: {{ settings.mt_light_accent }} !important; --mt-accent-hover: {{ settings.mt_light_accent }} !important; --mt-accent-text: {{ settings.mt_light_accent }} !important;
-      --mt-on-accent: {% if mt_b > 150 %}#000000{% else %}#ffffff{% endif %} !important;
+      {%- render 'mt-accent', color: settings.mt_light_accent, mode: 'light' -%}
     {%- endif -%}
   {%- endcapture -%}
   {%- capture mt_dark -%}
@@ -16,9 +14,7 @@
     {%- if settings.mt_dark_surface != blank -%}--mt-surface: {{ settings.mt_dark_surface }};{%- endif -%}
     {%- if settings.mt_dark_text != blank -%}--mt-text: {{ settings.mt_dark_text }};{%- endif -%}
     {%- if settings.mt_dark_accent != blank -%}
-      {%- assign mt_b = settings.mt_dark_accent | color_brightness -%}
-      --mt-accent: {{ settings.mt_dark_accent }} !important; --mt-accent-hover: {{ settings.mt_dark_accent }} !important; --mt-accent-text: {{ settings.mt_dark_accent }} !important;
-      --mt-on-accent: {% if mt_b > 150 %}#000000{% else %}#ffffff{% endif %} !important;
+      {%- render 'mt-accent', color: settings.mt_dark_accent, mode: 'dark' -%}
     {%- endif -%}
   {%- endcapture -%}
   {%- if mt_light != blank or mt_dark != blank -%}

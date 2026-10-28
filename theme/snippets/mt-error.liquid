@@ -1,0 +1,5 @@
+{% comment %}Fehlerbox - Symbol + Wort + Rand, nie rot gefüllt. Param: html (Text oder fertige Fehlerliste von default_errors){% endcomment %}
+<div class="mt-alert mt-alert--danger" role="alert">
+  {%- render 'mt-icon', name: 'alert' -%}
+  <div class="mt-alert__body"><strong>{{ 'general.error' | t }}</strong> {{ html }}</div>
+</div>

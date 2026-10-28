@@ -10,7 +10,7 @@
     {%- if shop.privacy_policy != blank -%}
       <p><a href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title | escape }}</a></p>
     {%- endif -%}
-    <button type="button" class="mt-btn" data-mt-video-load>{{ 'video.load' | t: provider: mt_video_host }}<span class="mt-visually-hidden">: {{ title | escape }}</span></button>
+    <button type="button" class="mt-btn mt-btn--ghost" data-mt-video-load>{{ 'video.load' | t: provider: mt_video_host }}<span class="mt-visually-hidden">: {{ title | escape }}</span></button>
     <p class="mt-js-hint">{{ 'video.needs_js' | t }}</p>
   </div>
 </div>

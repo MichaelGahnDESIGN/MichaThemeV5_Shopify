@@ -329,18 +329,21 @@
                     "label": "Akzentfarbe",
                     "info": "Farbe für Buttons, Links und Hervorhebungen. Alle Varianten sind für Hell und Dunkel auf Kontrast geprüft.",
                     "options__1": {
-                        "label": "Petrol"
+                        "label": "Rot"
                     },
                     "options__2": {
-                        "label": "Indigo"
+                        "label": "Petrol"
                     },
                     "options__3": {
-                        "label": "Bernstein"
+                        "label": "Indigo"
                     },
                     "options__4": {
-                        "label": "Rose"
+                        "label": "Bernstein"
                     },
                     "options__5": {
+                        "label": "Rose"
+                    },
+                    "options__6": {
                         "label": "Graphit"
                     }
                 },
@@ -841,7 +844,7 @@
                 },
                 "mt_legal_shipping_time": {
                     "label": "Lieferzeit",
-                    "info": "Standard für alle Artikel. Je Artikel überschreibbar mit dem Produkt-Metafeld mt.lieferzeit (einzeiliger Text). Leer = keine Angabe."
+                    "info": "Standard für alle Artikel, zum Beispiel „Lieferzeit: 2–4 Werktage“. Bitte nur eintragen, was Sie wirklich einhalten. Je Artikel überschreibbar mit dem Produkt-Metafeld mt.lieferzeit (einzeiliger Text). Leer = keine Angabe."
                 },
                 "mt_legal_lowest_price": {
                     "label": "Niedrigster Preis der letzten 30 Tage bei Streichpreisen",

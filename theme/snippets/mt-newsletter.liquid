@@ -1,4 +1,4 @@
-{% comment %}Newsletter über Shopify-Kundenformular, kein Drittanbieter. Params: form_id (eindeutig!), heading, text. Double-Opt-In > Shopify-Admin{% endcomment %}
+{% comment %}Newsletter über Shopify-Kundenformular, kein Drittanbieter. Params: form_id (eindeutig!), heading, text, secondary (true = neutraler Button, z. B. im Footer). Double-Opt-In > Shopify-Admin{% endcomment %}
 <div class="mt-newsletter">
   {%- if heading != blank -%}<h2 class="mt-newsletter__title">{{ heading | escape }}</h2>{%- endif -%}
   {%- if text != blank -%}<p class="mt-newsletter__text">{{ text | escape }}</p>{%- endif -%}
@@ -8,12 +8,13 @@
       <p class="mt-alert mt-alert--success" role="status">{{ 'newsletter.success' | t }}</p>
     {%- else -%}
       {%- if form.errors -%}
-        <div class="mt-alert mt-alert--danger" role="alert">{{ form.errors | default_errors }}</div>
+        {%- capture mt_errors -%}{{ form.errors | default_errors }}{%- endcapture -%}
+        {%- render 'mt-error', html: mt_errors -%}
       {%- endif -%}
       <label for="{{ form_id }}-email">{{ 'newsletter.email' | t }}</label>
       <div class="mt-newsletter__row">
         <input type="email" id="{{ form_id }}-email" name="contact[email]" required autocomplete="email" spellcheck="false" aria-describedby="{{ form_id }}-note">
-        <button type="submit" class="mt-btn">{{ 'newsletter.submit' | t }}</button>
+        <button type="submit" class="mt-btn{% if secondary %} mt-btn--ghost{% endif %}">{{ 'newsletter.submit' | t }}</button>
       </div>
     {%- endif -%}
     <p class="mt-form__hint" id="{{ form_id }}-note">

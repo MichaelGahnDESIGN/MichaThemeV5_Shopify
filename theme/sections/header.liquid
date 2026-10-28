@@ -76,7 +76,8 @@
       <a class="mt-icon-button mt-cart-link" href="{{ routes.cart_url }}">
         {%- render 'mt-icon', name: 'cart' -%}
         <span class="mt-visually-hidden">{{ 'general.cart' | t }}:</span>
-        <span class="mt-cart-count">{{ 'general.cart_count' | t: count: cart.item_count }}</span>
+        {%- comment -%}Zahl sichtbar als Pille, volle Angabe nur für Screenreader{%- endcomment -%}
+        <span class="mt-cart-count{% if cart.item_count == 0 %} mt-cart-count--empty{% endif %}"><span aria-hidden="true">{% if cart.item_count > 99 %}99+{% else %}{{ cart.item_count }}{% endif %}</span><span class="mt-visually-hidden">{{ 'general.cart_count' | t: count: cart.item_count }}</span></span>
       </a>
     </div>
   </div>
