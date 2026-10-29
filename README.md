@@ -49,7 +49,7 @@ Das Theme sieht jetzt ruhiger und moderner aus. Es soll den anderen MichaThemeV5
 - Die Akzentfarbe wählst du im Theme-Editor: **Anpassen → Theme-Einstellungen → Farben**. Dort wählst du eine Farbe aus der Liste oder eine eigene Farbe. Achtung: Eigene Farben werden nicht automatisch auf Kontrast geprüft. Prüfe den Text auf der Farbe selbst, hell und dunkel.
 - Dafür nutzt Shopify seinen **eigenen Farbwähler**. Das Theme bringt keinen eigenen Colorpicker mit.
 - **Gespeicherte Farbpaletten sind bei Shopify nicht möglich.** Der Theme-Editor kann keine eigene Palette merken. Schreib dir wichtige Farben als HEX-Wert auf (zum Beispiel `#c8161a`) und trage sie bei Bedarf neu ein.
-- Bei den anderen Themes (WooCommerce, Shopware, JTL-Shop) kommt der Colorpicker mit Palette in Version 0.5.0 über die Plugin-Einstellungsseiten.
+- Bei den anderen Themes ist der Colorpicker mit Palette schon eingebaut, und zwar in den Einstellungsseiten der Plugins: WooCommerce (Plugin ab 0.5.0), JTL-Shop 5 (Plugin ab 0.5.1) und Shopware 6 (Admin-Modul ab 0.5.1). Für Shopify gibt es das nicht.
 
 ## Was das Theme in Shopify nicht steuert
 
