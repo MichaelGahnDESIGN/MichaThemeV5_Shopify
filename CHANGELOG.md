@@ -1,5 +1,18 @@
 # Änderungen
 
+## 0.5.0 (Entwurf, Pre-Alpha)
+
+Neu: Demo-Artikel importieren und entfernen.
+
+- Neu: Das Skript `demo-import/demo-import.mjs` legt 16 Beispielartikel in 4 Kategorien an (je 3 Platzhalterbilder, Preise, Streichpreise, Artikelnummern, Bestand). So siehst du das Theme gleich mit Inhalt. Shopify-Themes können selbst keine Produkte anlegen, deshalb läuft das über die Admin-API.
+- Kurzanleitung: Node.js ab Version 20 installieren. Im Shopify-Admin eine eigene App mit den Rechten `write_products` und `write_files` anlegen. Dann im Terminal `SHOPIFY_SHOP` (zum Beispiel `mein-shop.myshopify.com`) und `SHOPIFY_ADMIN_TOKEN` als Umgebungsvariablen setzen. Probelauf ohne Änderungen: `node demo-import/demo-import.mjs import --dry-run`. Echter Import: `node demo-import/demo-import.mjs import`.
+- Entfernen: `node demo-import/demo-import.mjs remove` (fragt nach), mit `--dry-run` nur zählen, mit `--yes` ohne Rückfrage.
+- Der Import ist wiederholbar. Vorhandene Demo-Produkte werden übersprungen, ein fremdes Produkt mit gleichem Handle wird nie verändert.
+- Wichtig: Entfernen löscht nur Produkte mit dem Tag `mt-demo` und die Demo-Kategorien (Handle `mtdemo-...`), und Kategorien nur, wenn dort keine anderen Produkte liegen. Eigene Produkte bleiben unberührt.
+- Hinweis: Neue Demo-Produkte sind aktiv, aber noch nicht im Vertriebskanal „Online Store“. Das stellst du im Admin ein (Filter Tag `mt-demo`).
+- Zugangsdaten nie in Dateien speichern. Nach dem Import die Custom-App löschen oder den Token zurücksetzen.
+- Die ausführliche Anleitung steht in `demo-import/ANLEITUNG.md`. Das Skript gehört nicht ins Theme-ZIP.
+
 ## 0.4.1 (Entwurf, Pre-Alpha)
 
 Kleine Korrektur zu 0.4.0.
