@@ -126,6 +126,8 @@ Die App speichert nur Shop-ID, Kunden-ID, Nachricht, Ereignisquelle und Lesestat
 
 ## MGD Plugin-Empfehlungen
 
-Die geschützte App-Admin-Route `GET /admin/recommendations` liefert ausschließlich nach gültiger Shopify-Session die zentral gepflegten Shopify-Empfehlungen von `theme.michael-gahn.de`. Der Abruf erfolgt serverseitig, ohne Shop-, Besucher- oder Sessiondaten im Feed-Aufruf; Antworten bestehen nur aus öffentlichen Kartenmetadaten und bleiben höchstens 15 Minuten im Prozesscache. Eine eingebettete Shopify-Admin-Oberfläche ist im Repository noch nicht vorhanden – die Route ist dafür die datensparsame Schnittstelle.
+Die geschützte App-Admin-Route `GET /admin/recommendations` liefert ausschließlich nach gültiger Shopify-Session die zentral gepflegten Shopify-Empfehlungen von `theme.michael-gahn.de`. Der Abruf erfolgt serverseitig, ohne Shop-, Besucher- oder Sessiondaten im Feed-Aufruf; Antworten bestehen nur aus öffentlichen Kartenmetadaten und bleiben höchstens 15 Minuten im Prozesscache.
 
-✅ Der Adapter und die Session-Grenze sind mit sechs lokalen Node-Tests geprüft. ☑️ Für eine sichtbare Empfehlungskarte fehlen noch die zentral gepflegten Shopify-Einträge und die eingebettete Shopify-Admin-Oberfläche. Die konkrete Restarbeit steht in [`docs/TODO.html`](docs/TODO.html).
+Die eingebettete Startansicht `/` lädt App Bridge ausschließlich für den Shopify-ID-Token und fragt danach nur dieselbe App-Origin unter `/admin/recommendations` ab. Karten-CSS, Karten-JavaScript und die Icon-Zuordnung liegen lokal in der App; Browser-JavaScript fragt den zentralen Feed nie ab. Eine restriktive Content-Security-Policy erlaubt für API-Aufrufe nur die eigene Origin.
+
+✅ Adapter, Session-Grenze und eingebettete Kartenansicht sind lokal getestet. ☑️ Für eine echte Ende-zu-Ende-Abnahme fehlen weiterhin zentral gepflegte Shopify-Einträge und eine Shopify-Entwicklungsinstallation. Die konkrete Restarbeit steht in [`docs/TODO.html`](docs/TODO.html).

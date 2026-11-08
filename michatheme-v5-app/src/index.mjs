@@ -4,6 +4,8 @@ import { NotificationStore } from './lib/store.mjs';
 import { validAppProxy, validWebhook } from './lib/signatures.mjs';
 import { createRecommendationLoader } from './lib/recommendations.mjs';
 import { handleAdmin } from './lib/admin.mjs';
+import { adminPageHeaders, renderAdminPage } from './lib/admin-page.mjs';
+import { readFile } from 'node:fs/promises';
 
 const secret = process.env.SHOPIFY_API_SECRET;
 const store = new NotificationStore(process.env.DATABASE_URL);
@@ -31,4 +33,28 @@ async function webhook(request, response, compliance = false) {
   return json(response, 200, { success: true });
 }
 
-http.createServer(async (request, response) => { try { const url = new URL(request.url, process.env.SHOPIFY_APP_URL || 'http://localhost'); if (url.pathname.startsWith('/proxy/')) return proxy(request, response, url); if (url.pathname.startsWith('/admin/')) return handleAdmin(request, response, url, { secret, store, loadRecommendations }); if (url.pathname === '/webhooks/events') return webhook(request, response); if (url.pathname === '/webhooks/compliance') return webhook(request, response, true); return json(response, 404, { error: 'Nicht gefunden' }); } catch { return json(response, 500, { error: 'Serverfehler' }); } }).listen(Number(process.env.PORT || 3000));
+async function asset(response, filename, contentType) {
+  response.writeHead(200, { 'Content-Type': contentType, 'Cache-Control': 'no-store' });
+  response.end(await readFile(new URL(`./public/${filename}`, import.meta.url)));
+}
+
+http.createServer(async (request, response) => {
+  try {
+    const url = new URL(request.url, process.env.SHOPIFY_APP_URL || 'http://localhost');
+    if (url.pathname === '/' && request.method === 'GET') {
+      const page = renderAdminPage(process.env.SHOPIFY_API_KEY);
+      if (!page) return json(response, 503, { error: 'Shopify-API-Schlüssel fehlt' });
+      response.writeHead(200, adminPageHeaders());
+      return response.end(page);
+    }
+    if (url.pathname === '/assets/admin-recommendations.js' && request.method === 'GET') return asset(response, 'admin-recommendations.js', 'application/javascript; charset=utf-8');
+    if (url.pathname === '/assets/admin-recommendations.css' && request.method === 'GET') return asset(response, 'admin-recommendations.css', 'text/css; charset=utf-8');
+    if (url.pathname.startsWith('/proxy/')) return proxy(request, response, url);
+    if (url.pathname.startsWith('/admin/')) return handleAdmin(request, response, url, { secret, store, loadRecommendations });
+    if (url.pathname === '/webhooks/events') return webhook(request, response);
+    if (url.pathname === '/webhooks/compliance') return webhook(request, response, true);
+    return json(response, 404, { error: 'Nicht gefunden' });
+  } catch {
+    return json(response, 500, { error: 'Serverfehler' });
+  }
+}).listen(Number(process.env.PORT || 3000));
