@@ -3,9 +3,11 @@ import { URL } from 'node:url';
 import { NotificationStore } from './lib/store.mjs';
 import { randomUUID } from 'node:crypto';
 import { sessionShop, validAppProxy, validWebhook } from './lib/signatures.mjs';
+import { createRecommendationLoader } from './lib/recommendations.mjs';
 
 const secret = process.env.SHOPIFY_API_SECRET;
 const store = new NotificationStore(process.env.DATABASE_URL);
+const loadRecommendations = createRecommendationLoader();
 const json = (response, status, body) => { response.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); response.end(JSON.stringify(body)); };
 const rawBody = (request) => new Promise((resolve, reject) => { const chunks = []; request.on('data', (chunk) => chunks.push(chunk)); request.on('end', () => resolve(Buffer.concat(chunks))); request.on('error', reject); });
 
@@ -21,6 +23,7 @@ async function proxy(request, response, url) {
 async function admin(request, response, url) {
   const shop = secret ? sessionShop(request.headers.authorization, secret) : null;
   if (!shop) return json(response, 401, { error: 'Ungültiger Shopify-Session-Token' });
+  if (url.pathname === '/admin/recommendations' && request.method === 'GET') return json(response, 200, await loadRecommendations());
   if (url.pathname === '/admin/notifications' && request.method === 'GET') return json(response, 200, { items: await store.adminList(shop) });
   if (url.pathname === '/admin/notifications' && request.method === 'POST') {
     const input = JSON.parse((await rawBody(request)).toString('utf8'));

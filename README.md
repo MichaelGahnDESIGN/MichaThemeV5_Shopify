@@ -123,3 +123,7 @@ Die App speichert nur Shop-ID, Kunden-ID, Nachricht, Ereignisquelle und Lesestat
 - Das ZIP enthält nur den Inhalt von `theme/`, direkt im ZIP-Stamm (so erwartet es Shopify).
 - Jede Datei mit der Version muss gleich sein: `theme/config/settings_schema.json` (`theme_version`), `release-manifest.json`, `michatheme-v5-app/package.json`, dieses README und `CHANGELOG.md`.
 - Das ganze Theme wird in der privaten Plattform erzeugt (auch die Glocke). Änderungen am Theme gehören dorthin, nicht von Hand in `theme/`. Bauen: `php bin/build-themes.php shopify <dieses Repo>/theme --version=<Version>` im Plattform-Repo. Danach hier `theme/` ersetzen und prüfen.
+
+## MGD Plugin-Empfehlungen
+
+Die geschützte App-Admin-Route `GET /admin/recommendations` liefert ausschließlich nach gültiger Shopify-Session die zentral gepflegten Shopify-Empfehlungen von `theme.michael-gahn.de`. Der Abruf erfolgt serverseitig, ohne Shop-, Besucher- oder Sessiondaten im Feed-Aufruf; Antworten bestehen nur aus öffentlichen Kartenmetadaten und bleiben höchstens 15 Minuten im Prozesscache.
