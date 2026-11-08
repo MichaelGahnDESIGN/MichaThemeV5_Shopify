@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MichaThemeV5 Shopify – TODO</title>
+  <style>body{font:16px/1.5 system-ui,sans-serif;max-width:980px;margin:2rem auto;padding:0 1rem;color:#17302d}table{width:100%;border-collapse:collapse}th,td{border:1px solid #dbe3df;padding:.7rem;text-align:left;vertical-align:top}th{background:#eef3ef}.done{background:#edf7ee}.open{background:#fff8e8}code{font-size:.9em}</style>
+</head>
+<body>
+  <h1>MichaThemeV5 Shopify – Aufgaben</h1>
+  <p>Diese Liste enthält nur konkrete, nachweisbare Restarbeit. Letzte Wissenspflege: 08.11.2026.</p>
+  <table>
+    <thead><tr><th>ID</th><th>Aufgabe</th><th>Priorität</th><th>Status</th><th>Nachweis / nächster Schritt</th></tr></thead>
+    <tbody>
+      <tr class="done" data-status="done"><td>1</td><td>Serverseitigen Empfehlungsadapter implementieren</td><td>Hoch</td><td>✅ Erledigt</td><td>Commit <code>c7cf656</code>; Feed, Schema, Cache und Offline-Fallback durch Unit-Tests belegt.</td></tr>
+      <tr class="done" data-status="done"><td>2</td><td>Admin-Route gegen ungültige Session absichern</td><td>Hoch</td><td>✅ Erledigt</td><td>Commit <code>e52c168</code>; Test belegt 401 ohne und 200 mit gültiger Session.</td></tr>
+      <tr class="open" data-status="open"><td>3</td><td>Zentrale Shopify-Empfehlungen im Theme-Katalog pflegen</td><td>Hoch</td><td>☑️ Offen</td><td>Im Backoffice von <code>theme.michael-gahn.de</code> echte Live-Einträge mit Name, Beschreibung, Version und Symbol anlegen. Das ist eine externe Datenänderung und wurde lokal nicht ausgeführt.</td></tr>
+      <tr class="open" data-status="open"><td>4</td><td>Eingebettete Shopify-Adminansicht für Empfehlungskarten bauen</td><td>Mittel</td><td>☑️ Offen</td><td>Die sichere Route <code>GET /admin/recommendations</code> ist vorhanden. Es fehlt die echte Shopify-App-Oberfläche, die sie im Adminbereich als lokale MGD-Karten darstellt.</td></tr>
+      <tr class="open" data-status="open"><td>5</td><td>Ende-zu-Ende in einer Shopify-Entwicklungsinstallation prüfen</td><td>Mittel</td><td>☑️ Offen</td><td>Nach Eintrag im zentralen Katalog: gültige Session, Karteninhalt, Leer-/Fehlerzustand und keine Storefront-Anfrage prüfen.</td></tr>
+      <tr class="open" data-status="open"><td>6</td><td>Graphify bei Bedarf projektweit einrichten</td><td>Niedrig</td><td>☑️ Offen</td><td>Graphify ist lokal installiert, für dieses Repository existiert aber noch keine <code>graphify-out/graph.json</code>.</td></tr>
+    </tbody>
+  </table>
+</body>
+</html>

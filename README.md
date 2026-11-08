@@ -126,4 +126,6 @@ Die App speichert nur Shop-ID, Kunden-ID, Nachricht, Ereignisquelle und Lesestat
 
 ## MGD Plugin-Empfehlungen
 
-Die geschützte App-Admin-Route `GET /admin/recommendations` liefert ausschließlich nach gültiger Shopify-Session die zentral gepflegten Shopify-Empfehlungen von `theme.michael-gahn.de`. Der Abruf erfolgt serverseitig, ohne Shop-, Besucher- oder Sessiondaten im Feed-Aufruf; Antworten bestehen nur aus öffentlichen Kartenmetadaten und bleiben höchstens 15 Minuten im Prozesscache.
+Die geschützte App-Admin-Route `GET /admin/recommendations` liefert ausschließlich nach gültiger Shopify-Session die zentral gepflegten Shopify-Empfehlungen von `theme.michael-gahn.de`. Der Abruf erfolgt serverseitig, ohne Shop-, Besucher- oder Sessiondaten im Feed-Aufruf; Antworten bestehen nur aus öffentlichen Kartenmetadaten und bleiben höchstens 15 Minuten im Prozesscache. Eine eingebettete Shopify-Admin-Oberfläche ist im Repository noch nicht vorhanden – die Route ist dafür die datensparsame Schnittstelle.
+
+✅ Der Adapter und die Session-Grenze sind mit sechs lokalen Node-Tests geprüft. ☑️ Für eine sichtbare Empfehlungskarte fehlen noch die zentral gepflegten Shopify-Einträge und die eingebettete Shopify-Admin-Oberfläche. Die konkrete Restarbeit steht in [`docs/TODO.html`](docs/TODO.html).
