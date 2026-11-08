@@ -12,3 +12,4 @@ Stand: 08.11.2026 · Grundlinie: `main` ohne lokale Änderungen.
 | S1 | Festen Feed und Validator implementieren | Keine Shop-/Besucherdaten, keine Weiterleitung, nur erlaubtes Schema | Unit-Tests erfolgreich | Commit zurücksetzen | geprüft |
 | S2 | Admin-Route ergänzen | Nur gültige Shopify-Session erhält Ergebnis | Route liegt innerhalb der bestehenden Session-Prüfung; Syntaxprüfung erfolgreich | Commit zurücksetzen | geprüft |
 | S3 | Dokumentation und Abschlussprüfung | Datenschutzgrenze und fehlende eingebettete Admin-UI sind klar | `npm run check`, `npm test` und `git diff --check` erfolgreich | Commit zurücksetzen | geprüft |
+| S4 | Admin-Grenze als HTTP-Handler testbar machen | Ungültige Session bekommt 401, gültige Session nur öffentliche Empfehlungen | Handler-Test, Syntax- und vollständige Unit-Prüfung erfolgreich | Commit zurücksetzen | geprüft |
