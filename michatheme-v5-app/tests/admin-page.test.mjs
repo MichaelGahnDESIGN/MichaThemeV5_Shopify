@@ -10,6 +10,7 @@ test('eingebettete Adminseite lädt nur lokale Kartenressourcen und Shopify App 
   assert.match(page, /src="\/assets\/admin-recommendations\.js"/);
   assert.match(page, /href="\/assets\/admin-recommendations\.css"/);
   assert.equal(renderAdminPage(''), null);
+  assert.doesNotMatch(renderAdminPage('x"><script>'), /<script>x/);
   assert.match(adminPageHeaders()['Content-Security-Policy'], /connect-src 'self'/);
   assert.match(adminPageHeaders()['Content-Security-Policy'], /frame-ancestors https:\/\/admin\.shopify\.com/);
 });

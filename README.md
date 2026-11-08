@@ -130,4 +130,6 @@ Die geschützte App-Admin-Route `GET /admin/recommendations` liefert ausschließ
 
 Die eingebettete Startansicht `/` lädt App Bridge ausschließlich für den Shopify-ID-Token und fragt danach nur dieselbe App-Origin unter `/admin/recommendations` ab. Karten-CSS, Karten-JavaScript und die Icon-Zuordnung liegen lokal in der App; Browser-JavaScript fragt den zentralen Feed nie ab. Eine restriktive Content-Security-Policy erlaubt für API-Aufrufe nur die eigene Origin.
 
+Für die eingebettete Ansicht muss die App-Umgebung `SHOPIFY_API_KEY` mit der öffentlichen Client-ID der Shopify-App enthalten. Der Wert wird nur für die App-Bridge-Initialisierung in das HTML eingesetzt; `SHOPIFY_API_SECRET` bleibt ausschließlich serverseitig und darf nie in die Seite, die Theme-Assets oder das Repository gelangen.
+
 ✅ Adapter, Session-Grenze und eingebettete Kartenansicht sind lokal getestet. ☑️ Für eine echte Ende-zu-Ende-Abnahme fehlen weiterhin zentral gepflegte Shopify-Einträge und eine Shopify-Entwicklungsinstallation. Die konkrete Restarbeit steht in [`docs/TODO.html`](docs/TODO.html).
