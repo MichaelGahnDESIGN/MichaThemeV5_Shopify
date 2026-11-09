@@ -1,5 +1,13 @@
 # Änderungen
 
+## 0.5.1 (Entwurf, Pre-Alpha)
+
+Sicherheitsverbesserung für die eingebettete Shopify-Adminansicht.
+
+- Die App prüft Shopify-ID-Tokens jetzt vollständig auf `HS256`, Ablaufzeit, Gültigkeitsbeginn, eigene App-ID sowie zusammengehörigen Shop bei Aussteller und Ziel.
+- Anfragen mit fremder App-ID, noch nicht gültigen, abgelaufenen oder unpassenden Tokens werden vor jedem Admin-Zugriff mit `401` abgewiesen.
+- Die Tests decken diese Ablehnungsfälle ab. Theme- und App-Version bleiben über das Release-Manifest gekoppelt.
+
 ## 0.5.0 (Entwurf, Pre-Alpha)
 
 Neu: Demo-Artikel importieren und entfernen.

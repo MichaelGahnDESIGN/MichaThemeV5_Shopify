@@ -23,21 +23,25 @@ export function validAppProxy(searchParams, secret) {
   return safeHexEqual(createHmac('sha256', secret).update(message).digest('hex'), received);
 }
 
-/** Prüft den von Shopify App Bridge ausgestellten, kurzlebigen Session-Token für Admin-Routen. */
-export function sessionShop(authorization, secret) {
+/** Prüft Signatur, Claims und Shop-Bindung eines Shopify-ID-Tokens für Admin-Routen. */
+export function sessionShop(authorization, secret, apiKey) {
   const token = (authorization || '').replace(/^Bearer\s+/i, '');
   const parts = token.split('.');
-  if (parts.length !== 3) return null;
+  if (parts.length !== 3 || !secret || !apiKey) return null;
   const [header, payload, signature] = parts;
-  let claims;
+  let claims; let tokenHeader;
   try {
+    tokenHeader = JSON.parse(Buffer.from(header, 'base64url').toString('utf8'));
     claims = JSON.parse(Buffer.from(payload, 'base64url').toString('utf8'));
   } catch { return null; }
-  if (claims.exp && claims.exp < Math.floor(Date.now() / 1000)) return null;
+  if (tokenHeader.alg !== 'HS256') return null;
+  const now = Math.floor(Date.now() / 1000);
+  if (!Number.isFinite(claims.exp) || claims.exp <= now || !Number.isFinite(claims.nbf) || claims.nbf > now || claims.aud !== apiKey) return null;
   const expected = createHmac('sha256', secret).update(`${header}.${payload}`).digest('base64url');
   if (!safeHmacEqual(expected, signature)) return null;
   try {
     const destination = new URL(claims.dest);
-    return destination.protocol === 'https:' && destination.hostname.endsWith('.myshopify.com') ? destination.hostname : null;
+    const issuer = new URL(claims.iss);
+    return destination.protocol === 'https:' && issuer.protocol === 'https:' && destination.hostname.endsWith('.myshopify.com') && issuer.hostname === destination.hostname ? destination.hostname : null;
   } catch { return null; }
 }

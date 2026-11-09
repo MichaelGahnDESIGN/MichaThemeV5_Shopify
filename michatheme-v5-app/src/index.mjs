@@ -50,7 +50,7 @@ http.createServer(async (request, response) => {
     if (url.pathname === '/assets/admin-recommendations.js' && request.method === 'GET') return asset(response, 'admin-recommendations.js', 'application/javascript; charset=utf-8');
     if (url.pathname === '/assets/admin-recommendations.css' && request.method === 'GET') return asset(response, 'admin-recommendations.css', 'text/css; charset=utf-8');
     if (url.pathname.startsWith('/proxy/')) return proxy(request, response, url);
-    if (url.pathname.startsWith('/admin/')) return handleAdmin(request, response, url, { secret, store, loadRecommendations });
+    if (url.pathname.startsWith('/admin/')) return handleAdmin(request, response, url, { secret, apiKey: process.env.SHOPIFY_API_KEY, store, loadRecommendations });
     if (url.pathname === '/webhooks/events') return webhook(request, response);
     if (url.pathname === '/webhooks/compliance') return webhook(request, response, true);
     return json(response, 404, { error: 'Nicht gefunden' });

@@ -14,8 +14,8 @@ export const rawBody = (request) => new Promise((resolve, reject) => {
 });
 
 /** Geschützter Shopify-Adminbereich; Empfehlungen benötigen keine Shopdaten. */
-export async function handleAdmin(request, response, url, { secret, store, loadRecommendations }) {
-  const shop = secret ? sessionShop(request.headers.authorization, secret) : null;
+export async function handleAdmin(request, response, url, { secret, apiKey, store, loadRecommendations }) {
+  const shop = sessionShop(request.headers.authorization, secret, apiKey);
   if (!shop) return sendJson(response, 401, { error: 'Ungültiger Shopify-Session-Token' });
   if (url.pathname === '/admin/recommendations' && request.method === 'GET') return sendJson(response, 200, await loadRecommendations());
   if (url.pathname === '/admin/notifications' && request.method === 'GET') return sendJson(response, 200, { items: await store.adminList(shop) });
