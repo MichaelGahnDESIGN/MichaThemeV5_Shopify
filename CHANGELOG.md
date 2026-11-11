@@ -4,6 +4,8 @@
 
 Sicherheitsverbesserung für die eingebettete Shopify-Adminansicht.
 
+- Doku: Neuer Abschnitt „Lizenzcode und Updates bei Shopify“ in der README. Das Theme fragt keinen Lizenzserver und schickt keinen Code ins Internet. Updates spielst du selbst als neues, unveröffentlichtes Theme ein. Erst nach der Vorschau veröffentlichst du es.
+
 - Die App prüft Shopify-ID-Tokens jetzt vollständig auf `HS256`, Ablaufzeit, Gültigkeitsbeginn, eigene App-ID sowie zusammengehörigen Shop bei Aussteller und Ziel.
 - Anfragen mit fremder App-ID, noch nicht gültigen, abgelaufenen oder unpassenden Tokens werden vor jedem Admin-Zugriff mit `401` abgewiesen.
 - Die Tests decken diese Ablehnungsfälle ab. Theme- und App-Version bleiben über das Release-Manifest gekoppelt.

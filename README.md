@@ -91,6 +91,23 @@ Die Benachrichtigungs-Glocke braucht die App im Ordner `michatheme-v5-app/`. Ohn
 - Die Pro-Funktionen sind nicht Teil dieses Repos. Dieses Repo enthält nur die kostenlosen Funktionen.
 - Das Theme ist noch in keinem echten Shop und in keinem Entwicklungs-Shop getestet. Theme Check und die Prüfung der Plattform finden nur Fehler im Code, nicht im Aussehen oder im Ablauf.
 
+## Lizenzcode und Updates bei Shopify
+
+Kurz: Bei Shopify gibt es im Theme **keinen Lizenzcode** und **keinen eigenen Update-Knopf**. Das ist Absicht.
+
+- **Lizenzcode:** Das Theme fragt keinen Lizenzserver. Es schickt also auch keinen Code ins Internet. Alle Free-Funktionen laufen ohne Code. Pro-Funktionen sollen später über die MichaThemeV5-App kommen. Dann verwaltet die App die Lizenz, nicht das Theme.
+- **Updates:** Shopify spielt Themes selbst ein. Ein Theme darf keine Dateien nachladen oder austauschen.
+
+So bringst du eine neue Version in deinen Shop (Schritt für Schritt):
+
+1. Lade das ZIP der neuen Version aus dem [GitHub-Release](https://github.com/MichaelGahnDESIGN/MichaThemeV5_Shopify/releases) herunter.
+2. Prüfe die Prüfsumme, wenn du magst. Im Release liegt dazu eine `.sha256`-Datei. Auf dem Mac geht das im Terminal mit `shasum -a 256 <Dateiname>.zip`. Die Zahl muss gleich sein.
+3. Gehe im Shopify-Admin zu **Onlineshop, Themes**.
+4. Klicke auf **Theme hinzufügen, ZIP-Datei hochladen** und wähle das ZIP.
+5. Das neue Theme erscheint als **unveröffentlicht**. Dein laufendes Theme bleibt unverändert.
+6. Schau dir das neue Theme in der Vorschau an. Übernimm bei Bedarf deine Einstellungen.
+7. Erst wenn alles passt: **Veröffentlichen** klicken. Geht etwas schief, veröffentlichst du einfach wieder das alte Theme.
+
 ## Lizenz
 
 Kurz und einfach:
