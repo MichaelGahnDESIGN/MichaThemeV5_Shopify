@@ -52,7 +52,8 @@
     var busy = false;
     if (!button || !panel || !list || !count || !PATH_OK.test(path)) { return; }
 
-    function say(text) { if (status) { status.textContent = text || ''; } }
+    // Meldung dahin, wo der Nutzer gerade ist (Fenster offen > Status im Fenster)
+    function say(text) { var target = dialog && dialog.open ? dStatus : status; if (target) { target.textContent = text || ''; } }
     function keyOf(item) { return (item.scope === 'personal' ? 'p' : 'o') + item.id + ':' + (item.publishedAt || ''); }
     function isRead(item) { return item.scope === 'personal' ? !!item.readAt : has(publicRead, keyOf(item)); }
     function isHidden(item) { return item.scope === 'personal' ? has(hiddenPersonal, String(item.id)) : has(publicHidden, keyOf(item)); }
@@ -93,9 +94,10 @@
     var dClose = el('button', 'mt-notification__dialog-close', '×'); dClose.type = 'button'; dClose.setAttribute('aria-label', t.close || 'Fenster schließen');
     dHead.appendChild(dTitle); dHead.appendChild(dReadAll); dHead.appendChild(dHideRead); dHead.appendChild(dClose);
     var dBody = el('div', 'mt-notification__dialog-body');
+    var dStatus = el('p', 'mt-notification__status'); dStatus.setAttribute('role', 'status'); dStatus.setAttribute('aria-live', 'polite');
     var dEmpty = el('p', 'mt-notification__empty', t.empty || '');
     var dList = el('div', 'mt-notification__dialog-list');
-    dBody.appendChild(dEmpty); dBody.appendChild(dList);
+    dBody.appendChild(dStatus); dBody.appendChild(dEmpty); dBody.appendChild(dList);
     dialog.appendChild(dHead); dialog.appendChild(dBody);
     document.body.appendChild(dialog);
     function closeDialog() { if (typeof dialog.close === 'function') { dialog.close(); } else { dialog.removeAttribute('open'); button.focus(); } }

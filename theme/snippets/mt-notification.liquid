@@ -7,10 +7,12 @@
 {% endcomment %}
 {%- assign mt_n_path = settings.mt_notification_proxy_path | default: '/apps/michatheme-notifications' -%}
 {%- assign mt_n_icon = settings.mt_notification_icon | default: 'bell' -%}
+{%- comment -%}Texte als JSON, danach HTML-escaped, damit ein Apostroph das Attribut nicht kaputt macht{%- endcomment -%}
+{%- capture mt_n_texts -%}{"readAll":{{ 'notifications.read_all' | t | json }},"hideRead":{{ 'notifications.hide_read' | t | json }},"hide":{{ 'notifications.hide' | t | json }},"hideLabel":{{ 'notifications.hide_label' | t | json }},"showAll":{{ 'notifications.show_all' | t | json }},"showAllCount":{{ 'notifications.show_all_count' | t | json }},"allTitle":{{ 'notifications.all_title' | t | json }},"close":{{ 'notifications.close' | t | json }},"stateNew":{{ 'notifications.state_new' | t | json }},"stateRead":{{ 'notifications.state_read' | t | json }},"openLink":{{ 'notifications.open_link' | t | json }},"doneRead":{{ 'notifications.done_read' | t | json }},"doneHidden":{{ 'notifications.done_hidden' | t | json }},"error":{{ 'notifications.error' | t | json }},"empty":{{ 'notifications.empty' | t | json }}}{%- endcapture -%}
 <div class="mt-notification mt-notification--{{ place | handleize }}" data-mt-notification data-proxy-path="{{ mt_n_path | escape }}" data-app-api="1"
   data-limit="{{ settings.mt_notification_limit | default: 5 }}"
   data-label="{{ 'notifications.label' | t | escape }}" data-label-unread="{{ 'notifications.label_unread' | t | escape }}"
-  data-texts='{"readAll":{{ 'notifications.read_all' | t | json }},"hideRead":{{ 'notifications.hide_read' | t | json }},"hide":{{ 'notifications.hide' | t | json }},"hideLabel":{{ 'notifications.hide_label' | t | json }},"showAll":{{ 'notifications.show_all' | t | json }},"showAllCount":{{ 'notifications.show_all_count' | t | json }},"allTitle":{{ 'notifications.all_title' | t | json }},"close":{{ 'notifications.close' | t | json }},"stateNew":{{ 'notifications.state_new' | t | json }},"stateRead":{{ 'notifications.state_read' | t | json }},"openLink":{{ 'notifications.open_link' | t | json }},"doneRead":{{ 'notifications.done_read' | t | json }},"doneHidden":{{ 'notifications.done_hidden' | t | json }},"error":{{ 'notifications.error' | t | json }},"empty":{{ 'notifications.empty' | t | json }}}'
+  data-texts="{{ mt_n_texts | escape }}"
   data-editor-hint="{% if request.design_mode %}{{ 'notifications.editor_hint' | t | escape }}{% endif %}" hidden>
   <button type="button" class="mt-icon-button mt-notification__button" aria-expanded="false" aria-controls="mt-notification-panel-{{ place | handleize }}" aria-label="{{ 'notifications.label' | t | escape }}">
     {%- comment -%}Icons lokal eingebettet, kein Emoji{%- endcomment -%}
