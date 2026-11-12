@@ -160,7 +160,21 @@
         "label_unread": "Benachrichtigungen, %s ungelesen",
         "title": "Benachrichtigungen",
         "empty": "Keine neuen Benachrichtigungen.",
-        "editor_hint": "Nur im Theme-Editor sichtbar: Die MichaThemeV5-App antwortet nicht unter dem eingestellten Pfad. Besucher sehen die Glocke dann nicht."
+        "editor_hint": "Nur im Theme-Editor sichtbar: Die MichaThemeV5-App antwortet nicht unter dem eingestellten Pfad. Besucher sehen die Glocke dann nicht.",
+        "read_all": "Alle gelesen",
+        "hide_read": "Gelesene ausblenden",
+        "hide": "Ausblenden",
+        "hide_label": "Meldung ausblenden: %s",
+        "show_all": "Alle anzeigen",
+        "show_all_count": "Alle anzeigen (%s)",
+        "all_title": "Alle Benachrichtigungen",
+        "close": "Fenster schließen",
+        "state_new": "Neu",
+        "state_read": "Gelesen",
+        "open_link": "Ansehen",
+        "done_read": "Alle Meldungen sind gelesen.",
+        "done_hidden": "%s gelesene Meldungen ausgeblendet.",
+        "error": "Das hat nicht geklappt. Bitte erneut versuchen."
     },
     "sections_text": {
         "usp_label": "Unsere Vorteile"

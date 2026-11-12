@@ -2,7 +2,7 @@
     {
         "name": "theme_info",
         "theme_name": "MichaThemeV5",
-        "theme_version": "0.5.1",
+        "theme_version": "0.5.2",
         "theme_author": "Michael Gahn DESIGN",
         "theme_documentation_url": "https://theme.michael-gahn.de",
         "theme_support_url": "https://theme.michael-gahn.de"
@@ -1118,6 +1118,65 @@
                     }
                 ],
                 "default": "none"
+            },
+            {
+                "type": "range",
+                "id": "mt_notification_limit",
+                "label": "t:settings_schema.mt_notification.settings.mt_notification_limit.label",
+                "info": "t:settings_schema.mt_notification.settings.mt_notification_limit.info",
+                "min": 1,
+                "max": 30,
+                "step": 1,
+                "default": 5
+            },
+            {
+                "type": "select",
+                "id": "mt_notification_icon",
+                "label": "t:settings_schema.mt_notification.settings.mt_notification_icon.label",
+                "info": "t:settings_schema.mt_notification.settings.mt_notification_icon.info",
+                "options": [
+                    {
+                        "value": "bell",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_icon.options__1.label"
+                    },
+                    {
+                        "value": "bell-ring",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_icon.options__2.label"
+                    },
+                    {
+                        "value": "bell-dot",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_icon.options__3.label"
+                    },
+                    {
+                        "value": "megaphone",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_icon.options__4.label"
+                    },
+                    {
+                        "value": "inbox",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_icon.options__5.label"
+                    },
+                    {
+                        "value": "mail",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_icon.options__6.label"
+                    },
+                    {
+                        "value": "message",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_icon.options__7.label"
+                    },
+                    {
+                        "value": "info",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_icon.options__8.label"
+                    },
+                    {
+                        "value": "star",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_icon.options__9.label"
+                    },
+                    {
+                        "value": "sparkles",
+                        "label": "t:settings_schema.mt_notification.settings.mt_notification_icon.options__10.label"
+                    }
+                ],
+                "default": "bell"
             },
             {
                 "type": "header",

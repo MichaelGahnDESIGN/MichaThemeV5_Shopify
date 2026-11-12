@@ -1,5 +1,16 @@
 # Änderungen
 
+## 0.5.2 (Entwurf, Pre-Alpha)
+
+Glocke (Notification Center) für Theme und App-Block.
+
+- Neu: „Anzahl im Panel“ (1 bis 30) und „Icon der Glocke“ (10 eingebettete Icons, kein Emoji) in den Theme-Einstellungen bzw. im App-Block.
+- Neu: „Alle anzeigen“ öffnet ein Fenster mit allen Meldungen. Überschriften untereinander, ein Klick klappt den ganzen Inhalt samt Link auf.
+- Neu: „Alle gelesen“, „Ausblenden“ je Meldung und „Gelesene ausblenden“. Persönliche Meldungen merkt sich die App, öffentliche der Browser.
+- App: neue App-Proxy-Routen für Lesen und Ausblenden (nur angemeldete Kunden, nur eigene Meldungen). Die Datenbank bekommt die Spalte `dismissed_at`, die App legt sie beim Start selbst an.
+- Geändert: Das Öffnen der Glocke allein markiert nichts mehr als gelesen.
+- ⚠️ Die App muss neu ausgerollt werden (`shopify app deploy` und Server-Update), damit Ausblenden für persönliche Meldungen funktioniert. Ohne neue App gehen nur die öffentlichen Meldungen.
+
 ## 0.5.1 (Entwurf, Pre-Alpha)
 
 Sicherheitsverbesserung für die eingebettete Shopify-Adminansicht.

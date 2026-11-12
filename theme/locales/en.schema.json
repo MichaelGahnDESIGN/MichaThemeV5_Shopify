@@ -970,6 +970,44 @@
                 "mt_notification_proxy_path": {
                     "label": "App proxy path",
                     "info": "Must match the path set in the MichaThemeV5 app. Only paths starting with /apps/, /a/, /community/ or /tools/ are allowed."
+                },
+                "mt_notification_limit": {
+                    "label": "Number in the panel",
+                    "info": "How many current messages the bell shows. All others (up to 30) are listed under \"Show all\"."
+                },
+                "mt_notification_icon": {
+                    "label": "Bell icon",
+                    "info": "All icons are embedded in the theme.",
+                    "options__1": {
+                        "label": "Bell"
+                    },
+                    "options__2": {
+                        "label": "Ringing bell"
+                    },
+                    "options__3": {
+                        "label": "Bell with dot"
+                    },
+                    "options__4": {
+                        "label": "Megaphone"
+                    },
+                    "options__5": {
+                        "label": "Inbox"
+                    },
+                    "options__6": {
+                        "label": "Letter"
+                    },
+                    "options__7": {
+                        "label": "Speech bubble"
+                    },
+                    "options__8": {
+                        "label": "Info"
+                    },
+                    "options__9": {
+                        "label": "Star"
+                    },
+                    "options__10": {
+                        "label": "News"
+                    }
                 }
             }
         },
