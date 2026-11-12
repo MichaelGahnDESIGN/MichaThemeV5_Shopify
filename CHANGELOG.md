@@ -1,5 +1,10 @@
 # Änderungen
 
+## 0.7.0 (Entwurf, Pre-Alpha)
+
+- Versionssprung auf 0.7.0: Die Glocke (Notification Center) hat jetzt auf allen Systemen dieselbe Version (WordPress, JTL-Shop, Shopware, Shopify). Inhaltlich wie 0.5.2.
+- ⚠️ Die App weiterhin selbst ausrollen (`shopify app deploy` und Server-Update), sonst funktionieren nur öffentliche Meldungen.
+
 ## 0.5.2 (Entwurf, Pre-Alpha)
 
 Glocke (Notification Center) für Theme und App-Block.
