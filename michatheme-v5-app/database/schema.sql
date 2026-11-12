@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS mgd_shopify_notifications (
   status TEXT NOT NULL DEFAULT 'published' CHECK (status IN ('draft', 'published', 'archived')),
   published_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   read_at TIMESTAMPTZ NULL,
+  dismissed_at TIMESTAMPTZ NULL,
   UNIQUE (shop_domain, source_key, customer_id)
 );
 CREATE TABLE IF NOT EXISTS mgd_shopify_webhooks (
@@ -18,3 +19,5 @@ CREATE TABLE IF NOT EXISTS mgd_shopify_webhooks (
   received_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   PRIMARY KEY (shop_domain, webhook_id)
 );
+-- bestehende Installationen (App ab 0.5.2)
+ALTER TABLE mgd_shopify_notifications ADD COLUMN IF NOT EXISTS dismissed_at TIMESTAMPTZ NULL;

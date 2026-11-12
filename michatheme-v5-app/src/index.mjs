@@ -17,8 +17,18 @@ async function proxy(request, response, url) {
   if (!secret || !validAppProxy(url.searchParams, secret)) return json(response, 401, { error: 'Ungültige App-Proxy-Signatur' });
   const shop = url.searchParams.get('shop'); const customerId = url.searchParams.get('logged_in_customer_id');
   if (!shop) return json(response, 400, { error: 'Shop fehlt' });
-  if (url.pathname.endsWith('/feed') && request.method === 'GET') return json(response, 200, { apiVersion: '1', items: await store.feed(shop, customerId) });
-  if (url.pathname.endsWith('/read-all') && request.method === 'POST') { await store.markAllRead(shop, customerId); return json(response, 200, { success: true }); }
+  // apiVersion bleibt 1 (alte Themes laufen weiter), neue Aktionen stehen in features
+  if (url.pathname.endsWith('/feed') && request.method === 'GET') return json(response, 200, { apiVersion: '1', features: ['read', 'dismiss', 'dismiss-read'], items: await store.feed(shop, customerId) });
+  if (request.method !== 'POST') return json(response, 404, { error: 'Unbekannte Route' });
+  const single = url.pathname.match(/\/(\d{1,18})\/(read|dismiss)$/);
+  let count = null;
+  if (single) count = single[2] === 'read' ? await store.markRead(shop, customerId, single[1]) : await store.dismiss(shop, customerId, single[1]);
+  else if (url.pathname.endsWith('/read-all')) count = await store.markAllRead(shop, customerId);
+  else if (url.pathname.endsWith('/dismiss-read')) count = await store.dismissRead(shop, customerId);
+  else return json(response, 404, { error: 'Unbekannte Route' });
+  // ohne angemeldeten Kunden gibts nichts zu ändern
+  if (count === null) return json(response, 401, { success: false });
+  return json(response, 200, { success: true, count });
   return json(response, 404, { error: 'Unbekannte Route' });
 }
 

@@ -970,6 +970,44 @@
                 "mt_notification_proxy_path": {
                     "label": "App-Proxy-Pfad",
                     "info": "Muss mit dem Pfad in der MichaThemeV5-App übereinstimmen. Erlaubt sind nur Pfade, die mit /apps/, /a/, /community/ oder /tools/ beginnen."
+                },
+                "mt_notification_limit": {
+                    "label": "Anzahl im Panel",
+                    "info": "So viele aktuelle Meldungen zeigt die Glocke. Alle weiteren (bis 30) stehen unter „Alle anzeigen“."
+                },
+                "mt_notification_icon": {
+                    "label": "Icon der Glocke",
+                    "info": "Alle Icons sind im Theme eingebettet.",
+                    "options__1": {
+                        "label": "Glocke"
+                    },
+                    "options__2": {
+                        "label": "Glocke mit Klang"
+                    },
+                    "options__3": {
+                        "label": "Glocke mit Punkt"
+                    },
+                    "options__4": {
+                        "label": "Megafon"
+                    },
+                    "options__5": {
+                        "label": "Posteingang"
+                    },
+                    "options__6": {
+                        "label": "Brief"
+                    },
+                    "options__7": {
+                        "label": "Sprechblase"
+                    },
+                    "options__8": {
+                        "label": "Info"
+                    },
+                    "options__9": {
+                        "label": "Stern"
+                    },
+                    "options__10": {
+                        "label": "Neuigkeiten"
+                    }
                 }
             }
         },

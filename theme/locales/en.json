@@ -160,7 +160,21 @@
         "label_unread": "Notifications, %s unread",
         "title": "Notifications",
         "empty": "No new notifications.",
-        "editor_hint": "Only visible in the theme editor: The MichaThemeV5 app does not answer at the configured path. Visitors do not see the bell then."
+        "editor_hint": "Only visible in the theme editor: The MichaThemeV5 app does not answer at the configured path. Visitors do not see the bell then.",
+        "read_all": "Mark all read",
+        "hide_read": "Hide read",
+        "hide": "Hide",
+        "hide_label": "Hide message: %s",
+        "show_all": "Show all",
+        "show_all_count": "Show all (%s)",
+        "all_title": "All notifications",
+        "close": "Close window",
+        "state_new": "New",
+        "state_read": "Read",
+        "open_link": "View",
+        "done_read": "All messages are read.",
+        "done_hidden": "%s read messages hidden.",
+        "error": "That did not work. Please try again."
     },
     "sections_text": {
         "usp_label": "Our advantages"
