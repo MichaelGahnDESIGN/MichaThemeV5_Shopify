@@ -1,5 +1,15 @@
 # Änderungen
 
+## 1.4.0 (fertige Version)
+
+Erste fertige Version. Keine Vorabversion (Pre-Alpha) mehr.
+
+- Neu: Einheitliche Versionsnummer. Alle Produkte von Michael Gahn DESIGN heißen ab jetzt 1.4.0 (WordPress, JTL-Shop, Shopware, Shopify). So siehst du sofort, welche Teile zusammengehören.
+- Theme und App haben beide die Version 1.4.0. Das Release-Manifest (`release-manifest.json`) verlangt Theme 1.4.0 zur App 1.4.0. Die App-Schnittstelle bleibt bei Version 1, es ändert sich also nichts an der Verbindung zwischen Theme und App.
+- Inhaltlich gleich wie 0.7.0. Seit 0.7.0 gibt es keine neuen Funktionen, nur die neue Nummer und angepasste Texte (README, Changelog).
+- Enthalten ist alles aus den Vorversionen, zum Beispiel: Glocke (Notification Center) mit „Alle anzeigen“, „Alle gelesen“ und „Ausblenden“, Icon-Leiste in der Kopfzeile, Favoriten, Hell- und Dunkelmodus, Demo-Artikel-Import.
+- ⚠️ Die App läuft bei Shopify erst in Version 1.4.0, wenn Michael sie selbst ausgerollt hat (`shopify app deploy` und Server-Update). Bis dahin läuft bei Shopify die alte App-Version weiter. Das Theme funktioniert trotzdem. Für persönliche Meldungen (Lesen, Ausblenden) muss bei Shopify mindestens die App 0.5.2 laufen.
+
 ## 0.7.0 (Entwurf, Pre-Alpha)
 
 - Versionssprung auf 0.7.0: Die Glocke (Notification Center) hat jetzt auf allen Systemen dieselbe Version (WordPress, JTL-Shop, Shopware, Shopify). Inhaltlich wie 0.5.2.

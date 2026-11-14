@@ -2,8 +2,14 @@
 
 Ein Theme für deinen Shopify-Shop von Michael Gahn DESIGN. Es hat einen Hell- und Dunkelmodus, viele Einstellungen und lokale Schriften (kein Google Fonts, kein CDN).
 
-**Status: Entwurf (Pre-Alpha), Version 0.7.0.**
-Das Theme ist noch nicht im Shopify Theme Store. Es ist noch nicht in einem echten Shop getestet. Geprüft ist es mit dem offiziellen Theme Check von Shopify (offline, ohne Anmeldung: keine Fehler, keine Warnungen) und mit der Prüfung der Plattform. Ein Test in einem Entwicklungs-Shop (`shopify theme dev`) steht noch aus. Nutze es zum Ausprobieren, zum Beispiel in einem Entwicklungs-Shop. Nicht für einen Live-Shop mit echten Kunden.
+**Status: Fertige Version 1.4.0.**
+Ab 1.4.0 haben alle Produkte von Michael Gahn DESIGN dieselbe Versionsnummer (WordPress, JTL-Shop, Shopware, Shopify). 1.4.0 ist keine Vorabversion mehr.
+
+Gut zu wissen:
+- Das Theme ist nicht im Shopify Theme Store. Du lädst es selbst als ZIP-Datei hoch (Anleitung unten).
+- Geprüft ist es mit dem offiziellen Theme Check von Shopify (offline, ohne Anmeldung: keine Fehler, keine Warnungen), mit den App-Tests und mit der Prüfung der Plattform. Diese Prüfungen ersetzen keinen eigenen Test in deinem Shop. Sieh dir das Theme vor dem Veröffentlichen in der Vorschau an.
+- ⚠️ Die App (`michatheme-v5-app/`) läuft bei Shopify erst in Version 1.4.0, wenn Michael sie selbst ausgerollt hat (`shopify app deploy` und Server-Update). Bis dahin läuft bei Shopify noch die alte App-Version.
+- Tipp: Lade ein neues Theme immer zuerst unveröffentlicht hoch und sieh es dir in der Vorschau an. Erst dann veröffentlichen.
 
 ## Was ist in diesem Repo?
 
@@ -18,8 +24,8 @@ Das Theme ist noch nicht im Shopify Theme Store. Es ist noch nicht in einem echt
 ## Theme installieren (Schritt für Schritt)
 
 1. Öffne die Seite [Releases](https://github.com/MichaelGahnDESIGN/MichaThemeV5_Shopify/releases).
-2. Lade die Datei `MichaThemeV5_Shopify-0.7.0.zip` herunter. Entpacke sie nicht.
-3. Lade zum Prüfen auch `MichaThemeV5_Shopify-0.7.0.zip.sha256` herunter. Auf dem Mac gibst du im Terminal `shasum -a 256 -c MichaThemeV5_Shopify-0.7.0.zip.sha256` ein. Es muss `OK` erscheinen.
+2. Lade die Datei `MichaThemeV5_Shopify-1.4.0.zip` herunter. Entpacke sie nicht.
+3. Lade zum Prüfen auch `MichaThemeV5_Shopify-1.4.0.zip.sha256` herunter. Auf dem Mac gibst du im Terminal `shasum -a 256 -c MichaThemeV5_Shopify-1.4.0.zip.sha256` ein. Es muss `OK` erscheinen.
 4. Gehe in deinem Shopify-Admin zu **Onlineshop → Themes**.
 5. Klicke auf **Theme hinzufügen → ZIP-Datei hochladen** und wähle die ZIP-Datei.
 6. Warte, bis das Theme hochgeladen ist. Klicke dann auf **Anpassen**, um es zuerst anzusehen.
@@ -136,7 +142,7 @@ Die App speichert nur Shop-ID, Kunden-ID, Nachricht, Ereignisquelle und Lesestat
 
 - Prüfen: `node scripts/check-release.mjs` (Ordner, JSON, Versionen, Lizenzdatei, Zugangsdaten).
 - Theme Check von Shopify (offline, ohne Anmeldung): `npm install --no-save --no-package-lock @shopify/theme-check-node@3.31.0`, dann `node scripts/theme-check.mjs`.
-- ZIP bauen: `bash scripts/build-release.sh` (legt `dist/MichaThemeV5_Shopify-0.7.0.zip` und die `.sha256`-Datei an).
+- ZIP bauen: `bash scripts/build-release.sh` (legt `dist/MichaThemeV5_Shopify-1.4.0.zip` und die `.sha256`-Datei an).
 - Das ZIP enthält nur den Inhalt von `theme/`, direkt im ZIP-Stamm (so erwartet es Shopify).
 - Jede Datei mit der Version muss gleich sein: `theme/config/settings_schema.json` (`theme_version`), `release-manifest.json`, `michatheme-v5-app/package.json`, dieses README und `CHANGELOG.md`.
 - Das ganze Theme wird in der privaten Plattform erzeugt (auch die Glocke). Änderungen am Theme gehören dorthin, nicht von Hand in `theme/`. Bauen: `php bin/build-themes.php shopify <dieses Repo>/theme --version=<Version>` im Plattform-Repo. Danach hier `theme/` ersetzen und prüfen.
