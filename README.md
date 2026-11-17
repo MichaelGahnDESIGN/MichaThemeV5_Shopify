@@ -80,22 +80,24 @@ Der Pfad der App steht darunter unter **App-Proxy-Pfad** (Experte). Er muss zum 
 
 Die Benachrichtigungs-Glocke braucht die App im Ordner `michatheme-v5-app/`. Ohne App zeigt die Glocke keine Meldungen an.
 
-1. Installiere Node.js 20 oder neuer.
-2. Öffne ein Terminal im Ordner `michatheme-v5-app/`.
-3. Prüfe die App mit `npm test`.
-4. Die App braucht einen eigenen Server mit einer Postgres-Datenbank. Das Datenbankschema steht in `michatheme-v5-app/database/schema.sql`.
-5. Trage deine Shopify-Zugangsdaten als Umgebungsvariablen ein (`SHOPIFY_API_KEY`, `SHOPIFY_APP_URL`). Lege sie nie in dieses Repo.
-6. Richte die App über die Shopify CLI ein (`shopify app deploy`). Der App-Proxy-Pfad muss `/apps/michatheme-notifications` sein.
-7. Aktiviere die App **vor** dem Theme. Mehr dazu steht in `COMPATIBILITY.md`.
+Die App braucht **keinen eigenen Server** mehr. Ihr Backend läuft als PHP-Modul auf theme.michael-gahn.de (Plattform MichaThemeV5-Pro). Die Adressen stehen schon in `michatheme-v5-app/shopify.app.toml`.
+
+1. Öffne ein Terminal im Ordner `michatheme-v5-app/`.
+2. Setze die Umgebungsvariable `SHOPIFY_API_KEY` (Client-ID der App aus dem Partner Dashboard). Lege sie nie in dieses Repo.
+3. Lade die App mit der Shopify CLI hoch: `shopify app deploy`.
+4. Installiere die App im Shop. Danach erscheint im Shopify-Admin unter „Apps“ die Seite „Benachrichtigungen“. Dort schreibst du Meldungen, öffentlich oder für einen Kunden (Kunden-ID oder E-Mail).
+5. Wähle im Theme unter „Benachrichtigungen“ eine Platzierung. Der App-Proxy-Pfad bleibt `/apps/michatheme-notifications`.
+6. Aktiviere die App **vor** dem Theme. Mehr dazu steht in `COMPATIBILITY.md`.
+
+Was die App kann und wie sie Daten schützt, steht in der Plattform-Doku `docs/SHOPIFY-NOTIFICATIONS.md` (Repo MichaThemeV5-Pro).
+
+Der Node-Code in `michatheme-v5-app/src/` ist der alte Weg mit eigenem Server und Postgres. Er wird nicht mehr gebraucht und kommt in einer späteren Version weg.
 
 ## Was fehlt noch? (ehrlich)
 
-- Keine App-Oberfläche im Shopify-Admin. Es gibt nur die Schnittstelle `/admin/notifications`.
-- Kein Installations- oder Anmeldeablauf (OAuth) in der App.
-- Die Datenschutz-Auskunft (`customers/data_request`) liefert noch nichts zurück.
 - Die App ist nicht bei Shopify eingereicht. Dieses Release ist keine App-Store-Einreichung.
 - Die Pro-Funktionen sind nicht Teil dieses Repos. Dieses Repo enthält nur die kostenlosen Funktionen.
-- Das Theme ist noch in keinem echten Shop und in keinem Entwicklungs-Shop getestet. Theme Check und die Prüfung der Plattform finden nur Fehler im Code, nicht im Aussehen oder im Ablauf.
+- Das Theme und die App sind noch in keinem echten Shop und in keinem Entwicklungs-Shop getestet. Theme Check und die Prüfung der Plattform finden nur Fehler im Code, nicht im Aussehen oder im Ablauf.
 
 ## Lizenzcode und Updates bei Shopify
 
