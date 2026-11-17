@@ -1,13 +1,17 @@
+# Backend läuft als PHP-Modul auf theme.michael-gahn.de (MichaThemeV5-Pro, src/ShopifyNotifications), kein Node-Server mehr nötig
 name = "MichaThemeV5-App"
 client_id = "${SHOPIFY_API_KEY}"
-application_url = "${SHOPIFY_APP_URL}"
+application_url = "https://theme.michael-gahn.de/shopify/app"
 embedded = true
 
 [access_scopes]
 scopes = "read_customers,read_orders,read_products,write_app_proxy"
 
+[auth]
+redirect_urls = ["https://theme.michael-gahn.de/shopify/callback"]
+
 [app_proxy]
-url = "${SHOPIFY_APP_URL}/proxy"
+url = "https://theme.michael-gahn.de/shopify/proxy"
 subpath = "michatheme-notifications"
 prefix = "apps"
 
@@ -15,9 +19,9 @@ prefix = "apps"
 api_version = "2026-10"
 
   [[webhooks.subscriptions]]
-  topics = ["orders/updated", "products/update"]
-  uri = "/webhooks/events"
+  topics = ["orders/updated", "products/update", "app/uninstalled"]
+  uri = "https://theme.michael-gahn.de/shopify/webhooks"
 
   [[webhooks.subscriptions]]
   compliance_topics = ["customers/data_request", "customers/redact", "shop/redact"]
-  uri = "/webhooks/compliance"
+  uri = "https://theme.michael-gahn.de/shopify/webhooks"

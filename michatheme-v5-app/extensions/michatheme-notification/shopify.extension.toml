@@ -1,2 +1,3 @@
-name = "MichaThemeV5 Notification Center"
+name = "MichaThemeV5 Glocke"
+handle = "michatheme-notification"
 type = "theme"
