@@ -14,6 +14,9 @@ trap 'rm -rf "$TMP"' EXIT
 # Kopie mit festem Datum, damit das ZIP bei gleichem Inhalt gleich bleibt
 cp -R "$ROOT/theme/." "$TMP/"
 find "$TMP" -name '.DS_Store' -delete
+# Dateirechte 644 (vom Netzlaufwerk kommen sonst 700 mit)
+find "$TMP" -type f -exec chmod 644 {} +
+find "$TMP" -type d -exec chmod 755 {} +
 find "$TMP" -exec touch -t 202610220000 {} +
 
 mkdir -p "$ROOT/dist"

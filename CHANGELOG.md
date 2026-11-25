@@ -1,5 +1,9 @@
 # Änderungen
 
+## [2.1.1] - 2026-11-25
+
+- Aktueller Stand, einheitliche Version.
+
 ## 1.4.0 (fertige Version)
 
 Erste fertige Version. Keine Vorabversion (Pre-Alpha) mehr.
